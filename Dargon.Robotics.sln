@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Api", "Dargon.Robotics.Api\Dargon.Robotics.Api.csproj", "{51FDA746-9557-4EAA-B871-5DCA0401D572}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Impl", "Dargon.Robotics.Impl\Dargon.Robotics.Impl.csproj", "{7F7A6287-637D-4D41-89F2-AF22C2CF92FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Devices.Api", "Dargon.Robotics.Devices.Api\Dargon.Robotics.Devices.Api.csproj", "{A0F391F3-D6FF-4137-9075-56C6006544FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Devices.Common.Api", "Dargon.Robotics.Devices.Common.Api\Dargon.Robotics.Devices.Common.Api.csproj", "{DC264B33-7122-45F5-9AB1-4C2FF2A2A03F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Devices.BeagleBone.Impl", "Dargon.Robotics.Devices.BeagleBone.Impl\Dargon.Robotics.Devices.BeagleBone.Impl.csproj", "{6FF10353-22DF-4995-BD82-E009669BC980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Devices.Common.Impl", "Dargon.Robotics.Devices.Common.Impl\Dargon.Robotics.Devices.Common.Impl.csproj", "{20888912-ADAE-4BEA-AD7F-0937154A8F8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Codebases.Iterative.Api", "Dargon.Robotics.Codebases.Iterative.Api\Dargon.Robotics.Codebases.Iterative.Api.csproj", "{24741516-B094-4C40-9BB7-86E169DE6CF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Subsystems.Api", "Dargon.Robotics.Subsystems.Api\Dargon.Robotics.Subsystems.Api.csproj", "{EA35D1D2-078F-4E8F-BE37-D21F81AB585E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Subsystems.DriveTrains.Impl", "Dargon.Robotics.Subsystems.DriveTrain.Impl\Dargon.Robotics.Subsystems.DriveTrains.Impl.csproj", "{F4F4B7EE-371D-41BF-802D-60F7EEAA3FF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Subsystems.DriveTrains.Impl.Tests", "Dargon.Robotics.Subsystems.DriveTrains.Impl.Tests\Dargon.Robotics.Subsystems.DriveTrains.Impl.Tests.csproj", "{FD6FB024-7C82-4498-844F-440D7AC3E7A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMockito", "..\NMockito\NMockito\NMockito.csproj", "{D12C1161-9C1B-44FF-A0D1-3BD8FF1E58F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo-robot", "demo-robot\demo-robot.csproj", "{D23D414B-13F2-4A43-9F3A-D805D7D3A3F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51FDA746-9557-4EAA-B871-5DCA0401D572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51FDA746-9557-4EAA-B871-5DCA0401D572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51FDA746-9557-4EAA-B871-5DCA0401D572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51FDA746-9557-4EAA-B871-5DCA0401D572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F7A6287-637D-4D41-89F2-AF22C2CF92FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F7A6287-637D-4D41-89F2-AF22C2CF92FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F7A6287-637D-4D41-89F2-AF22C2CF92FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F7A6287-637D-4D41-89F2-AF22C2CF92FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0F391F3-D6FF-4137-9075-56C6006544FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0F391F3-D6FF-4137-9075-56C6006544FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0F391F3-D6FF-4137-9075-56C6006544FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0F391F3-D6FF-4137-9075-56C6006544FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC264B33-7122-45F5-9AB1-4C2FF2A2A03F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC264B33-7122-45F5-9AB1-4C2FF2A2A03F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC264B33-7122-45F5-9AB1-4C2FF2A2A03F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC264B33-7122-45F5-9AB1-4C2FF2A2A03F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FF10353-22DF-4995-BD82-E009669BC980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FF10353-22DF-4995-BD82-E009669BC980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FF10353-22DF-4995-BD82-E009669BC980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FF10353-22DF-4995-BD82-E009669BC980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20888912-ADAE-4BEA-AD7F-0937154A8F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20888912-ADAE-4BEA-AD7F-0937154A8F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20888912-ADAE-4BEA-AD7F-0937154A8F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20888912-ADAE-4BEA-AD7F-0937154A8F8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24741516-B094-4C40-9BB7-86E169DE6CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24741516-B094-4C40-9BB7-86E169DE6CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24741516-B094-4C40-9BB7-86E169DE6CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24741516-B094-4C40-9BB7-86E169DE6CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA35D1D2-078F-4E8F-BE37-D21F81AB585E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA35D1D2-078F-4E8F-BE37-D21F81AB585E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA35D1D2-078F-4E8F-BE37-D21F81AB585E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA35D1D2-078F-4E8F-BE37-D21F81AB585E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4F4B7EE-371D-41BF-802D-60F7EEAA3FF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4F4B7EE-371D-41BF-802D-60F7EEAA3FF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4F4B7EE-371D-41BF-802D-60F7EEAA3FF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4F4B7EE-371D-41BF-802D-60F7EEAA3FF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD6FB024-7C82-4498-844F-440D7AC3E7A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD6FB024-7C82-4498-844F-440D7AC3E7A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD6FB024-7C82-4498-844F-440D7AC3E7A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD6FB024-7C82-4498-844F-440D7AC3E7A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D12C1161-9C1B-44FF-A0D1-3BD8FF1E58F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D12C1161-9C1B-44FF-A0D1-3BD8FF1E58F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D12C1161-9C1B-44FF-A0D1-3BD8FF1E58F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D12C1161-9C1B-44FF-A0D1-3BD8FF1E58F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D23D414B-13F2-4A43-9F3A-D805D7D3A3F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D23D414B-13F2-4A43-9F3A-D805D7D3A3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D23D414B-13F2-4A43-9F3A-D805D7D3A3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D23D414B-13F2-4A43-9F3A-D805D7D3A3F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
