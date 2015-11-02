@@ -30,6 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dargon.Ryu.Api">
+      <HintPath>..\packages\Dargon.Ryu.Api.0.3.0\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\Dargon.Ryu.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Dargon.Services.Api">
+      <HintPath>..\packages\Dargon.Services.Api.1.0.0\lib\net45\Dargon.Services.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="ItzWarty.Commons">
+      <HintPath>..\packages\ItzWarty.Commons.0.5.2\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\ItzWarty.Commons.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,8 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DeviceExposer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dargon.Robotics.Devices.Api\Dargon.Robotics.Devices.Api.csproj">
+      <Project>{A0F391F3-D6FF-4137-9075-56C6006544FE}</Project>
+      <Name>Dargon.Robotics.Devices.Api</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

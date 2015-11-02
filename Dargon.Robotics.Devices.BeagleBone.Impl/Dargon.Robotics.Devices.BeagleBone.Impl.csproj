@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dargon.Ryu.Api, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MonoGameTest\packages\Dargon.Ryu.Api.0.3.0\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\Dargon.Ryu.Api.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,8 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BeagleBoneDeviceFactory.cs" />
+    <Compile Include="DargonRoboticsBeagleBoneImplRyuPackage.cs" />
     <Compile Include="GpioAnalogInputImpl.cs" />
     <Compile Include="GpioAnalogOutputImpl.cs" />
+    <Compile Include="GpioDigitalOutputImpl.cs" />
     <Compile Include="GpioInputBase.cs" />
     <Compile Include="GpioMotorImpl.cs" />
     <Compile Include="GpioOutputBase.cs" />
@@ -56,6 +63,9 @@
       <Project>{DC264B33-7122-45F5-9AB1-4C2FF2A2A03F}</Project>
       <Name>Dargon.Robotics.Devices.Common.Api</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

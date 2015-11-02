@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dargon.Ryu.Api">
+      <HintPath>..\..\MonoGameTest\packages\Dargon.Ryu.Api.0.0.3\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\Dargon.Ryu.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="ItzWarty.Commons">
+      <HintPath>..\..\MonoGameTest\packages\ItzWarty.Commons.0.5.2\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\ItzWarty.Commons.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CachedDeviceValueImpl.cs" />
+    <Compile Include="DargonRoboticsDevicesCommonImplRyuPackage.cs" />
     <Compile Include="DefaultDeviceValueFactoryImpl.cs" />
     <Compile Include="FileBackedDeviceValueImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -50,6 +57,9 @@
       <Project>{DC264B33-7122-45F5-9AB1-4C2FF2A2A03F}</Project>
       <Name>Dargon.Robotics.Devices.Common.Api</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

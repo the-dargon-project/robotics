@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using ItzWarty;
 
 namespace Dargon.Robotics.Devices.Common {
    public class FileBackedDeviceValueImpl<T> : DeviceValue<T> {
@@ -27,6 +28,9 @@ namespace Dargon.Robotics.Devices.Common {
             return () => (T)(object)int.Parse(File.ReadAllText(path));
          } else if (typeof(T) == typeof(float)) {
             return () => (T)(object)float.Parse(File.ReadAllText(path));
+         } else if (typeof(T) == typeof(bool)) {
+            return () => (T)(object)File.ReadAllText(path).ContainsAny(
+               new[] { "1", "true" }, StringComparison.OrdinalIgnoreCase);
          } else {
             throw new InvalidOperationException($"Attempted to get reader of unhandled type: {typeof(T)}");
          }
@@ -39,6 +43,8 @@ namespace Dargon.Robotics.Devices.Common {
                     typeof(T) == typeof(int) ||
                     typeof(T) == typeof(float)) {
             return v => File.WriteAllText(path, v.ToString());
+         } else if (typeof(T) == typeof(bool)) {
+            return v => File.WriteAllText(path, ((bool)(object)v) ? "1" : "0");
          } else {
             throw new InvalidOperationException($"Attempted to get writer of unhandled type: {typeof(T)}");
          }

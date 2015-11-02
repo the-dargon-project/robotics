@@ -53,14 +53,21 @@
     <Reference Include="Dargon.Services.Api">
       <HintPath>..\packages\Dargon.Services.Api.1.0.0\lib\net45\Dargon.Services.Api.dll</HintPath>
     </Reference>
-    <Reference Include="Dargon.Services.Impl">
-      <HintPath>..\packages\Dargon.Services.Impl.1.0.0\lib\net45\Dargon.Services.Impl.dll</HintPath>
+    <Reference Include="Dargon.Services.Impl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dargon.Services.Impl.1.0.1\lib\net45\Dargon.Services.Impl.dll</HintPath>
+    </Reference>
+    <Reference Include="ImpromptuInterface">
+      <HintPath>..\packages\ImpromptuInterface.6.2.2\lib\net40\ImpromptuInterface.dll</HintPath>
     </Reference>
     <Reference Include="ItzWarty.Commons">
       <HintPath>..\packages\ItzWarty.Commons.0.5.2\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\ItzWarty.Commons.dll</HintPath>
     </Reference>
     <Reference Include="ItzWarty.Proxies.Api">
       <HintPath>..\packages\ItzWarty.Proxies.Api.0.1.1\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\ItzWarty.Proxies.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="ItzWarty.Proxies.Impl">
+      <HintPath>..\packages\ItzWarty.Proxies.Impl.0.2.2\lib\net45\ItzWarty.Proxies.Impl.dll</HintPath>
     </Reference>
     <Reference Include="Nito.AsyncEx">
       <HintPath>..\packages\Nito.AsyncEx.3.0.0\lib\net45\Nito.AsyncEx.dll</HintPath>
@@ -106,6 +113,14 @@
     <ProjectReference Include="..\Dargon.Robotics.Devices.Api\Dargon.Robotics.Devices.Api.csproj">
       <Project>{A0F391F3-D6FF-4137-9075-56C6006544FE}</Project>
       <Name>Dargon.Robotics.Devices.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dargon.Robotics.Devices.Impl\Dargon.Robotics.Devices.Impl.csproj">
+      <Project>{a39307a4-0a19-427f-af07-e1c9c7a8e2e9}</Project>
+      <Name>Dargon.Robotics.Devices.Impl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dargon.Robotics.Devices.Remoting.Server.Api\Dargon.Robotics.Devices.Remoting.Server.Api.csproj">
+      <Project>{690BA286-83BF-4536-91CF-FD5B883E368C}</Project>
+      <Name>Dargon.Robotics.Devices.Remoting.Server.Api</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dargon.Robotics.Subsystems.DriveTrain.Impl\Dargon.Robotics.Subsystems.DriveTrains.Impl.csproj">
       <Project>{F4F4B7EE-371D-41BF-802D-60F7EEAA3FF8}</Project>

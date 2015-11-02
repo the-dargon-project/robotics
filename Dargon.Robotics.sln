@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMockito", "..\NMockito\NMo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo-robot", "demo-robot\demo-robot.csproj", "{D23D414B-13F2-4A43-9F3A-D805D7D3A3F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Devices.Remoting.Server.Api", "Dargon.Robotics.Devices.Remoting.Server.Api\Dargon.Robotics.Devices.Remoting.Server.Api.csproj", "{690BA286-83BF-4536-91CF-FD5B883E368C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Devices.Impl", "Dargon.Robotics.Devices.Impl\Dargon.Robotics.Devices.Impl.csproj", "{A39307A4-0A19-427F-AF07-E1C9C7A8E2E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,14 @@ Global
 		{D23D414B-13F2-4A43-9F3A-D805D7D3A3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D23D414B-13F2-4A43-9F3A-D805D7D3A3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D23D414B-13F2-4A43-9F3A-D805D7D3A3F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{690BA286-83BF-4536-91CF-FD5B883E368C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{690BA286-83BF-4536-91CF-FD5B883E368C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{690BA286-83BF-4536-91CF-FD5B883E368C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{690BA286-83BF-4536-91CF-FD5B883E368C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A39307A4-0A19-427F-AF07-E1C9C7A8E2E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A39307A4-0A19-427F-AF07-E1C9C7A8E2E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A39307A4-0A19-427F-AF07-E1C9C7A8E2E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A39307A4-0A19-427F-AF07-E1C9C7A8E2E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
