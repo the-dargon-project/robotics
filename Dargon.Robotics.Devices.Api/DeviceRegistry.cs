@@ -1,9 +1,9 @@
-﻿using ItzWarty.Collections;
+﻿using System.Collections.Generic;
 
 namespace Dargon.Robotics.Devices {
    public interface DeviceRegistry {
       void AddDevice(Device device);
       T GetDevice<T>(string name = null);
-      IReadOnlySet<Device> EnumerateDevices();
+      IEnumerable<Device> EnumerateDevices();
    }
 }

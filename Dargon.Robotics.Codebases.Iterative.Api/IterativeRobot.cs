@@ -1,4 +1,5 @@
-﻿using ItzWarty;
+﻿using System;
+using ItzWarty;
 using System.Diagnostics;
 using System.Threading;
 
@@ -19,7 +20,7 @@ namespace Dargon.Robotics.Codebases.Iterative {
          while (true) {
             stopwatch.Restart();
             userCode.OnTick();
-            var timeToSleepMillis = stopwatch.ElapsedMilliseconds - tickIntervalMillis;
+            var timeToSleepMillis = tickIntervalMillis - stopwatch.ElapsedMilliseconds;
             if (timeToSleepMillis > 1) {
                Thread.Sleep((int)timeToSleepMillis);
             }

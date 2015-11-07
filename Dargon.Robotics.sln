@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Devices.Imp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Simulations2D", "Dargon.Robotics.Simulations2D\Dargon.Robotics.Simulations2D.csproj", "{51A34EB5-DA06-451F-B445-D479751B4C9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo-robot-simulator", "demo-robot-simulator\demo-robot-simulator.csproj", "{19362716-994E-4264-84D3-54980D3A91F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{51A34EB5-DA06-451F-B445-D479751B4C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51A34EB5-DA06-451F-B445-D479751B4C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51A34EB5-DA06-451F-B445-D479751B4C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19362716-994E-4264-84D3-54980D3A91F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19362716-994E-4264-84D3-54980D3A91F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19362716-994E-4264-84D3-54980D3A91F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19362716-994E-4264-84D3-54980D3A91F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

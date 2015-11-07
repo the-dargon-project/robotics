@@ -11,12 +11,11 @@ namespace Dargon.Robotics.Simulations2D.Devices {
       private readonly SimulationMotorState simulationMotorState;
       private float lastValue = 0.0f;
 
-      public SimulationMotorAdapter(string name, SimulationMotorState simulationMotorState) {
+      public SimulationMotorAdapter(SimulationMotorState simulationMotorState) {
          this.simulationMotorState = simulationMotorState;
-         Name = name;
       }
 
-      public string Name { get; }
+      public string Name => simulationMotorState.Name;
       public DeviceType Type => DeviceType.Motor;
 
       public void Set(float value) {

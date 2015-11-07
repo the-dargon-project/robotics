@@ -20,9 +20,11 @@ namespace Dargon.Robotics.Demo {
 
       private Devices ConstructDevices(RyuContainer ryu) {
          var deviceRegistry = ryu.Get<DeviceRegistry>();
-         var leftMotor = deviceRegistry.GetDevice<Motor>("drive_left_motor");
-         var rightMotor = deviceRegistry.GetDevice<Motor>("drive_right_motor");
-         var driveTrain = new SkidSteerDriveTrain(leftMotor, rightMotor);
+         var frontLeftMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.FrontLeft");
+         var frontRightMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.FrontRight");
+         var rearLeftMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.RearLeft");
+         var rearRightMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.RearRight");
+         var driveTrain = new SkidSteerDriveTrain(frontLeftMotor, frontRightMotor, rearLeftMotor, rearRightMotor);
          return new Devices(driveTrain);
       }
    }

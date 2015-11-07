@@ -1,6 +1,7 @@
 ﻿using ItzWarty;
 using ItzWarty.Collections;
 using System.Data;
+using SCG = System.Collections.Generic;
 
 namespace Dargon.Robotics.Devices {
    public class DefaultDeviceRegistry : DeviceRegistry {
@@ -27,7 +28,7 @@ namespace Dargon.Robotics.Devices {
          return (T)devicesByName[name];
       }
 
-      public IReadOnlySet<Device> EnumerateDevices() {
+      public SCG.IEnumerable<Device> EnumerateDevices() {
          return devices;
       }
    }

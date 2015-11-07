@@ -12,7 +12,6 @@ namespace Dargon.Robotics.Simulations2D {
       private const float kTicksPerMillisecond = 10.0f;
       private const float kTickIntervalSeconds = 1.0f / (1000.0f * kTicksPerMillisecond);
       private readonly DateTime startTime = DateTime.Now;
-      private readonly SimulationRobotState simulationRobotState;
       private readonly GraphicsDeviceManager graphicsDeviceManager;
       private readonly World world;
       private readonly SimulationRobotEntity robotEntity;
@@ -20,8 +19,8 @@ namespace Dargon.Robotics.Simulations2D {
       private SpriteBatch spriteBatch;
       private Texture2D whiteRectangle;
 
-      public Simulation2D(SimulationRobotState simulationRobotState) {
-         this.simulationRobotState = simulationRobotState;
+      public Simulation2D(SimulationRobotEntity robotEntity) {
+         this.robotEntity = robotEntity;
 
          Content.RootDirectory = "Assets";
          ConvertUnits.SetDisplayUnitToSimUnitRatio(50f);
@@ -33,8 +32,7 @@ namespace Dargon.Robotics.Simulations2D {
 
          var gravity = Vector2.Zero;
          world = new World(gravity);
-         robotEntity = new SimulationRobotEntity(simulationRobotState, world);
-         robotEntity.Initialize();
+         robotEntity.Initialize(world);
       }
 
       protected override void LoadContent() {

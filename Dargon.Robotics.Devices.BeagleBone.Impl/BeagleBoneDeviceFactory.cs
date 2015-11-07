@@ -1,4 +1,5 @@
-﻿using Dargon.Robotics.Devices.Common;
+﻿using System;
+using Dargon.Robotics.Devices.Common;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public class BeagleBoneDeviceFactory : DeviceFactory {
@@ -14,6 +15,10 @@ namespace Dargon.Robotics.Devices.BeagleBone {
             deviceValueFactory.FromFileCached<bool>(
                BuildPinValuePath(pin),
                DeviceValueAccess.ReadWrite));
+      }
+
+      public Motor PwmMotor(string name, int pin) {
+         throw new NotImplementedException();
       }
 
       private string BuildPinRootPath(int pin) => $"/sys/class/gpio/gpio{pin}";

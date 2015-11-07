@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Threading;
+using Dargon.Robotics;
 using Dargon.Robotics.Devices;
+using Dargon.Robotics.Simulations2D;
 using Dargon.Robotics.Simulations2D.Devices;
+using Dargon.Ryu;
 
-namespace Dargon.Robotics.Simulations2D {
+namespace demo_robot_simulator {
    public class Program {
       private const float kMecanumWheelForceAngle = (float)(Math.PI / 4);
       private const float kMecanumWheelForceMagnitude = 50 * 1000.0f;
@@ -26,7 +30,18 @@ namespace Dargon.Robotics.Simulations2D {
             deviceRegistry.AddDevice(motor);
             motor.Set(0.1f);
          }
-         
+
+         // start robot code in new thread
+         new Thread(() => {
+            var ryu = new RyuFactory().Create();
+            ryu.Set<Gamepad>(new LocalGamepad());
+            ryu.Set<DeviceRegistry>(deviceRegistry);
+            ((RyuContainerImpl)ryu).Setup(true);
+
+            var actualRobot = ryu.Get<Robot>();
+            actualRobot.Run();
+         }).Start();
+
          new Simulation2D(robotEntity).Run();
       }
    }

@@ -1,4 +1,5 @@
-﻿using Dargon.Robotics.Codebases.Iterative;
+﻿using System;
+using Dargon.Robotics.Codebases.Iterative;
 using Dargon.Robotics.Devices;
 using Dargon.Robotics.Subsystems.DriveTrains.SkidSteer;
 
@@ -15,7 +16,7 @@ namespace Dargon.Robotics.Demo {
       }
 
       public override void OnTick() {
-         var driveValues = driveCalculator.TankDrive(gamepad.LeftY, gamepad.RightX);
+         var driveValues = driveCalculator.TankDrive(gamepad.LeftY, gamepad.RightY);
          driveTrain.SetLeftAndRight(driveValues);
       }
    }
