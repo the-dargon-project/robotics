@@ -25,10 +25,10 @@ namespace Dargon.Robotics.Simulations2D {
       public static SimulationConstants WaterRobot() {
          return new SimulationConstants {
             AngularDamping = 30.0f,
-            LinearDamping = 2.0f,
+            LinearDamping = 1.0f,
             Width = 0.66f,
             Height = 0.66f,
-            Density = kAluminumDensity * 0.475f // brings us to ~100 pounds
+            Density = kAluminumDensity * 0.0475f // brings us to ~100 pounds
          };
       }
    }
