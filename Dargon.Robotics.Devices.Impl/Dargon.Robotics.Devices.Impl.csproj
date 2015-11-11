@@ -46,7 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultAccelerometer.cs" />
+    <Compile Include="DefaultAccumulator.cs" />
     <Compile Include="DefaultDeviceRegistry.cs" />
+    <Compile Include="DefaultGyroscope.cs" />
     <Compile Include="DevicesImplRyuPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
