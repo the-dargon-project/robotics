@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Devices\KeyboardGamepad.cs" />
     <Compile Include="Devices\LocalGamepad.cs" />
     <Compile Include="Devices\SimulationMotorAdapter.cs" />
     <Compile Include="Program.cs" />

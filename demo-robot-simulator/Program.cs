@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using Dargon.Robotics;
+using Dargon.Robotics; 
 using Dargon.Robotics.Devices;
 using Dargon.Robotics.Simulations2D;
 using Dargon.Robotics.Simulations2D.Devices;
@@ -35,7 +35,7 @@ namespace demo_robot_simulator {
          // start robot code in new thread
          new Thread(() => {
             var ryu = new RyuFactory().Create();
-            ryu.Set<Gamepad>(new LocalGamepad());
+            ryu.Set<Gamepad>(new KeyboardGamepad());
             ryu.Set<DeviceRegistry>(deviceRegistry);
             ((RyuContainerImpl)ryu).Setup(true);
 
