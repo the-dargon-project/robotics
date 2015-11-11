@@ -1,17 +1,12 @@
 ﻿using Dargon.Robotics.Devices.Common;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
-   public abstract class GpioInputBase<T> : Device {
-      private readonly string name;
+   public abstract class GpioInputBase<T> : DeviceBase {
       private readonly DeviceValue<T> value;
 
-      protected GpioInputBase(string name, DeviceValue<T> value) {
-         this.name = name;
+      protected GpioInputBase(string name, DeviceType type, DeviceValue<T> value) : base(name, type) {
          this.value = value;
       }
-
-      public string Name => name;
-      public abstract DeviceType Type { get; }
 
       public T Get() => value.Get();
    }

@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CachedDeviceValueImpl.cs" />
-    <Compile Include="ClampUtilities.cs" />
+    <Compile Include="InputUtilities.cs" />
     <Compile Include="DargonRoboticsDevicesCommonImplRyuPackage.cs" />
     <Compile Include="DefaultDeviceValueFactoryImpl.cs" />
     <Compile Include="FileBackedDeviceValueImpl.cs" />

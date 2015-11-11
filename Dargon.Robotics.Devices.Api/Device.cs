@@ -1,13 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ItzWarty.Collections;
+using System;
 
 namespace Dargon.Robotics.Devices {
    public interface Device {
       string Name { get; }
       DeviceType Type { get; }
+      TComponent GetComponent<TComponent>(DeviceComponentType type);
+   }
+
+   public class DeviceBase : Device {
+      private readonly IConcurrentDictionary<DeviceComponentType, object> componentsByType = new ConcurrentDictionary<DeviceComponentType, object>();
+
+      public DeviceBase(string name, DeviceType type) {
+         Name = name;
+         Type = type;
+      }
+
+      public string Name { get; }
+      public DeviceType Type { get; }
+      public TComponent GetComponent<TComponent>(DeviceComponentType type) => (TComponent)componentsByType[type];
+      public void AddComponent<TComponent>(DeviceComponentType type, TComponent component) => componentsByType.Add(type, component);
+   }
+
+   public enum DeviceComponentType {
+      DriveMotorForceVector = 1
    }
 
    public enum DeviceType : uint {

@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DargonRoboticsSubsystemsDriveTrainsImplRyuPackage.cs" />
+    <Compile Include="Holonomic\HolonomicCalculator.cs" />
+    <Compile Include="Holonomic\HolonomicDriveTrain.cs" />
+    <Compile Include="Holonomic\HolonomicDriveValues.cs" />
     <Compile Include="SkidSteer\SkidDriveValues.cs" />
     <Compile Include="SkidSteer\SkidSteerDriveTrain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +57,14 @@
     <ProjectReference Include="..\Dargon.Robotics.Devices.Api\Dargon.Robotics.Devices.Api.csproj">
       <Project>{A0F391F3-D6FF-4137-9075-56C6006544FE}</Project>
       <Name>Dargon.Robotics.Devices.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dargon.Robotics.Devices.Common.Api\Dargon.Robotics.Devices.Common.Api.csproj">
+      <Project>{dc264b33-7122-45f5-9ab1-4c2ff2a2a03f}</Project>
+      <Name>Dargon.Robotics.Devices.Common.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dargon.Robotics.Devices.Common.Impl\Dargon.Robotics.Devices.Common.Impl.csproj">
+      <Project>{20888912-adae-4bea-ad7f-0937154a8f8a}</Project>
+      <Name>Dargon.Robotics.Devices.Common.Impl</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

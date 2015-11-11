@@ -1,14 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NLog;
+﻿using NLog;
+using System;
 
 namespace Dargon.Robotics.Devices.Common {
-   public static class ClampUtilities {
+   public static class InputUtilities {
       private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
+      public static float TransformWithWarning(float value, float min = -1.0f, float max = 1.0f, bool square = false) {
+         value = ClampWithWarning(value);
+         if (square) {
+            value = value * Math.Abs(value);
+         }
+         return value;
+      }
 
       public static float ClampWithWarning(float value, float min = -1.0f, float max = 1.0f) {
          if (value < min) {

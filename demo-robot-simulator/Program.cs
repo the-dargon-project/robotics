@@ -18,8 +18,9 @@ namespace demo_robot_simulator {
 
       public static void Main(string[] args) {
          // create simulation state
-         var constants = SimulationConstantsFactory.LandRobot();
-         var motors = SimulationMotorStateFactory.MecanumDrive(constants.Width, constants.Height, kMecanumWheelForceAngle, kWheelForce); //SimulationMotorStateFactory.RovDrive(constants.Width, constants.Height, kMecanumWheelForceAngle, kWheelForce);
+         var constants = SimulationConstantsFactory.WaterRobot();
+//         var motors = SimulationMotorStateFactory.MecanumDrive(constants.Width, constants.Height, kMecanumWheelForceAngle, kWheelForce);
+         var motors = SimulationMotorStateFactory.RovDrive(constants.Width, constants.Height, kMecanumWheelForceAngle, kWheelForce);
          var robot = new SimulationRobotState(constants.Width, constants.Height, constants.Density, motors);
          var robotEntity = new SimulationRobotEntity(constants, robot);
 
