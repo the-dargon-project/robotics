@@ -23,11 +23,6 @@ namespace Dargon.Robotics.Simulations2D.Devices {
                simulationMotorState.MaxForceVector.X,
                simulationMotorState.MaxForceVector.Y,
                0));
-
-//         Console.WriteLine("MOTOR " + Name + " HAS " + GetComponent<VectorComponent>(DeviceComponentType.DriveWheelForceVector).X);
-//         Console.WriteLine("MOTOR " + Name + " HAS " + GetComponent<VectorComponent>(DeviceComponentType.DriveWheelForceVector).Y);
-//         Console.WriteLine("MOTOR " + Name + " HAS " + simulationMotorState.MaxForceVector);
-//         Console.ReadLine();
       }
 
       public void Set(float value) {

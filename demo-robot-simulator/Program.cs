@@ -19,6 +19,7 @@ namespace demo_robot_simulator {
       public static void Main(string[] args) {
          // create simulation state
          var constants = SimulationConstantsFactory.WaterRobot();
+//         var motors = SimulationMotorStateFactory.SkidDrive(constants.Width, constants.Height, kWheelForce);
 //         var motors = SimulationMotorStateFactory.MecanumDrive(constants.Width, constants.Height, kMecanumWheelForceAngle, kWheelForce);
          var motors = SimulationMotorStateFactory.RovDrive(constants.Width, constants.Height, kMecanumWheelForceAngle, kWheelForce);
          var wheelEncoders = SimulationWheelEncoderStateFactory.FromMotors(motors);
