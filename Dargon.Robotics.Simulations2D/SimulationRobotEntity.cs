@@ -85,6 +85,10 @@ namespace Dargon.Robotics.Simulations2D {
 //         if (StaticRandom.Next(0, 2000) == 0) {
 //            Console.WriteLine(wheelEncoders.Select(x => x.Name + ": " + x.Position).Join(", "));
 //         }
+
+         var accelerometer = robotState.AccelerometerState;
+         var position = robotBody.Position;
+         var velocity = robotBody.LinearVelocity;
       }
 
       private void UpdateWheelEncoders(float dtSeconds, SimulationWheelEncoderState wheelEncoderState) {

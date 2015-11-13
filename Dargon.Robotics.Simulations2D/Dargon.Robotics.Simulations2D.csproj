@@ -69,9 +69,11 @@
   <ItemGroup>
     <Compile Include="Devices\KeyboardGamepad.cs" />
     <Compile Include="Devices\LocalGamepad.cs" />
+    <Compile Include="Devices\SimulationAccelerometerAdapter.cs" />
     <Compile Include="Devices\SimulationMotorAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderer.cs" />
+    <Compile Include="SimulationAccelerometerState.cs" />
     <Compile Include="SimulationConstants.cs" />
     <Compile Include="Simulation2D.cs" />
     <Compile Include="SimulationWheelEncoderState.cs" />
