@@ -1,11 +1,12 @@
-﻿using Dargon.Robotics.Subsystems.DriveTrains.SkidSteer;
+﻿using Dargon.Robotics.Subsystems.DriveTrains.Holonomic;
+using Dargon.Robotics.Subsystems.DriveTrains.SkidSteer;
 
 namespace Dargon.Robotics.Demo {
    public class Devices {
-      public Devices(SkidSteerDriveTrain driveTrain) {
+      public Devices(HolonomicDriveTrain driveTrain) {
          DriveTrain = driveTrain;
       }
 
-      public SkidSteerDriveTrain DriveTrain { get; }
+      public HolonomicDriveTrain DriveTrain { get; }
    }
 }

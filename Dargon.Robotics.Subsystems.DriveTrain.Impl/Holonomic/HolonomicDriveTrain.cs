@@ -14,9 +14,18 @@ namespace Dargon.Robotics.Subsystems.DriveTrains.Holonomic {
          this.rearRight = rearRight;
       }
 
+      public Motor FrontLeft => frontLeft;
+      public Motor FrontRight => frontRight;
+      public Motor RearLeft => rearLeft;
+      public Motor RearRight => rearRight;
+
+      public void SetValues(HolonomicDriveValues values) {
+         SetValues(values.FrontLeft, values.FrontRight, values.RearLeft, values.RearRight);
+      }
+
       public void SetValues(float frontLeftSpeed, float frontRightSpeed, float rearLeftSpeed, float rearRightSpeed) {
          frontLeft.Set(frontLeftSpeed);
-         frontRight.Set(frontLeftSpeed);
+         frontRight.Set(frontRightSpeed);
 
          rearLeft.Set(rearLeftSpeed);
          rearRight.Set(rearRightSpeed);

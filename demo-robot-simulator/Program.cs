@@ -29,6 +29,7 @@ namespace demo_robot_simulator {
          var deviceRegistry = new DefaultDeviceRegistry();
          foreach (var simulationMotorState in robot.MotorStates) {
             var motor = new SimulationMotorAdapter(simulationMotorState);
+            motor.Initialize();
             deviceRegistry.AddDevice(motor);
             motor.Set(0.1f);
          }

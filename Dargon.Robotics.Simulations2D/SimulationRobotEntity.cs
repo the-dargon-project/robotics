@@ -21,7 +21,7 @@ namespace Dargon.Robotics.Simulations2D {
          robotBody = BodyFactory.CreateRectangle(world, robotState.Width, robotState.Height, robotState.Density);
          robotBody.BodyType = BodyType.Dynamic;
          robotBody.Position = new Vector2(10, 10);
-         robotBody.Rotation = (float)Math.PI;
+//         robotBody.Rotation = (float)Math.PI;
          robotBody.AngularDamping = constants.AngularDamping;
          robotBody.LinearDamping = constants.LinearDamping;
       }
@@ -41,7 +41,7 @@ namespace Dargon.Robotics.Simulations2D {
          // Draw up vector
          renderer.DrawLineSegmentWorld(
             robotBody.Position,
-            robotBody.Position + Vector2.Transform(Vector2.UnitY, Matrix.CreateRotationZ(robotBody.Rotation)),
+            robotBody.GetWorldPoint(Vector2.UnitY),
             Color.Magenta);
 
          // Draw friction vector
@@ -95,8 +95,9 @@ namespace Dargon.Robotics.Simulations2D {
          } else {
             var deltaPositionAbsolute = currentWorldPosition - wheelEncoderState.LastWorldPosition;
             var deltaPositionRelative = Vector2.Transform(deltaPositionAbsolute, Matrix.CreateRotationZ(-robotBody.Rotation));
-            var deltaPositionSign = Math.Sign(Vector2.Dot(motor.MaxForceVector, deltaPositionRelative));
-            var deltaPosition = deltaPositionAbsolute.Length() * deltaPositionSign;
+            var countedDirection = motor.MaxForceVector;
+            countedDirection.Normalize();
+            var deltaPosition = Vector2.Dot(deltaPositionRelative, countedDirection);
             var velocity = deltaPosition / dtSeconds;
             wheelEncoderState.Position += deltaPosition;
             wheelEncoderState.Velocity = velocity;

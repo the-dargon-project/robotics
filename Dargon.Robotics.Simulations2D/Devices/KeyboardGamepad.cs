@@ -5,6 +5,8 @@ namespace Dargon.Robotics.Simulations2D.Devices {
    public class KeyboardGamepad : Gamepad {
       public float LeftX => GetValue(Keys.A, Keys.D);
       public float LeftY => GetValue(Keys.S, Keys.W);
+      public bool LeftTrigger => GetBoolean(Keys.LeftShift);
+
       public float RightX => GetValue(Keys.K, Keys.OemSemicolon);
       public float RightY => GetValue(Keys.L, Keys.O);
 
@@ -17,6 +19,11 @@ namespace Dargon.Robotics.Simulations2D.Devices {
          } else {
             return 0;
          }
+      }
+
+      private bool GetBoolean(Keys key) {
+         var state = Keyboard.GetState();
+         return state.IsKeyDown(key);
       }
    }
 }

@@ -23,7 +23,7 @@ namespace Dargon.Robotics.Devices {
    }
 
    public enum DeviceComponentType {
-      DriveMotorForceVector = 1
+      DriveWheelForceVector = 1
    }
 
    public enum DeviceType : uint {

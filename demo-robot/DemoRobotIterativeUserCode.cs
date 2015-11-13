@@ -1,23 +1,23 @@
-﻿using System;
-using Dargon.Robotics.Codebases.Iterative;
+﻿using Dargon.Robotics.Codebases.Iterative;
 using Dargon.Robotics.Devices;
-using Dargon.Robotics.Subsystems.DriveTrains.SkidSteer;
+using Dargon.Robotics.Subsystems.DriveTrains.Holonomic;
 
 namespace Dargon.Robotics.Demo {
    public class DemoRobotIterativeUserCode : IterativeRobotUserCode {
       private readonly Gamepad gamepad;
-      private readonly SkidSteerDriveTrain driveTrain;
-      private readonly SkidSteerCalculator driveCalculator;
+      private readonly HolonomicDriveTrain driveTrain;
 
-      public DemoRobotIterativeUserCode(Gamepad gamepad, SkidSteerDriveTrain driveTrain, SkidSteerCalculator driveCalculator) {
+      public DemoRobotIterativeUserCode(Gamepad gamepad, HolonomicDriveTrain driveTrain) {
          this.gamepad = gamepad;
          this.driveTrain = driveTrain;
-         this.driveCalculator = driveCalculator;
       }
 
       public override void OnTick() {
-         var driveValues = driveCalculator.TankDrive(gamepad.LeftY, gamepad.RightY);
-         driveTrain.SetLeftAndRight(driveValues);
+         if (!gamepad.LeftTrigger) {
+            driveTrain.TankDrive(gamepad.LeftY, gamepad.RightY);
+         } else {
+            driveTrain.MecanumDrive(gamepad.LeftX, gamepad.LeftY);
+         }
       }
    }
 }

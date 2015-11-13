@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Reflection;
 using Dargon.Robotics.Simulations2D.Utilities;
 using FarseerPhysics;
 using FarseerPhysics.Dynamics;
@@ -18,6 +19,7 @@ namespace Dargon.Robotics.Simulations2D {
       private int ticksExecuted = 0;
       private SpriteBatch spriteBatch;
       private Texture2D whiteRectangle;
+      private RenderTarget2D invertedRenderTarget;
 
       public Simulation2D(SimulationRobotEntity robotEntity) {
          this.robotEntity = robotEntity;
@@ -40,6 +42,7 @@ namespace Dargon.Robotics.Simulations2D {
          spriteBatch = new SpriteBatch(GraphicsDevice);
          SpriteBatchEx.GraphicsDevice = GraphicsDevice;
          whiteRectangle = CreateSolidBitmap(Color.White);
+         invertedRenderTarget = new RenderTarget2D(GraphicsDevice, 1280, 720);
 
          Window.Position = Point.Zero;
       }
@@ -54,6 +57,8 @@ namespace Dargon.Robotics.Simulations2D {
       protected override void Draw(GameTime gameTime) {
          base.Draw(gameTime);
 
+         GraphicsDevice.SetRenderTarget(invertedRenderTarget);
+         GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
          GraphicsDevice.Clear(Color.Black);
          spriteBatch.Begin();
          robotEntity.Render(this);
@@ -62,6 +67,17 @@ namespace Dargon.Robotics.Simulations2D {
             DrawLineSegmentWorld(new Vector2(0, i), new Vector2(40, i), Color.Gray);
          }
          spriteBatch.End();
+         GraphicsDevice.SetRenderTarget(null);
+         GraphicsDevice.RasterizerState = RasterizerState.CullNone;
+         GraphicsDevice.Textures[0] = invertedRenderTarget;
+         GraphicsDevice.DrawUserPrimitives(
+            PrimitiveType.TriangleStrip,
+            new [] {
+               new VertexPositionColorTexture(Vector3.Zero, Color.White, Vector2.UnitY),
+               new VertexPositionColorTexture(Vector3.UnitX * 1280, Color.White, Vector2.One),
+               new VertexPositionColorTexture(Vector3.UnitY * 720, Color.White, Vector2.Zero),
+               new VertexPositionColorTexture(new Vector3(1280, 720, 0), Color.White, Vector2.UnitX)
+            }, 0, 2, VertexPositionColorTexture.VertexDeclaration);
       }
 
       protected override void Update(GameTime gameTime) {

@@ -34,8 +34,13 @@
       <HintPath>..\packages\Dargon.Ryu.Api.0.3.1\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\Dargon.Ryu.Api.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MathNet.Numerics, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.3.8.0\lib\net40\MathNet.Numerics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,10 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DargonRoboticsSubsystemsDriveTrainsImplRyuPackage.cs" />
+    <Compile Include="Holonomic\DargonRoboticsSubsystemsDriveTrainsImplHolonomicRyuPackage.cs" />
     <Compile Include="Holonomic\HolonomicCalculator.cs" />
     <Compile Include="Holonomic\HolonomicDriveTrain.cs" />
+    <Compile Include="Holonomic\HolonomicDriveTrainStatics.cs" />
     <Compile Include="Holonomic\HolonomicDriveValues.cs" />
+    <Compile Include="SkidSteer\DargonRoboticsSubsystemsDriveTrainsImplSkidSteerRyuPackage.cs" />
     <Compile Include="SkidSteer\SkidDriveValues.cs" />
     <Compile Include="SkidSteer\SkidSteerDriveTrain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
