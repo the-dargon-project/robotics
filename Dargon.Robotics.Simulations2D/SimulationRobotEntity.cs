@@ -4,6 +4,7 @@ using ItzWarty;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Linq;
 
 namespace Dargon.Robotics.Simulations2D {
    public class SimulationRobotEntity {
@@ -65,27 +66,9 @@ namespace Dargon.Robotics.Simulations2D {
 
       public void ApplyForces() {
          var motors = robotState.MotorStates;
-//         var gs = GamePad.GetState(PlayerIndex.One);
-//         if (gs.Buttons.LeftShoulder == ButtonState.Pressed) {
-//            var desiredMotion = -gs.ThumbSticks.Left;
-//            foreach (var motor in motors) {
-//               var wheelDirection = motor.MaxForceVector;
-//               wheelDirection.Normalize();
-//               var speed = Vector2.Dot(wheelDirection, desiredMotion);
-//               motor.CurrentForceVector = motor.MaxForceVector * speed;
-//            }
-//         } else {
-//            var left = -gs.ThumbSticks.Left.Y;
-//            var right = -gs.ThumbSticks.Right.Y;
-//            motors[0].CurrentForceVector = motors[0].MaxForceVector * right; // * 0.2f;
-//            motors[1].CurrentForceVector = motors[1].MaxForceVector * left; // * -0.2f;
-//            motors[2].CurrentForceVector = motors[2].MaxForceVector * left; // * -0.2f;
-//            motors[3].CurrentForceVector = motors[3].MaxForceVector * right; // * 0.2f;
-//         }
-
-         robotState.MotorStates.ForEach(ApplyMotorForces);
+         motors.ForEach(ApplyMotorForces);
       }
-
+      
       private void ApplyMotorForces(SimulationMotorState motorState) {
          var forceVectorWorld = Vector2.Transform(motorState.CurrentForceVector, Matrix.CreateRotationZ(robotBody.Rotation));
 //         Console.WriteLine(forceVectorWorld);
@@ -94,6 +77,31 @@ namespace Dargon.Robotics.Simulations2D {
             robotBody.GetWorldPoint(motorState.RelativePosition)
             );
          //         renderer.DrawForceVectorWorld(position, forceVectorWorld, Color.Cyan);
+      }
+
+      public void UpdateSensors(float dtSeconds) {
+         var wheelEncoders = robotState.WheelEncoderStates;
+         wheelEncoders.ForEach(x => UpdateWheelEncoders(dtSeconds, x));
+//         if (StaticRandom.Next(0, 2000) == 0) {
+//            Console.WriteLine(wheelEncoders.Select(x => x.Name + ": " + x.Position).Join(", "));
+//         }
+      }
+
+      private void UpdateWheelEncoders(float dtSeconds, SimulationWheelEncoderState wheelEncoderState) {
+         var motor = wheelEncoderState.Motor;
+         var currentWorldPosition = robotBody.GetWorldPoint(motor.RelativePosition);
+         if (!wheelEncoderState.HasBeenUpdated) {
+            wheelEncoderState.HasBeenUpdated = true;
+         } else {
+            var deltaPositionAbsolute = currentWorldPosition - wheelEncoderState.LastWorldPosition;
+            var deltaPositionRelative = Vector2.Transform(deltaPositionAbsolute, Matrix.CreateRotationZ(-robotBody.Rotation));
+            var deltaPositionSign = Math.Sign(Vector2.Dot(motor.MaxForceVector, deltaPositionRelative));
+            var deltaPosition = deltaPositionAbsolute.Length() * deltaPositionSign;
+            var velocity = deltaPosition / dtSeconds;
+            wheelEncoderState.Position += deltaPosition;
+            wheelEncoderState.Velocity = velocity;
+         }
+         wheelEncoderState.LastWorldPosition = currentWorldPosition;
       }
    }
 }

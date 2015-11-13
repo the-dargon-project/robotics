@@ -7,7 +7,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Dargon.Robotics.Simulations2D.Util {
+namespace Dargon.Robotics.Simulations2D.Utilities {
    /// <summary>
    /// Contains extension methods of the spritebatch class to draw lines.
    /// </summary>

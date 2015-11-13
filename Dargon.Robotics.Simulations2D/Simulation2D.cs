@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using Dargon.Robotics.Simulations2D.Util;
+using Dargon.Robotics.Simulations2D.Utilities;
 using FarseerPhysics;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
@@ -72,6 +72,7 @@ namespace Dargon.Robotics.Simulations2D {
             ticksExecuted++;
             robotEntity.ApplyForces();
             world.Step(kTickIntervalSeconds);
+            robotEntity.UpdateSensors(kTickIntervalSeconds);
          }
       }
 
