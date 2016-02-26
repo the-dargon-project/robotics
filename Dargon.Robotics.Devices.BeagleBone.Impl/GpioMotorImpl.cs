@@ -1,9 +1,8 @@
-﻿//using Dargon.Robotics.Devices.Common;
-//
-//namespace Dargon.Robotics.Devices.BeagleBone {
-//   public class GpioMotorImpl : GpioOutputBase, Motor {
-//      public GpioMotorImpl(string name, DeviceValue<float> voltage) : base(name, voltage) { }
-//
-//      public override DeviceType Type => DeviceType.Motor;
-//   }
-//}
+﻿using System;
+using Dargon.Robotics.Devices.Common;
+
+namespace Dargon.Robotics.Devices.BeagleBone {
+   public class GpioMotorImpl : GpioOutputBase<float>, Motor {
+      public GpioMotorImpl(string name, DeviceValue<float> value) : base(name, DeviceType.Motor, value) { }
+   }
+}

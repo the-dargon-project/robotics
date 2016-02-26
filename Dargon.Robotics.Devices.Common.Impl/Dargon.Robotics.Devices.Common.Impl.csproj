@@ -57,6 +57,8 @@
     <Compile Include="DargonRoboticsDevicesCommonImplRyuPackage.cs" />
     <Compile Include="DefaultDeviceValueFactoryImpl.cs" />
     <Compile Include="FileBackedDeviceValueImpl.cs" />
+    <Compile Include="IntegerAsFloatDeviceValueAdapter.cs" />
+    <Compile Include="MultiplyShiftDeviceValueImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

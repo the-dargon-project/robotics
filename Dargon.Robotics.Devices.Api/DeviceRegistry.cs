@@ -2,8 +2,8 @@
 
 namespace Dargon.Robotics.Devices {
    public interface DeviceRegistry {
-      void AddDevice(Device device);
-      T GetDevice<T>(string name = null);
+      void AddDevice(string alias, Device device);
+      T GetDevice<T>(string alias = null);
       IEnumerable<Device> EnumerateDevices();
    }
 }

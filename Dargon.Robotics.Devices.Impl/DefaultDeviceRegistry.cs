@@ -6,17 +6,15 @@ using SCG = System.Collections.Generic;
 namespace Dargon.Robotics.Devices {
    public class DefaultDeviceRegistry : DeviceRegistry {
       private readonly ConcurrentSet<Device> devices = new ConcurrentSet<Device>(); 
-      private readonly ConcurrentDictionary<string, Device> devicesByName = new ConcurrentDictionary<string, Device>();
+      private readonly ConcurrentDictionary<string, Device> devicesByAlias = new ConcurrentDictionary<string, Device>();
       private readonly ConcurrentDictionary<DeviceType, ISet<Device>> devicesByType = new ConcurrentDictionary<DeviceType, ISet<Device>>();
 
-      public void AddDevice(Device device) {
+      public void AddDevice(string alias, Device device) {
          devices.TryAdd(device);
-         if (!string.IsNullOrWhiteSpace(device.Name)) {
-            devicesByName.AddOrUpdate(
-               device.Name,
-               add => device,
-               (update, existing) => { throw new DuplicateNameException($"Device of name already registered: {device.Name}"); });
-         }
+         devicesByAlias.AddOrUpdate(
+            alias,
+            add => device,
+            (update, existing) => { throw new DuplicateNameException($"Device of alias already registered: {alias} (True Name: {device.Name})"); });
          devicesByType.AddOrUpdate(
             device.Type,
             add => new HashSet<Device> { device },
@@ -24,8 +22,12 @@ namespace Dargon.Robotics.Devices {
          );
       }
 
-      public T GetDevice<T>(string name = null) {
-         return (T)devicesByName[name];
+      public T GetDevice<T>(string alias = null) {
+         Device result;
+         if (!devicesByAlias.TryGetValue(alias, out result)) {
+            throw new SCG.KeyNotFoundException($"Device of alias '{alias}' not registered!");
+         }
+         return (T)result;
       }
 
       public SCG.IEnumerable<Device> EnumerateDevices() {

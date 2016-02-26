@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using IniParser.Model;
 using IniParser.Parser;
 
@@ -9,26 +10,26 @@ namespace Dargon.Robotics.Devices.BeagleBone {
 
       private readonly Dictionary<string, Func<SectionData, Device>> deviceLoadersByType;
 
-      private readonly BeagleBoneDeviceFactory beagleBoneDeviceFactory;
+      private readonly DeviceFactory deviceFactory;
 
-      public DeviceConfigurationLoaderImpl(BeagleBoneDeviceFactory beagleBoneDeviceFactory) {
-         this.beagleBoneDeviceFactory = beagleBoneDeviceFactory;
+      public DeviceConfigurationLoaderImpl(DeviceFactory deviceFactory) {
+         this.deviceFactory = deviceFactory;
          this.deviceLoadersByType = new Dictionary<string, Func<SectionData, Device>> {
             { "beaglebone.gpio.pwmmotor", LoadGpioMotor }
          };
       }
 
       public void LoadDeviceConfiguration(DeviceRegistry deviceRegistry) {
-         var config = new IniDataParser().Parse(kDeviceConfigurationFileName);
+         var config = new IniDataParser().Parse(File.ReadAllText(kDeviceConfigurationFileName));
          foreach (var section in config.Sections) {
             var type = section.Keys["type"];
             var device = deviceLoadersByType[type](section);
-            deviceRegistry.AddDevice(device);
+            deviceRegistry.AddDevice(section.SectionName, device);
          }
       }
 
       public Device LoadGpioMotor(SectionData data) {
-         return beagleBoneDeviceFactory.PwmMotor(data.SectionName, int.Parse(data.Keys["pin"]));
+         return deviceFactory.PwmMotor(int.Parse(data.Keys["pin"]));
       }
    }
 }

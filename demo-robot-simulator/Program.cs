@@ -32,7 +32,7 @@ namespace demo_robot_simulator {
          foreach (var simulationMotorState in robot.MotorStates) {
             var motor = new SimulationMotorAdapter(simulationMotorState);
             motor.Initialize();
-            deviceRegistry.AddDevice(motor);
+            deviceRegistry.AddDevice(motor.Name, motor);
             motor.Set(0.1f);
          }
 
