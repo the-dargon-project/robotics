@@ -60,6 +60,7 @@
     <Compile Include="IntegerAsFloatDeviceValueAdapter.cs" />
     <Compile Include="MultiplyShiftDeviceValueImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\InternalFileSystemProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dargon.Robotics.Devices.Common.Api\Dargon.Robotics.Devices.Common.Api.csproj">

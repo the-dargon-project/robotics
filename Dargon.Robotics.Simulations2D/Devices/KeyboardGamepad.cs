@@ -5,7 +5,10 @@ namespace Dargon.Robotics.Simulations2D.Devices {
    public class KeyboardGamepad : Gamepad {
       public float LeftX => GetValue(Keys.A, Keys.D);
       public float LeftY => GetValue(Keys.S, Keys.W);
-      public bool LeftTrigger => GetBoolean(Keys.LeftShift);
+      public bool A => GetBoolean(Keys.Z);
+      public bool B => GetBoolean(Keys.X);
+      public bool X => GetBoolean(Keys.C);
+      public bool Y => GetBoolean(Keys.V);
 
       public float RightX => GetValue(Keys.K, Keys.OemSemicolon);
       public float RightY => GetValue(Keys.L, Keys.O);

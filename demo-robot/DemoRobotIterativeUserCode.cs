@@ -13,10 +13,12 @@ namespace Dargon.Robotics.Demo {
       }
 
       public override void OnTick() {
-         if (!gamepad.LeftTrigger) {
-            driveTrain.TankDrive(gamepad.LeftY, gamepad.RightY);
-         } else {
+         if (gamepad.A) {
             driveTrain.MecanumDrive(gamepad.LeftX, gamepad.LeftY);
+         } else if (gamepad.B) {
+            driveTrain.TankDrive(gamepad.LeftY, gamepad.LeftY);
+         } else {
+            driveTrain.TankDrive(gamepad.LeftY, gamepad.RightY);
          }
       }
    }

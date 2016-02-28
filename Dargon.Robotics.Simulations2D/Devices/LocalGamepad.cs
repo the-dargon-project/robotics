@@ -7,7 +7,10 @@ namespace Dargon.Robotics.Simulations2D.Devices {
    public class LocalGamepad : Gamepad {
       public float LeftX => GetState().ThumbSticks.Left.X;
       public float LeftY => -GetState().ThumbSticks.Left.Y;
-      public bool LeftTrigger => GetState().Triggers.Left > 0;
+      public bool A => GetState().IsButtonDown(Buttons.A);
+      public bool B => GetState().IsButtonDown(Buttons.B);
+      public bool X => GetState().IsButtonDown(Buttons.X);
+      public bool Y => GetState().IsButtonDown(Buttons.Y);
       public float RightX => GetState().ThumbSticks.Right.X;
       public float RightY => -GetState().ThumbSticks.Right.Y;
 

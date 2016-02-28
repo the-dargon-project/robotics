@@ -37,6 +37,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo-robot-simulator", "dem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo-robot-beaglebone", "demo-robot-beaglebone\demo-robot-beaglebone.csproj", "{9A9BD7E6-C329-4E52-9840-8E58EA360DC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Devices.Remote.Api", "Dargon.Robotics.Devices.Remote.Api\Dargon.Robotics.Devices.Remote.Api.csproj", "{691EDDBE-803B-4874-8D14-CD59F3ECB993}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Courier.Api", "..\Dargon.Courier\Dargon.Courier\Dargon.Courier.Api.csproj", "{00A1DA2F-D316-4387-8BD4-F1A47C05A402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Courier.Impl", "..\Dargon.Courier\Dargon.Courier.Impl\Dargon.Courier.Impl.csproj", "{648271D2-2A52-4496-A9D1-6E54353D1448}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Devices.Remote.Common.Api", "Dargon.Robotics.Devices.Remote.Common.Api\Dargon.Robotics.Devices.Remote.Common.Api.csproj", "{26569CA9-A0A6-4BC8-AF22-3B30B2356CED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dargon.Robotics.Devices.Remote.Client.Impl", "Dargon.Robotics.Devices.Remote.Client.Impl\Dargon.Robotics.Devices.Remote.Client.Impl.csproj", "{4269ABD8-B2D3-4D7C-B7D6-C3CCE4510FE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +121,26 @@ Global
 		{9A9BD7E6-C329-4E52-9840-8E58EA360DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A9BD7E6-C329-4E52-9840-8E58EA360DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A9BD7E6-C329-4E52-9840-8E58EA360DC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{691EDDBE-803B-4874-8D14-CD59F3ECB993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{691EDDBE-803B-4874-8D14-CD59F3ECB993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{691EDDBE-803B-4874-8D14-CD59F3ECB993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{691EDDBE-803B-4874-8D14-CD59F3ECB993}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A1DA2F-D316-4387-8BD4-F1A47C05A402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A1DA2F-D316-4387-8BD4-F1A47C05A402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A1DA2F-D316-4387-8BD4-F1A47C05A402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A1DA2F-D316-4387-8BD4-F1A47C05A402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{648271D2-2A52-4496-A9D1-6E54353D1448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{648271D2-2A52-4496-A9D1-6E54353D1448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{648271D2-2A52-4496-A9D1-6E54353D1448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{648271D2-2A52-4496-A9D1-6E54353D1448}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26569CA9-A0A6-4BC8-AF22-3B30B2356CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26569CA9-A0A6-4BC8-AF22-3B30B2356CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26569CA9-A0A6-4BC8-AF22-3B30B2356CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26569CA9-A0A6-4BC8-AF22-3B30B2356CED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4269ABD8-B2D3-4D7C-B7D6-C3CCE4510FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4269ABD8-B2D3-4D7C-B7D6-C3CCE4510FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4269ABD8-B2D3-4D7C-B7D6-C3CCE4510FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4269ABD8-B2D3-4D7C-B7D6-C3CCE4510FE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6FF10353-22DF-4995-BD82-E009669BC980}</ProjectGuid>
+    <ProjectGuid>{4269ABD8-B2D3-4D7C-B7D6-C3CCE4510FE0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dargon.Robotics.Devices.BeagleBone</RootNamespace>
-    <AssemblyName>Dargon.Robotics.Devices.BeagleBone.Impl</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Dargon.Robotics.Devices.Remote.Client</RootNamespace>
+    <AssemblyName>Dargon.Robotics.Devices.Remote.Client.Impl</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -30,29 +30,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dargon.Ryu.Api, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dargon.Ryu.Api.0.3.0\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\Dargon.Ryu.Api.dll</HintPath>
+    <Reference Include="Dargon.PortableObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dargon.PortableObjects.0.2.0\lib\net45\Dargon.PortableObjects.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="INIFileParser, Version=2.2.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
-      <HintPath>..\packages\ini-parser.2.2.2\lib\net20\INIFileParser.dll</HintPath>
+    <Reference Include="Dargon.Ryu.Api, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dargon.Ryu.Api.0.3.1\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\Dargon.Ryu.Api.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImpromptuInterface, Version=6.2.2.0, Culture=neutral, PublicKeyToken=0b1781c923b2975b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImpromptuInterface.6.2.2\lib\net40\ImpromptuInterface.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ItzWarty.Commons, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ItzWarty.Commons.0.5.2\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\ItzWarty.Commons.dll</HintPath>
+      <HintPath>..\packages\ItzWarty.Commons.0.5.0\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\ItzWarty.Commons.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MathNet.Numerics, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.3.8.0\lib\net40\MathNet.Numerics.dll</HintPath>
+    <Reference Include="ItzWarty.Proxies.Api, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ItzWarty.Proxies.Api.0.1.1\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\ItzWarty.Proxies.Api.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MathNet.Spatial, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Spatial.0.2.0-alpha\lib\net40\MathNet.Spatial.dll</HintPath>
+    <Reference Include="ItzWarty.Proxies.Impl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ItzWarty.Proxies.Impl.0.2.2\lib\net45\ItzWarty.Proxies.Impl.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,31 +64,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BeagleBoneDeviceFactory.cs" />
-    <Compile Include="BeagleBoneGpioConfigurationManager.cs" />
-    <Compile Include="DargonRoboticsBeagleBoneImplRyuPackage.cs" />
-    <Compile Include="DeviceConfigurationLoaderImpl.cs" />
-    <Compile Include="GpioAnalogInputImpl.cs" />
-    <Compile Include="GpioAnalogOutputImpl.cs" />
-    <Compile Include="GpioDigitalOutputImpl.cs" />
-    <Compile Include="GpioInputBase.cs" />
-    <Compile Include="BeagleBoneGpioMotorDeviceFactory.cs" />
-    <Compile Include="GpioMotorImpl.cs" />
-    <Compile Include="GpioOutputBase.cs" />
+    <Compile Include="DargonRoboticsDevicesRemoteClientImplRyuPackage.cs" />
+    <Compile Include="RemoteGamepad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Dargon.Courier\Dargon.Courier\Dargon.Courier.Api.csproj">
+      <Project>{00a1da2f-d316-4387-8bd4-f1a47c05a402}</Project>
+      <Name>Dargon.Courier.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dargon.Robotics.Devices.Api\Dargon.Robotics.Devices.Api.csproj">
       <Project>{A0F391F3-D6FF-4137-9075-56C6006544FE}</Project>
       <Name>Dargon.Robotics.Devices.Api</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Dargon.Robotics.Devices.Common.Api\Dargon.Robotics.Devices.Common.Api.csproj">
-      <Project>{DC264B33-7122-45F5-9AB1-4C2FF2A2A03F}</Project>
-      <Name>Dargon.Robotics.Devices.Common.Api</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dargon.Robotics.Devices.Impl\Dargon.Robotics.Devices.Impl.csproj">
-      <Project>{A39307A4-0A19-427F-AF07-E1C9C7A8E2E9}</Project>
-      <Name>Dargon.Robotics.Devices.Impl</Name>
+    <ProjectReference Include="..\Dargon.Robotics.Devices.Remote.Common.Api\Dargon.Robotics.Devices.Remote.Common.Api.csproj">
+      <Project>{26569CA9-A0A6-4BC8-AF22-3B30B2356CED}</Project>
+      <Name>Dargon.Robotics.Devices.Remote.Common.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

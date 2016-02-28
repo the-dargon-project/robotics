@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using Dargon.Robotics.Devices.BeagleBone.Util;
-using Dargon.Robotics.Devices.Common;
+﻿using Dargon.Robotics.Devices.Common;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public class BeagleBoneDeviceFactory : DeviceFactory {

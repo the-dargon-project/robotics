@@ -1,9 +1,16 @@
 ﻿using System;
+using Dargon.Robotics.Devices.Common.Util;
 
 namespace Dargon.Robotics.Devices.Common {
    public class DefaultDeviceValueFactoryImpl : DeviceValueFactory {
+      private readonly IInternalFileSystemProxy internalFileSystemProxy;
+
+      public DefaultDeviceValueFactoryImpl(IInternalFileSystemProxy internalFileSystemProxy) {
+         this.internalFileSystemProxy = internalFileSystemProxy;
+      }
+
       public DeviceValue<T> FromFile<T>(string path, DeviceValueAccess access) {
-         return new FileBackedDeviceValueImpl<T>(path, access);
+         return new FileBackedDeviceValueImpl<T>(path, access, internalFileSystemProxy);
       }
 
       [Obsolete]

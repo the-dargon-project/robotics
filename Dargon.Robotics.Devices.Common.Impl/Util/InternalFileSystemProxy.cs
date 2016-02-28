@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Dargon.Robotics.Devices.BeagleBone.Util {
-   public interface IInternalFileSystemProxy {
-      string ResolveAbsolutePath(string pattern);
-      void WriteText(string path, string contents);
-   }
-
+namespace Dargon.Robotics.Devices.Common.Util {
    public class InternalFileSystemProxy : IInternalFileSystemProxy {
       public string ResolveAbsolutePath(string pattern) {
          var parts = pattern.Split('/');
@@ -24,7 +17,16 @@ namespace Dargon.Robotics.Devices.BeagleBone.Util {
       }
 
       public void WriteText(string path, string contents) {
-         File.WriteAllBytes(path, Encoding.ASCII.GetBytes(contents));
+//         Console.WriteLine("Write to " + path + " " + contents);
+         var buffer = Encoding.ASCII.GetBytes(contents);
+         if (Environment.OSVersion.Platform != PlatformID.Unix) {
+            File.WriteAllBytes(path, buffer);
+         } else {
+            using (var fs = File.Open(path, FileMode.Truncate, FileAccess.Write, FileShare.None)) {
+               fs.Write(buffer, 0, buffer.Length);
+               fs.Flush();
+            }
+         }
       }
    }
 }

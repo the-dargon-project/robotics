@@ -1,17 +1,20 @@
 using System;
 using System.IO;
+using Dargon.Robotics.Devices.Common.Util;
 using ItzWarty;
 
 namespace Dargon.Robotics.Devices.Common {
    public class FileBackedDeviceValueImpl<T> : DeviceValue<T> {
       private readonly string path;
       private readonly DeviceValueAccess access;
+      private readonly IInternalFileSystemProxy internalFileSystemProxy;
       private readonly Func<T> read;
       private readonly Action<T> write;
 
-      public FileBackedDeviceValueImpl(string path, DeviceValueAccess access) {
+      public FileBackedDeviceValueImpl(string path, DeviceValueAccess access, IInternalFileSystemProxy internalFileSystemProxy) {
          this.path = path;
          this.access = access;
+         this.internalFileSystemProxy = internalFileSystemProxy;
          this.read = GetReader(path, access);
          this.write = GetWriter(path, access);
       }
@@ -19,7 +22,7 @@ namespace Dargon.Robotics.Devices.Common {
       public T Get() => read();
       public void Set(T value) => write(value);
 
-      public static Func<T> GetReader(string path, DeviceValueAccess access) {
+      public Func<T> GetReader(string path, DeviceValueAccess access) {
          if (!access.HasFlag(DeviceValueAccess.Read)) {
             return () => { throw new DeviceAccessDeniedException(path, access, DeviceValueAccess.Read); };
          } else if (typeof(T) == typeof(string)) {
@@ -36,15 +39,15 @@ namespace Dargon.Robotics.Devices.Common {
          }
       }
 
-      public static Action<T> GetWriter(string path, DeviceValueAccess access) {
+      public Action<T> GetWriter(string path, DeviceValueAccess access) {
          if (!access.HasFlag(DeviceValueAccess.Write)) {
             return v => { throw new DeviceAccessDeniedException(path, access, DeviceValueAccess.Write); };
          } else if (typeof(T) == typeof(string) ||
                     typeof(T) == typeof(int) ||
                     typeof(T) == typeof(float)) {
-            return v => File.WriteAllText(path, v.ToString());
+            return v => internalFileSystemProxy.WriteText(path, v.ToString());
          } else if (typeof(T) == typeof(bool)) {
-            return v => File.WriteAllText(path, ((bool)(object)v) ? "1" : "0");
+            return v => internalFileSystemProxy.WriteText(path, ((bool)(object)v) ? "1" : "0");
          } else {
             throw new InvalidOperationException($"Attempted to get writer of unhandled type: {typeof(T)}");
          }

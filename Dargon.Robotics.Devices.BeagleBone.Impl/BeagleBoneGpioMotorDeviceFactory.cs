@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Dargon.Robotics.Devices.Common;
+using Dargon.Robotics.Devices.Common.Util;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dargon.Robotics.Devices.BeagleBone.Util;
-using Dargon.Robotics.Devices.Common;
+using System.IO;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public interface IBeagleBoneGpioMotorDeviceFactory {
@@ -42,7 +39,10 @@ namespace Dargon.Robotics.Devices.BeagleBone {
       public Motor PwmMotor(int pin) {
          string pinName = kPwmPinNameByExportNumber[pin];
          beagleBoneGpioConfigurationManager.SetPinMode(pinName, PinMode.Pwm);
-         internalFileSystemProxy.WriteText(kPwmExportPath, pin.ToString());
+
+         if (!Directory.Exists(BuildPinPath(pin))) {
+            internalFileSystemProxy.WriteText(kPwmExportPath, pin.ToString());
+         }
 
          internalFileSystemProxy.WriteText(
             BuildPinPath(pin, kPeriodNanosecondsKey), 
@@ -58,11 +58,11 @@ namespace Dargon.Robotics.Devices.BeagleBone {
                deviceValueFactory.FromFile<int>(
                   BuildPinPath(pin, kDutyNanosecondsKey), 
                   DeviceValueAccess.ReadWrite),
-               kPwmCyclePeriod / 2,
-               kPwmCyclePeriod / 2
+               -kPwmCyclePeriod / 2,
+               kPwmCyclePeriod / 2 - 1
                ));
       }
 
-      private string BuildPinPath(int pin, string key) => $"/sys/class/pwm/pwm{pin}/{key}";
+      private string BuildPinPath(int pin, string key = "") => $"/sys/class/pwm/pwm{pin}/{key}";
    }
 }

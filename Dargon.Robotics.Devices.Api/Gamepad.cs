@@ -3,7 +3,10 @@
       float LeftX { get; }
       float LeftY { get; }
 
-      bool LeftTrigger { get; }
+      bool A { get; }
+      bool B { get; }
+      bool X { get; }
+      bool Y { get; }
 
       float RightX { get; }
       float RightY { get; }
@@ -13,7 +16,10 @@
       public float LeftX => 0.0f;
       public float LeftY => 0.0f;
 
-      public bool LeftTrigger => false;
+      public bool A => false;
+      public bool B => false;
+      public bool X => false;
+      public bool Y => false;
 
       public float RightX => 0.0f;
       public float RightY => 0.0f;

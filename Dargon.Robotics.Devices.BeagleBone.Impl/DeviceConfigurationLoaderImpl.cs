@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Dargon.Robotics.Devices.Components;
 using IniParser.Model;
 using IniParser.Parser;
+using MathNet.Numerics.LinearAlgebra.Single;
+using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public class DeviceConfigurationLoaderImpl {
@@ -29,7 +33,15 @@ namespace Dargon.Robotics.Devices.BeagleBone {
       }
 
       public Device LoadGpioMotor(SectionData data) {
-         return deviceFactory.PwmMotor(int.Parse(data.Keys["pin"]));
+         var motor = deviceFactory.PwmMotor(int.Parse(data.Keys["pin"]));
+         // HACK
+         if (data.Keys.ContainsKey("angle")) {
+            var device = (DeviceBase)motor;
+            var angle = double.Parse(data.Keys["angle"]);
+            var vect = Vector2D.YAxis.Rotate(Angle.FromDegrees(angle));
+            device.AddComponent(DeviceComponentType.DriveWheelForceVector, new VectorComponent((float)vect.X, (float)vect.Y, 0));
+         }
+         return motor;
       }
    }
 }

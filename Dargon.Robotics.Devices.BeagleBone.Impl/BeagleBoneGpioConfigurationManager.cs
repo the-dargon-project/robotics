@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dargon.Robotics.Devices.BeagleBone.Util;
+using Dargon.Robotics.Devices.Common.Util;
 using ItzWarty;
+using System.ComponentModel;
+using System.IO;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public interface IBeagleBoneGpioConfigurationManager {
@@ -29,7 +26,11 @@ namespace Dargon.Robotics.Devices.BeagleBone {
          var capeManagerPath = internalFileSystemProxy.ResolveAbsolutePath(kCapeManagerSlotsPath);
 
          const string kExportAllPins = "cape-universaln";
-         internalFileSystemProxy.WriteText(capeManagerPath, kExportAllPins);
+         try {
+            internalFileSystemProxy.WriteText(capeManagerPath, kExportAllPins);
+         } catch (IOException e) when (e.Message.Contains("File already exists") && Environment.OSVersion.Platform == PlatformID.Unix) {
+            // Pins already exported.
+         }
       }
 
       public void SetPinMode(string pinName, PinMode mode) {
