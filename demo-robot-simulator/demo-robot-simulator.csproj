@@ -134,10 +134,6 @@
       <Project>{f4f4b7ee-371d-41bf-802d-60f7eeaa3ff8}</Project>
       <Name>Dargon.Robotics.Subsystems.DriveTrains.Impl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Dargon.Robotics.Subsystems.DriveTrains.Impl.Tests\Dargon.Robotics.Subsystems.DriveTrains.Impl.Tests.csproj">
-      <Project>{fd6fb024-7c82-4498-844f-440d7ac3e7a3}</Project>
-      <Name>Dargon.Robotics.Subsystems.DriveTrains.Impl.Tests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\demo-robot\demo-robot.csproj">
       <Project>{d23d414b-13f2-4a43-9f3a-d805d7d3a3f7}</Project>
       <Name>demo-robot</Name>

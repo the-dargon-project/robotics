@@ -17,7 +17,7 @@ namespace Dargon.Robotics.Devices.Common.Util {
       }
 
       public void WriteText(string path, string contents) {
-//         Console.WriteLine("Write to " + path + " " + contents);
+         Console.WriteLine("Write to " + path + " " + contents);
          var buffer = Encoding.ASCII.GetBytes(contents);
          if (Environment.OSVersion.Platform != PlatformID.Unix) {
             File.WriteAllBytes(path, buffer);

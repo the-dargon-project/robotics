@@ -2,6 +2,7 @@
 using Dargon.Robotics.Devices.Common.Util;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public interface IBeagleBoneGpioMotorDeviceFactory {
@@ -13,7 +14,7 @@ namespace Dargon.Robotics.Devices.BeagleBone {
       private const string kDutyNanosecondsKey = "duty_ns";
       private const string kPeriodNanosecondsKey = "period_ns";
       private const string kRunKey = "run";
-      private const int kPwmCyclePeriod = 20000000;
+      private const int kPwmCyclePeriod = 2000000;
 
       private static readonly IReadOnlyDictionary<int, string> kPwmPinNameByExportNumber = new Dictionary<int, string> {
          [0] = "P9_22",
@@ -45,6 +46,10 @@ namespace Dargon.Robotics.Devices.BeagleBone {
          }
 
          internalFileSystemProxy.WriteText(
+            BuildPinPath(pin, kRunKey),
+            "0");
+
+         internalFileSystemProxy.WriteText(
             BuildPinPath(pin, kPeriodNanosecondsKey), 
             kPwmCyclePeriod.ToString());
 
@@ -52,14 +57,22 @@ namespace Dargon.Robotics.Devices.BeagleBone {
             BuildPinPath(pin, kRunKey), 
             "1");
 
+         var dutyValue = deviceValueFactory.FromFile<int>(
+            BuildPinPath(pin, kDutyNanosecondsKey),
+            DeviceValueAccess.ReadWrite);
+
+         dutyValue.Set(1500000);
+         Thread.Sleep(1000);
+         dutyValue.Set(0);
+         Thread.Sleep(1000);
+         dutyValue.Set(1500000);
+
          return new GpioMotorImpl(
             $"PWM_Pin{pin}_{pinName}",
             deviceValueFactory.IntToFloatAdapter(
-               deviceValueFactory.FromFile<int>(
-                  BuildPinPath(pin, kDutyNanosecondsKey), 
-                  DeviceValueAccess.ReadWrite),
-               -kPwmCyclePeriod / 2,
-               kPwmCyclePeriod / 2 - 1
+               dutyValue,
+               -1500000,
+                 399000 // accounts for rounding error
                ));
       }
 
