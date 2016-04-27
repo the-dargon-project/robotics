@@ -111,6 +111,8 @@
     <Compile Include="Devices.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Subsystems\Arm.cs" />
+    <Compile Include="Subsystems\Claw.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

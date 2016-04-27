@@ -36,5 +36,6 @@ namespace Dargon.Robotics.Devices {
       Accumulator    = 0x00000020U,
       Accelerometer  = 0x00000040U,
       Gyroscope      = 0x00000080U,
+      Servo          = 0x00000100U,
    }
 }

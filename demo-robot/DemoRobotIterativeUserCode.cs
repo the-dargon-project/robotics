@@ -1,4 +1,5 @@
 ﻿using Dargon.Robotics.Codebases.Iterative;
+using Dargon.Robotics.Demo.Subsystems;
 using Dargon.Robotics.Devices;
 using Dargon.Robotics.Subsystems.DriveTrains.Holonomic;
 
@@ -6,19 +7,29 @@ namespace Dargon.Robotics.Demo {
    public class DemoRobotIterativeUserCode : IterativeRobotUserCode {
       private readonly Gamepad gamepad;
       private readonly HolonomicDriveTrain driveTrain;
+      private readonly Claw claw;
 
-      public DemoRobotIterativeUserCode(Gamepad gamepad, HolonomicDriveTrain driveTrain) {
+      public DemoRobotIterativeUserCode(Gamepad gamepad, HolonomicDriveTrain driveTrain, Claw claw) {
          this.gamepad = gamepad;
          this.driveTrain = driveTrain;
+         this.claw = claw;
       }
 
       public override void OnTick() {
+         driveTrain.MecanumDrive(gamepad.LeftX, gamepad.LeftY);
+
          if (gamepad.A) {
-            driveTrain.MecanumDrive(gamepad.LeftX, gamepad.LeftY);
+            claw.SetGripDegrees(20);
          } else if (gamepad.B) {
-            driveTrain.TankDrive(gamepad.LeftY, gamepad.LeftY);
+            claw.SetGripDegrees(70);
+         }
+
+         if (gamepad.X) {
+            claw.SetDirectionalDegrees(-40);
+         } else if (gamepad.Y) {
+            claw.SetDirectionalDegrees(40);
          } else {
-            driveTrain.TankDrive(gamepad.LeftY, gamepad.RightY);
+            claw.SetDirectionalDegrees(0);
          }
       }
    }

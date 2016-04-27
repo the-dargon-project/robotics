@@ -45,7 +45,9 @@
     <Compile Include="DeviceValueAccess.cs" />
     <Compile Include="DeviceValueFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SomeHttpBasedResourceBackedDeviceValue.cs" />
     <Compile Include="Util\IInternalFileSystemProxy.cs" />
+    <Compile Include="ValueSerializer.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

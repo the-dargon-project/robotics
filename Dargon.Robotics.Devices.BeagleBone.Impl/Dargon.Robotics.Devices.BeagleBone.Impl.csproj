@@ -64,6 +64,7 @@
     <Compile Include="BeagleBoneDeviceFactory.cs" />
     <Compile Include="BeagleBoneGpioConfigurationManager.cs" />
     <Compile Include="DargonRoboticsBeagleBoneImplRyuPackage.cs" />
+    <Compile Include="GhettoRemoteServo.cs" />
     <Compile Include="DeviceConfigurationLoaderImpl.cs" />
     <Compile Include="GpioAnalogInputImpl.cs" />
     <Compile Include="GpioAnalogOutputImpl.cs" />

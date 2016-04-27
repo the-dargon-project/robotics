@@ -1,4 +1,5 @@
 ﻿using Dargon.Robotics.Codebases.Iterative;
+using Dargon.Robotics.Demo.Subsystems;
 using Dargon.Robotics.Devices;
 using Dargon.Robotics.Subsystems.DriveTrains.Holonomic;
 using Dargon.Robotics.Subsystems.DriveTrains.SkidSteer;
@@ -13,6 +14,7 @@ namespace Dargon.Robotics.Demo {
 
          Singleton<Devices>(ConstructDevices);
          Singleton<HolonomicDriveTrain>(ryu => ryu.Get<Devices>().DriveTrain);
+         Singleton<Claw>(ryu => ryu.Get<Devices>().Claw);
       }
 
       private IterativeRobotConfiguration ConstructIterativeRobotConfiguration(RyuContainer ryu) {
@@ -26,7 +28,14 @@ namespace Dargon.Robotics.Demo {
          var rearLeftMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.RearLeft");
          var rearRightMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.RearRight");
          var driveTrain = new HolonomicDriveTrain(frontLeftMotor, frontRightMotor, rearLeftMotor, rearRightMotor);
-         return new Devices(driveTrain);
+         var claw = new Claw(
+            deviceRegistry.GetDevice<Servo>("Arm.Servos.Wrist"),
+            deviceRegistry.GetDevice<Servo>("Arm.Servos.LeftClaw"),
+            deviceRegistry.GetDevice<Servo>("Arm.Servos.RightClaw"),
+            0, 150,
+            0, 100,
+            -50, 50);
+         return new Devices(driveTrain, claw);
       }
    }
 }

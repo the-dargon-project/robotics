@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Dargon.Robotics.Devices.Common;
 using Dargon.Robotics.Devices.Components;
 using IniParser.Model;
 using IniParser.Parser;
@@ -19,7 +20,8 @@ namespace Dargon.Robotics.Devices.BeagleBone {
       public DeviceConfigurationLoaderImpl(DeviceFactory deviceFactory) {
          this.deviceFactory = deviceFactory;
          this.deviceLoadersByType = new Dictionary<string, Func<SectionData, Device>> {
-            { "beaglebone.gpio.pwmmotor", LoadGpioMotor }
+            { "beaglebone.gpio.pwmmotor", LoadGpioMotor },
+            { "ghetto_remote.servo", LoadGhettoRemoteServo }
          };
       }
 
@@ -42,6 +44,13 @@ namespace Dargon.Robotics.Devices.BeagleBone {
             device.AddComponent(DeviceComponentType.DriveWheelForceVector, new VectorComponent((float)vect.X, (float)vect.Y, 0));
          }
          return motor;
+      }
+
+      private Device LoadGhettoRemoteServo(SectionData data) {
+         return deviceFactory.RemoteServo(
+            data.Keys["geturl"],
+            data.Keys["seturl"],
+            float.Parse(data.Keys["default_angle"]));
       }
    }
 }

@@ -2,5 +2,6 @@
    public interface DeviceFactory {
       DigitalOutput DigitalOutput(int pin);
       Motor PwmMotor(int pin);
+      Servo RemoteServo(string getUrl, string setUrl, float defaultAngle);
    }
 }
