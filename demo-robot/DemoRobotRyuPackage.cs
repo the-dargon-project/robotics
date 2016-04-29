@@ -2,6 +2,7 @@
 using Dargon.Robotics.Demo.Subsystems;
 using Dargon.Robotics.Devices;
 using Dargon.Robotics.Subsystems.DriveTrains.Holonomic;
+using Dargon.Robotics.Subsystems.DriveTrains.Vertical;
 using Dargon.Robotics.Subsystems.DriveTrains.SkidSteer;
 using Dargon.Ryu;
 
@@ -27,7 +28,12 @@ namespace Dargon.Robotics.Demo {
          var frontRightMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.FrontRight");
          var rearLeftMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.RearLeft");
          var rearRightMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.RearRight");
+ 		 var vertFrontLeftMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.VertFrontLeft");
+		 var vertFrontRightMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.VertFrontRight");
+		 var vertRearMotor = deviceRegistry.GetDevice<Motor>("Drive.Motors.VertRear");
          var driveTrain = new HolonomicDriveTrain(frontLeftMotor, frontRightMotor, rearLeftMotor, rearRightMotor);
+		 var vertDriveTrain = new VerticalDriveTrain(vertFrontLeftMotor, vertFrontRightMotor, vertRearMotor);
+
          var claw = new Claw(
             deviceRegistry.GetDevice<Servo>("Arm.Servos.Wrist"),
             deviceRegistry.GetDevice<Servo>("Arm.Servos.LeftClaw"),
@@ -35,7 +41,7 @@ namespace Dargon.Robotics.Demo {
             0, 150,
             0, 100,
             -50, 50);
-         return new Devices(driveTrain, claw);
+		return new Devices(driveTrain, vertDriveTrain, claw);
       }
    }
 }
