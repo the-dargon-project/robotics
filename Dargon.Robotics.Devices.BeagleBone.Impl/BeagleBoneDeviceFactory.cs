@@ -19,10 +19,11 @@ namespace Dargon.Robotics.Devices.BeagleBone {
                DeviceValueAccess.ReadWrite));
       }
 
-      public Motor PwmMotor(int pin) => gpioMotorDeviceFactory.PwmMotor(pin);
+      public Motor PwmMotor(int pin, float tweenFactor, float speedMultiplier, bool flipped) => gpioMotorDeviceFactory.PwmMotor(pin, tweenFactor, speedMultiplier, flipped);
 
       public Servo RemoteServo(string getUrl, string setUrl, float defaultAngle) {
-         var angleValue = deviceValueFactory.FromHttpBasedResource<float>(getUrl, setUrl, DeviceValueAccess.ReadWrite);
+         var angleValue = deviceValueFactory.AsyncCachedBacked(
+            deviceValueFactory.FromHttpBasedResource<float>(getUrl, setUrl, DeviceValueAccess.ReadWrite));
          return new GhettoRemoteServo(
             "REMOTE_SERVO @ " + getUrl,
             angleValue,

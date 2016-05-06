@@ -57,6 +57,14 @@
       <Project>{51FDA746-9557-4EAA-B871-5DCA0401D572}</Project>
       <Name>Dargon.Robotics.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dargon.Robotics.Devices.Api\Dargon.Robotics.Devices.Api.csproj">
+      <Project>{A0F391F3-D6FF-4137-9075-56C6006544FE}</Project>
+      <Name>Dargon.Robotics.Devices.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dargon.Robotics.Devices.Remote.Client.Impl\Dargon.Robotics.Devices.Remote.Client.Impl.csproj">
+      <Project>{4269abd8-b2d3-4d7c-b7d6-c3cce4510fe0}</Project>
+      <Name>Dargon.Robotics.Devices.Remote.Client.Impl</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

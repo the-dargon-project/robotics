@@ -39,5 +39,17 @@ namespace Dargon.Robotics.Devices.Common {
       public DeviceValue<float> IntToFloatAdapter(DeviceValue<int> deviceValue, int offset, int multiplier) {
          return new IntegerAsFloatDeviceValueAdapter(deviceValue, offset, multiplier);
       }
+
+      public DeviceValue<float> TweeningAdapter(DeviceValue<float> deviceValue, float tweenFactor) {
+         var result = new TweeningDeviceValueAdapter(deviceValue, tweenFactor);
+         result.Initialize();
+         return result;
+      }
+
+      public DeviceValue<T> AsyncCachedBacked<T>(DeviceValue<T> inner) {
+         var result = new AsyncCacheBackedDeviceValue<T>(inner);
+         result.Initialize();
+         return result;
+      }
    }
 }

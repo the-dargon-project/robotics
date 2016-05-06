@@ -1,7 +1,7 @@
-﻿using System;
-using Common;
-using Dargon.Courier;
+﻿using Dargon.Courier;
+using Dargon.Robotics.Devices.Remote.Common;
 using Dargon.Ryu;
+using System;
 
 namespace Dargon.Robotics.Devices.Remote.Client {
    public class DargonRoboticsDevicesRemoteClientImplRyuPackage : RyuPackageV1 {

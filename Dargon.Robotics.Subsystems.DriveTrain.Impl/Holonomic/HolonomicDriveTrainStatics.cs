@@ -17,5 +17,18 @@ namespace Dargon.Robotics.Subsystems.DriveTrains.Holonomic {
          var values = Calculator.MecanumDrive(driveTrain, x, y, inputsSquared);
          driveTrain.SetValues(values);
       }
+
+      public static void TankMecanumDriveHybrid(this HolonomicDriveTrain driveTrain, float x, float y, float turn, float tankWeight, bool inputsSquared = false) {
+         var tank = Calculator.TankDrive(turn, -turn, inputsSquared);
+         var mecanum = Calculator.MecanumDrive(driveTrain, x, y, inputsSquared);
+         var mecanumWeight = 1.0f - tankWeight;
+         var values = new HolonomicDriveValues {
+            FrontLeft = tank.FrontLeft * tankWeight + mecanum.FrontLeft * mecanumWeight,
+            FrontRight = tank.FrontRight * tankWeight + mecanum.FrontRight * mecanumWeight,
+            RearLeft = tank.RearLeft * tankWeight + mecanum.RearLeft * mecanumWeight,
+            RearRight = tank.RearRight * tankWeight + mecanum.RearRight * mecanumWeight
+         };
+         driveTrain.SetValues(values);
+      }
    }
-}
+}  

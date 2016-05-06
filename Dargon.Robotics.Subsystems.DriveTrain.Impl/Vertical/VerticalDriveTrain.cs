@@ -14,16 +14,16 @@ namespace Dargon.Robotics.Subsystems.DriveTrains.Vertical {
 
 		public Motor FrontLeft => frontLeft;
 		public Motor FrontRight => frontRight;
-		public Motor Rear => rear
+	   public Motor Rear => rear;
 
 		public void SetValues(VerticalDriveValues values) {
 			SetValues(values.FrontLeft, values.FrontRight, values.Rear);
 		}
 
 		public void SetValues(float frontLeftSpeed, float frontRightSpeed, float rearSpeed) {
-			frontLeft.Set(frontLeftSpeed);
-			frontRight.Set(frontRightSpeed);
-			rear.Set(rearSpeed);
+			frontLeft.Set(frontLeftSpeed * frontLeftSpeed * frontLeftSpeed);
+			frontRight.Set(frontRightSpeed * frontRightSpeed * frontRightSpeed);
+			rear.Set(rearSpeed * rearSpeed * rearSpeed);
 		}
 	}
 }

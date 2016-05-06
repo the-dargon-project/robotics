@@ -35,11 +35,17 @@ namespace demo_robot_simulator {
             deviceRegistry.AddDevice(motor.Name, motor);
             motor.Set(0.1f);
          }
+         deviceRegistry.AddDevice("Arm.Servos.Wrist", new NullServo("Arm.Servos.Wrist"));
+         deviceRegistry.AddDevice("Arm.Servos.LeftClaw", new NullServo("Arm.Servos.LeftClaw"));
+         deviceRegistry.AddDevice("Arm.Servos.RightClaw", new NullServo("Arm.Servos.RightClaw"));
+         deviceRegistry.AddDevice("Arm.Servos.Elbow", new NullServo("Arm.Servos.Elbow"));
+         deviceRegistry.AddDevice("Arm.Servos.InOut", new NullServo("Arm.Servos.InOut"));
 
          // start robot code in new thread
          new Thread(() => {
             var ryu = new RyuFactory().Create();
-            ryu.Set<Gamepad>(new KeyboardGamepad());
+            ryu.Set<Gamepad>(new LocalGamepad());
+//            ryu.Set<Gamepad>(new KeyboardGamepad());
             ryu.Set<DeviceRegistry>(deviceRegistry);
             ((RyuContainerImpl)ryu).Setup(true);
 

@@ -41,7 +41,7 @@ namespace Dargon.Robotics.Subsystems.DriveTrains.Holonomic {
          var wheelForceVector = new DenseVector(new[] { wheelForceVectorInput.X, wheelForceVectorInput.Y });
          var wheelForceVectorUnit = wheelForceVector.Normalize(2);
          var scale = wheelForceVectorUnit.DotProduct(desiredMovement);
-         Console.WriteLine(wheelForceVector + " " + wheelForceVectorUnit + " " + desiredMovement + " " + scale);
+//         Console.WriteLine(wheelForceVector + " " + wheelForceVectorUnit + " " + desiredMovement + " " + scale);
          return scale;
       }
    }

@@ -5,14 +5,14 @@ using Dargon.Robotics.Subsystems.DriveTrains.SkidSteer;
 
 namespace Dargon.Robotics.Demo {
    public class Devices {
-		public Devices(HolonomicDriveTrain driveTrain, VerticalDriveTrain vertDriveTrain, Claw claw) {
+		public Devices(HolonomicDriveTrain driveTrain, VerticalDriveTrain verticalDriveTrain, Claw claw) {
          DriveTrain = driveTrain;
-		 VertDriveTrain = vertDriveTrain;
+		 VerticalDriveTrain = verticalDriveTrain;
          Claw = claw;
       }
 
       public HolonomicDriveTrain DriveTrain { get; }
-	  public VerticalDriveTrain VertDriveTrain { get; }
+	  public VerticalDriveTrain VerticalDriveTrain { get; }
       public Claw Claw { get; }
    }
 }

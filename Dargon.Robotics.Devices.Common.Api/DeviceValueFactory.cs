@@ -6,5 +6,7 @@
       DeviceValue<float> WithMultiplierShift(DeviceValue<float> value, float multiplier, float offset);
       DeviceValue<T> WithCache<T>(DeviceValue<T> value);
       DeviceValue<float> IntToFloatAdapter(DeviceValue<int> deviceValue, int offset, int multiplier);
+      DeviceValue<float> TweeningAdapter(DeviceValue<float> deviceValue, float tweenFactor);
+      DeviceValue<T> AsyncCachedBacked<T>(DeviceValue<T> inner);
    }
 }

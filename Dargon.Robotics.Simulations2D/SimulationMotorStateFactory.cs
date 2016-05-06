@@ -40,13 +40,19 @@ namespace Dargon.Robotics.Simulations2D {
          var forceVector = new Vector2(0, wheelForceAmplitude);
          var forceTopLeft = Vector2.Transform(forceVector, Matrix.CreateRotationZ(-wheelForceAngle));
          var forceTopRight = Vector2.Transform(forceVector, Matrix.CreateRotationZ(wheelForceAngle));
-         var motorStates = new SimulationMotorState[4];
+         var motorStates = new SimulationMotorState[7];
          float halfWidth = robotWidth / 2, halfHeight = robotHeight / 2;
          float backFrontSpacing = halfHeight / 2;
          motorStates[0] = new SimulationMotorState("Drive.Motors.RearRight", new Vector2(halfWidth, -backFrontSpacing), forceTopLeft);
          motorStates[1] = new SimulationMotorState("Drive.Motors.RearLeft", new Vector2(-halfWidth, -backFrontSpacing), forceTopRight);
          motorStates[2] = new SimulationMotorState("Drive.Motors.FrontLeft", new Vector2(-halfWidth, backFrontSpacing), forceTopLeft);
          motorStates[3] = new SimulationMotorState("Drive.Motors.FrontRight", new Vector2(halfWidth, backFrontSpacing), forceTopRight);
+
+         // dummy vertical motors
+         motorStates[4] = new SimulationMotorState("Drive.Motors.VertFrontLeft", Vector2.Zero, forceVector);
+         motorStates[5] = new SimulationMotorState("Drive.Motors.VertFrontRight", Vector2.Zero, forceVector);
+         motorStates[6] = new SimulationMotorState("Drive.Motors.VertRear", Vector2.Zero, forceVector);
+
          return motorStates;
       }
    }

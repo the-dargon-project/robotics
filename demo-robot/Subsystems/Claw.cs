@@ -1,11 +1,13 @@
 using System;
 using Dargon.Robotics.Devices;
+using NLog.LayoutRenderers;
 
 namespace Dargon.Robotics.Demo.Subsystems {
    public class Claw {
       private readonly Servo wristServo;
       private readonly Servo leftHandServo;
       private readonly Servo rightHandServo;
+      private readonly Servo elbowServo;
 
       private readonly float minWristDegrees;
       private readonly float maxWristDegrees;
@@ -17,17 +19,25 @@ namespace Dargon.Robotics.Demo.Subsystems {
       private float gripDegrees;
       private float directionalDegrees;
 
-      public Claw(Servo wristServo, Servo leftHandServo, Servo rightHandServo, float minWristDegrees, float maxWristDegrees, float minGripDegrees, float maxGripDegrees, float minDirectionalDegrees, float maxDirectionalDegrees) {
+      public Claw(Servo wristServo, Servo leftHandServo, Servo rightHandServo, Servo elbowServo, float minWristDegrees, float maxWristDegrees, float minGripDegrees, float maxGripDegrees, float minDirectionalDegrees, float maxDirectionalDegrees) {
          this.wristServo = wristServo;
          this.leftHandServo = leftHandServo;
          this.rightHandServo = rightHandServo;
+         this.elbowServo = elbowServo;
          this.minWristDegrees = minWristDegrees;
          this.maxWristDegrees = maxWristDegrees;
          this.minGripDegrees = minGripDegrees;
          this.maxGripDegrees = maxGripDegrees;
          this.minDirectionalDegrees = minDirectionalDegrees;
          this.maxDirectionalDegrees = maxDirectionalDegrees;
+
+         // jank
+         SetWristDegrees(0);
       }
+
+      public Servo ElbowServo => elbowServo;
+
+      public float GetWristDegrees() => wristServo.Get() - 100;
 
       public void SetWristDegrees(float value) {
          if (value < minWristDegrees) {
@@ -35,17 +45,28 @@ namespace Dargon.Robotics.Demo.Subsystems {
          } else if (value > maxWristDegrees) {
             value = maxWristDegrees;
          }
-         wristServo.Set(value);
+         wristServo.Set(value + 100);
+         Console.WriteLine($"WRIST DEGREES " + (value + 100));
       }
+
+      public float GetGripDegrees() => gripDegrees;
 
       public void SetGripDegrees(float value) {
          this.gripDegrees = Math.Min(maxGripDegrees, Math.Max(value, minGripDegrees));
          Update();
       }
 
+      public float GetDirectionalDegrees() => directionalDegrees;
+
       public void SetDirectionalDegrees(float value) {
          this.directionalDegrees = Math.Min(maxDirectionalDegrees, Math.Max(value, minDirectionalDegrees));
          Update();
+      }
+
+      public void Reset() {
+         SetWristDegrees(0);
+         SetGripDegrees(0);
+         SetDirectionalDegrees(0);
       }
 
       private void Update() {
@@ -62,8 +83,10 @@ namespace Dargon.Robotics.Demo.Subsystems {
             leftClawDegrees += delta;
             rightClawDegrees += delta;
          }
-         leftHandServo.Set(leftClawDegrees);
-         rightHandServo.Set(rightClawDegrees);
+         leftHandServo.Set(leftClawDegrees + 50);
+         rightHandServo.Set(-rightClawDegrees + 50);
+
+         Console.WriteLine($"{directionalDegrees} {gripDegrees} // {leftClawDegrees + 100} {-rightClawDegrees + 100}");
       }
    }
 }

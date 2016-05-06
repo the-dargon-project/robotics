@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public interface IBeagleBoneGpioMotorDeviceFactory {
-      Motor PwmMotor(int pin);
+      Motor PwmMotor(int pin, float tweenFactor, float speedMultiplier, bool flipped);
    }
 
    public class BeagleBoneGpioMotorDeviceFactoryImpl : IBeagleBoneGpioMotorDeviceFactory {
@@ -37,7 +37,7 @@ namespace Dargon.Robotics.Devices.BeagleBone {
          this.internalFileSystemProxy = internalFileSystemProxy;
       }
 
-      public Motor PwmMotor(int pin) {
+      public Motor PwmMotor(int pin, float tweenFactor, float speedMultiplier, bool flipped) {
          string pinName = kPwmPinNameByExportNumber[pin];
          beagleBoneGpioConfigurationManager.SetPinMode(pinName, PinMode.Pwm);
 
@@ -69,11 +69,12 @@ namespace Dargon.Robotics.Devices.BeagleBone {
 
          return new GpioMotorImpl(
             $"PWM_Pin{pin}_{pinName}",
-            deviceValueFactory.IntToFloatAdapter(
-               dutyValue,
-               -1500000,
-                 399000 // accounts for rounding error
-               ));
+            deviceValueFactory.TweeningAdapter(
+               deviceValueFactory.IntToFloatAdapter(
+                  dutyValue,
+                  -1500000,
+                    (int)(399000 * (flipped ? -1 : 1) * speedMultiplier) // accounts for rounding error
+                  ), tweenFactor));
       }
 
       private string BuildPinPath(int pin, string key = "") => $"/sys/class/pwm/pwm{pin}/{key}";

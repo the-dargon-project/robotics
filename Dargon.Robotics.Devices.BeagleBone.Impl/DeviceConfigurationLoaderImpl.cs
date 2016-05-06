@@ -5,6 +5,7 @@ using Dargon.Robotics.Devices.Common;
 using Dargon.Robotics.Devices.Components;
 using IniParser.Model;
 using IniParser.Parser;
+using ItzWarty;
 using MathNet.Numerics.LinearAlgebra.Single;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
@@ -35,7 +36,10 @@ namespace Dargon.Robotics.Devices.BeagleBone {
       }
 
       public Device LoadGpioMotor(SectionData data) {
-         var motor = deviceFactory.PwmMotor(int.Parse(data.Keys["pin"]));
+         var flipped = data.Keys["flip"].ContainsAny(new[] { "1", "true" }, StringComparison.OrdinalIgnoreCase);
+         var tweenFactor = data.Keys.ContainsKey("tweenFactor") ? float.Parse(data.Keys["tweenFactor"]) : 0;
+         var speedMultiplier = data.Keys.ContainsKey("speedMultiplier") ? float.Parse(data.Keys["speedMultiplier"]) : 1;
+         var motor = deviceFactory.PwmMotor(int.Parse(data.Keys["pin"]), tweenFactor, speedMultiplier, flipped);
          // HACK
          if (data.Keys.ContainsKey("angle")) {
             var device = (DeviceBase)motor;
