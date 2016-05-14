@@ -23,6 +23,12 @@ namespace Dargon.Robotics.Demo {
 
       public override void OnTick() {
          if (gamepad.RightShoulder) {
+            driveTrain.TankDrive(gamepad.LeftY, gamepad.RightY);
+            vertDriveTrain.SetValues(0, 0, 0);
+         } else if (gamepad.LeftShoulder) {
+            driveTrain.MecanumDrive(gamepad.LeftX, gamepad.LeftY);
+            vertDriveTrain.SetValues(gamepad.RightY, gamepad.RightY, gamepad.RightY);
+         } else {
             driveTrain.TankMecanumDriveHybrid(
                gamepad.LeftX,
                gamepad.LeftY,
@@ -35,12 +41,6 @@ namespace Dargon.Robotics.Demo {
             } else {
                vertDriveTrain.SetValues(0, 0, 0);
             }
-         } else if (gamepad.LeftShoulder) {
-            driveTrain.MecanumDrive(gamepad.LeftX, gamepad.LeftY);
-            vertDriveTrain.SetValues(gamepad.RightY, gamepad.RightY, gamepad.RightY);
-         } else {
-            driveTrain.TankDrive(gamepad.LeftY, gamepad.RightY);
-            vertDriveTrain.SetValues(0, 0, 0);
          }
 
          if (gamepad.Start) {
