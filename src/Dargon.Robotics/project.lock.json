@@ -24,6 +24,15 @@
           "lib/net40/MathNet.Numerics.dll": {}
         }
       },
+      "NLog/4.3.9": {
+        "type": "package",
+        "compile": {
+          "lib/net45/NLog.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NLog.dll": {}
+        }
+      },
       "NLombok.Fody/0.0.5": {
         "type": "package",
         "dependencies": {
@@ -154,6 +163,31 @@
         "readme.txt"
       ]
     },
+    "NLog/4.3.9": {
+      "sha512": "I8Gxg4Mrk5whZJZu+GNBuYZfG8Rjk0O6LRvAiOZyA8mDJZZyvfB6LygngOH3rlK/PkPol4yZzvV6FTI8aAUJ4A==",
+      "type": "package",
+      "path": "NLog/4.3.9",
+      "files": [
+        "NLog.4.3.9.nupkg.sha512",
+        "NLog.nuspec",
+        "lib/MonoAndroid10/NLog.dll",
+        "lib/MonoAndroid10/NLog.xml",
+        "lib/Xamarin.iOS10/NLog.dll",
+        "lib/Xamarin.iOS10/NLog.xml",
+        "lib/net35/NLog.dll",
+        "lib/net35/NLog.xml",
+        "lib/net40/NLog.dll",
+        "lib/net40/NLog.xml",
+        "lib/net45/NLog.dll",
+        "lib/net45/NLog.xml",
+        "lib/sl4/NLog.dll",
+        "lib/sl4/NLog.xml",
+        "lib/sl5/NLog.dll",
+        "lib/sl5/NLog.xml",
+        "lib/wp8/NLog.dll",
+        "lib/wp8/NLog.xml"
+      ]
+    },
     "NLombok.Fody/0.0.5": {
       "sha512": "N+NO9OuW7Rxlqr0hNMRf/kOb5N0Vk5SH7x9BKcEf3tmoCYOO+ZJh9tl8ln26QUvjazns9xt60Q2rFkO375gvlw==",
       "type": "package",
@@ -190,7 +224,8 @@
       "Dargon.Commons",
       "Dargon.Ryu.Api",
       "Dargon.Ryu.Impl",
-      "MathNet.Numerics >= 3.13.1"
+      "MathNet.Numerics >= 3.13.1",
+      "NLog >= 4.3.9"
     ],
     ".NETFramework,Version=v4.6.1": []
   },

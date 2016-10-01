@@ -5,7 +5,8 @@
         "Dargon.Commons": "*",
         "Dargon.Ryu.Api": "*",
         "Dargon.Ryu.Impl": "*",
-        "MathNet.Numerics": "3.13.1"
+        "MathNet.Numerics": "3.13.1",
+        "NLog": "4.3.9"
     },
 
     "frameworks": { 

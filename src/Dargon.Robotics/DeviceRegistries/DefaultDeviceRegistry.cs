@@ -1,6 +1,5 @@
-﻿using ItzWarty;
-using ItzWarty.Collections;
-using System.Data;
+﻿using Dargon.Commons;
+using Dargon.Commons.Collections;
 using SCG = System.Collections.Generic;
 
 namespace Dargon.Robotics.Devices {
@@ -14,7 +13,7 @@ namespace Dargon.Robotics.Devices {
          devicesByAlias.AddOrUpdate(
             alias,
             add => device,
-            (update, existing) => { throw new DuplicateNameException($"Device of alias already registered: {alias} (True Name: {device.Name})"); });
+            (update, existing) => { throw new NameConflictExeption(alias, device.Name); });
          devicesByType.AddOrUpdate(
             device.Type,
             add => new HashSet<Device> { device },

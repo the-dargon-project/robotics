@@ -1,9 +1,10 @@
 ﻿using Dargon.Ryu;
+using Dargon.Ryu.Modules;
 
 namespace Dargon.Robotics.Subsystems.DriveTrains.SkidSteer {
-   public class DargonRoboticsSubsystemsDriveTrainsImplSkidSteerRyuPackage : RyuPackageV1 {
+   public class DargonRoboticsSubsystemsDriveTrainsImplSkidSteerRyuPackage : RyuModule {
       public DargonRoboticsSubsystemsDriveTrainsImplSkidSteerRyuPackage() {
-         Singleton<SkidSteerCalculator, SkidSteerCalculatorImpl>();
+         Required.Singleton<SkidSteerCalculatorImpl>().Implements<SkidSteerCalculator>();
       }
    }
 }

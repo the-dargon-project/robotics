@@ -1,9 +1,9 @@
+using Dargon.Commons.AsyncPrimitives;
 using System.Threading.Tasks;
-using Nito.AsyncEx;
 
 namespace Dargon.Robotics.Devices.Common {
    public class AsyncCacheBackedDeviceValue<T> : DeviceValue<T> {
-      private readonly AsyncAutoResetEvent valueUpdatedLatch = new AsyncAutoResetEvent();
+      private readonly AsyncAutoResetLatch valueUpdatedLatch = new AsyncAutoResetLatch();
       private readonly DeviceValue<T> inner;
       private T value;
 

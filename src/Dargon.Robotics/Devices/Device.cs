@@ -1,5 +1,4 @@
-﻿using ItzWarty.Collections;
-using System;
+﻿using Dargon.Commons.Collections;
 
 namespace Dargon.Robotics.Devices {
    public interface Device {

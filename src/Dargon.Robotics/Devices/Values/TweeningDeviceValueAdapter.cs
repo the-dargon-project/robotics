@@ -1,6 +1,6 @@
+using Dargon.Commons.AsyncPrimitives;
 using System;
 using System.Threading.Tasks;
-using Nito.AsyncEx;
 
 namespace Dargon.Robotics.Devices.Common {
    public class TweeningDeviceValueAdapter : DeviceValue<float> {
@@ -9,7 +9,7 @@ namespace Dargon.Robotics.Devices.Common {
       private readonly float tweenFactor;
       private readonly float invTweenFactor;
 
-      private readonly AsyncAutoResetEvent updateLatch = new AsyncAutoResetEvent();
+      private readonly AsyncAutoResetLatch updateLatch = new AsyncAutoResetLatch();
       private int kStepIntervalMillis = 10;
       private float desiredValue = 0;
       private float actualValue = 0;
