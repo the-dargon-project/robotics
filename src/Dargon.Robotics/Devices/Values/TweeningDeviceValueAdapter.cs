@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using Dargon.Commons.AsyncPrimitives;
 
 namespace Dargon.Robotics.Devices.Values {
-   public class TweeningDeviceValueAdapter : DeviceValue<float> {
+   public class TweeningDeviceValueAdapter : IDeviceValue<float> {
       private readonly object sync = new object();
-      private readonly DeviceValue<float> deviceValue;
+      private readonly IDeviceValue<float> deviceValue;
       private readonly float tweenFactor;
       private readonly float invTweenFactor;
 
@@ -15,7 +15,7 @@ namespace Dargon.Robotics.Devices.Values {
       private float actualValue = 0;
       private bool isAnimating = false;
 
-      public TweeningDeviceValueAdapter(DeviceValue<float> deviceValue, float tweenFactor) {
+      public TweeningDeviceValueAdapter(IDeviceValue<float> deviceValue, float tweenFactor) {
          this.deviceValue = deviceValue;
          this.tweenFactor = tweenFactor;
          this.invTweenFactor = 1 - tweenFactor;

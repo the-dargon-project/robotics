@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics;
 
 namespace Dargon.Robotics.Devices {
-   public class DefaultAccumulator : DeviceBase, Accumulator {
+   public class DefaultAccumulator : DeviceBase, IAccumulator {
       private readonly Stopwatch stopwatch = new Stopwatch();
-      private readonly AnalogInput source;
+      private readonly IAnalogInput source;
       private float accumulatedValue;
 
-      public DefaultAccumulator(string name, AnalogInput source) : base(name, DeviceType.Accumulator) {
+      public DefaultAccumulator(string name, IAnalogInput source) : base(name, DeviceType.Accumulator) {
          this.source = source;
       }
 

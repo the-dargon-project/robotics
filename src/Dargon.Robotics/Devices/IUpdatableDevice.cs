@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Dargon.Robotics.Devices {
-   public interface UpdatableDevice : Device {
+   public interface IUpdatableDevice : IDevice {
       void Update();
    }
 }

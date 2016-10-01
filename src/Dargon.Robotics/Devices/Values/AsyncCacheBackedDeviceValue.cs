@@ -2,12 +2,12 @@ using System.Threading.Tasks;
 using Dargon.Commons.AsyncPrimitives;
 
 namespace Dargon.Robotics.Devices.Values {
-   public class AsyncCacheBackedDeviceValue<T> : DeviceValue<T> {
+   public class AsyncCacheBackedDeviceValue<T> : IDeviceValue<T> {
       private readonly AsyncAutoResetLatch valueUpdatedLatch = new AsyncAutoResetLatch();
-      private readonly DeviceValue<T> inner;
+      private readonly IDeviceValue<T> inner;
       private T value;
 
-      public AsyncCacheBackedDeviceValue(DeviceValue<T> inner) {
+      public AsyncCacheBackedDeviceValue(IDeviceValue<T> inner) {
          this.inner = inner;
       }
 

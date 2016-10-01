@@ -1,8 +1,8 @@
 ﻿using Dargon.Robotics.Devices.Values;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
-   public class GpioAnalogInputImpl : GpioInputBase<float>, AnalogInput {
-      public GpioAnalogInputImpl(string name, DeviceValue<float> value)
+   public class GpioAnalogInputImpl : GpioInputBase<float>, IAnalogInput {
+      public GpioAnalogInputImpl(string name, IDeviceValue<float> value)
          : base(name, DeviceType.AnalogInput, value) { }
    }
 }

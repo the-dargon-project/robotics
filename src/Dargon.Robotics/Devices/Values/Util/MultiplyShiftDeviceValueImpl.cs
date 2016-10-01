@@ -1,10 +1,10 @@
 namespace Dargon.Robotics.Devices.Values.Util {
-   public class MultiplyShiftDeviceValueImpl : DeviceValue<float> {
-      private readonly DeviceValue<float> _value;
+   public class MultiplyShiftDeviceValueImpl : IDeviceValue<float> {
+      private readonly IDeviceValue<float> _value;
       private readonly float _multiplier;
       private readonly float _offset;
 
-      public MultiplyShiftDeviceValueImpl(DeviceValue<float> value, float multiplier, float offset) {
+      public MultiplyShiftDeviceValueImpl(IDeviceValue<float> value, float multiplier, float offset) {
          _value = value;
          _multiplier = multiplier;
          _offset = offset;

@@ -1,15 +1,12 @@
-using System;
-using System.Linq;
-using System.Reflection;
 using Dargon.Robotics.Simulations2D.Utilities;
 using FarseerPhysics;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Dargon.Robotics.Simulations2D {
-   public class Simulation2D : Game, Renderer {
+   public class Simulation2D : Game, IRenderer {
       private const float kTicksPerMillisecond = 10.0f;
       private const float kTickIntervalSeconds = 1.0f / (1000.0f * kTicksPerMillisecond);
       private readonly DateTime startTime = DateTime.Now;

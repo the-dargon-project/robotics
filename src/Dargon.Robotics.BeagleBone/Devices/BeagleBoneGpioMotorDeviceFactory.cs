@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public interface IBeagleBoneGpioMotorDeviceFactory {
-      Motor PwmMotor(int pin, float tweenFactor, float speedMultiplier, bool flipped);
+      IMotor PwmMotor(int pin, float tweenFactor, float speedMultiplier, bool flipped);
    }
 
    public class BeagleBoneGpioMotorDeviceFactoryImpl : IBeagleBoneGpioMotorDeviceFactory {
@@ -28,16 +28,16 @@ namespace Dargon.Robotics.Devices.BeagleBone {
       };
 
       private readonly IBeagleBoneGpioConfigurationManager beagleBoneGpioConfigurationManager;
-      private readonly DeviceValueFactory deviceValueFactory;
+      private readonly IDeviceValueFactory deviceValueFactory;
       private readonly IInternalFileSystemProxy internalFileSystemProxy;
 
-      public BeagleBoneGpioMotorDeviceFactoryImpl(IBeagleBoneGpioConfigurationManager beagleBoneGpioConfigurationManager, DeviceValueFactory deviceValueFactory, IInternalFileSystemProxy internalFileSystemProxy) {
+      public BeagleBoneGpioMotorDeviceFactoryImpl(IBeagleBoneGpioConfigurationManager beagleBoneGpioConfigurationManager, IDeviceValueFactory deviceValueFactory, IInternalFileSystemProxy internalFileSystemProxy) {
          this.beagleBoneGpioConfigurationManager = beagleBoneGpioConfigurationManager;
          this.deviceValueFactory = deviceValueFactory;
          this.internalFileSystemProxy = internalFileSystemProxy;
       }
 
-      public Motor PwmMotor(int pin, float tweenFactor, float speedMultiplier, bool flipped) {
+      public IMotor PwmMotor(int pin, float tweenFactor, float speedMultiplier, bool flipped) {
          string pinName = kPwmPinNameByExportNumber[pin];
          beagleBoneGpioConfigurationManager.SetPinMode(pinName, PinMode.Pwm);
 

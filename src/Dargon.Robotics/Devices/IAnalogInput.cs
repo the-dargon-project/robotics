@@ -1,5 +1,5 @@
 ﻿namespace Dargon.Robotics.Devices {
-   public interface AnalogInput : Device {
+   public interface IAnalogInput : IDevice {
       float Get();
    }
 }

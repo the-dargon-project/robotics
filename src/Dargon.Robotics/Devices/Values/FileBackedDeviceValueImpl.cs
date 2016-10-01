@@ -2,7 +2,7 @@ using System.IO;
 using Dargon.Robotics.Devices.Values.Util;
 
 namespace Dargon.Robotics.Devices.Values {
-   public class FileBackedDeviceValueImpl<T> : DeviceValue<T> {
+   public class FileBackedDeviceValueImpl<T> : IDeviceValue<T> {
       private readonly string path;
       private readonly DeviceValueAccess access;
       private readonly IInternalFileSystemProxy internalFileSystemProxy;

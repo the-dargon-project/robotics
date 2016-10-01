@@ -4,12 +4,12 @@ using Dargon.Robotics.Devices.Values.Util;
 using MathNet.Numerics.LinearAlgebra.Single;
 
 namespace Dargon.Robotics.Subsystems.DriveTrain.Holonomic {
-   public interface HolonomicCalculator {
+   public interface IHolonomicCalculator {
       HolonomicDriveValues TankDrive(float left, float right, bool inputsSquared = false);
       HolonomicDriveValues MecanumDrive(HolonomicDriveTrain driveTrain, float x, float y, bool inputsSquared = false);
    }
 
-   public class HolonomicCalculatorImpl : HolonomicCalculator {
+   public class HolonomicCalculatorImpl : IHolonomicCalculator {
       public HolonomicDriveValues TankDrive(float left, float right, bool inputsSquared = false) {
          left = InputUtilities.TransformWithWarning(left, square: inputsSquared);
          right = InputUtilities.TransformWithWarning(right, square: inputsSquared);

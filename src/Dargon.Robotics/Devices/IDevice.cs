@@ -1,13 +1,13 @@
 ﻿using Dargon.Commons.Collections;
 
 namespace Dargon.Robotics.Devices {
-   public interface Device {
+   public interface IDevice {
       string Name { get; }
       DeviceType Type { get; }
       TComponent GetComponent<TComponent>(DeviceComponentType type);
    }
 
-   public class DeviceBase : Device {
+   public class DeviceBase : IDevice {
       private readonly IConcurrentDictionary<DeviceComponentType, object> componentsByType = new ConcurrentDictionary<DeviceComponentType, object>();
 
       public DeviceBase(string name, DeviceType type) {

@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Dargon.Robotics.Devices {
-   public class DefaultAccelerometer : DeviceBase, Accelerometer {
-      private readonly AnalogInput acceleration;
-      private readonly Accumulator velocity;
-      private readonly Accumulator position;
+   public class DefaultAccelerometer : DeviceBase, IAccelerometer {
+      private readonly IAnalogInput acceleration;
+      private readonly IAccumulator velocity;
+      private readonly IAccumulator position;
 
-      public DefaultAccelerometer(string name, AnalogInput acceleration, Accumulator velocity, Accumulator position) : base(name, DeviceType.Accelerometer) {
+      public DefaultAccelerometer(string name, IAnalogInput acceleration, IAccumulator velocity, IAccumulator position) : base(name, DeviceType.Accelerometer) {
          this.acceleration = acceleration;
          this.velocity = velocity;
          this.position = position;

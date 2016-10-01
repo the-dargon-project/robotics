@@ -1,11 +1,11 @@
 ﻿using Dargon.Robotics.Devices.Values;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
-   public class GhettoRemoteServo : DeviceBase, Servo {
-      private readonly DeviceValue<float> position;
+   public class GhettoRemoteServo : DeviceBase, IServo {
+      private readonly IDeviceValue<float> position;
       private readonly float defaultAngle;
 
-      public GhettoRemoteServo(string name, DeviceValue<float> position, float defaultAngle) : base (name, DeviceType.Servo) {
+      public GhettoRemoteServo(string name, IDeviceValue<float> position, float defaultAngle) : base (name, DeviceType.Servo) {
          this.position = position;
          this.defaultAngle = defaultAngle;
       }

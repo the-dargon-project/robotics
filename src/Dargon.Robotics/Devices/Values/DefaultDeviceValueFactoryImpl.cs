@@ -3,7 +3,7 @@ using System.Net;
 using Dargon.Robotics.Devices.Values.Util;
 
 namespace Dargon.Robotics.Devices.Values {
-   public class DefaultDeviceValueFactoryImpl : DeviceValueFactory {
+   public class DefaultDeviceValueFactoryImpl : IDeviceValueFactory {
       private readonly WebClient wc = new WebClient();
       private readonly IInternalFileSystemProxy internalFileSystemProxy;
 
@@ -11,16 +11,16 @@ namespace Dargon.Robotics.Devices.Values {
          this.internalFileSystemProxy = internalFileSystemProxy;
       }
 
-      public DeviceValue<T> FromFile<T>(string path, DeviceValueAccess access) {
+      public IDeviceValue<T> FromFile<T>(string path, DeviceValueAccess access) {
          return new FileBackedDeviceValueImpl<T>(path, access, internalFileSystemProxy);
       }
 
       [Obsolete]
-      public DeviceValue<T> FromFileCached<T>(string path, DeviceValueAccess access) {
+      public IDeviceValue<T> FromFileCached<T>(string path, DeviceValueAccess access) {
          return WithCache(FromFile<T>(path, access));
       }
 
-      public DeviceValue<T> FromHttpBasedResource<T>(string getResourceTemplate, string setResourceTemplate, DeviceValueAccess access) {
+      public IDeviceValue<T> FromHttpBasedResource<T>(string getResourceTemplate, string setResourceTemplate, DeviceValueAccess access) {
          return new SomeHttpBasedResourceBackedDeviceValue<T>(
             wc,
             getResourceTemplate,
@@ -28,25 +28,25 @@ namespace Dargon.Robotics.Devices.Values {
             access);
       }
 
-      public DeviceValue<float> WithMultiplierShift(DeviceValue<float> value, float multiplier, float offset) {
+      public IDeviceValue<float> WithMultiplierShift(IDeviceValue<float> value, float multiplier, float offset) {
          return new MultiplyShiftDeviceValueImpl(value, multiplier, offset);
       }
       
-      public DeviceValue<T> WithCache<T>(DeviceValue<T> value) {
+      public IDeviceValue<T> WithCache<T>(IDeviceValue<T> value) {
          return new CachedDeviceValueImpl<T>(value);
       }
 
-      public DeviceValue<float> IntToFloatAdapter(DeviceValue<int> deviceValue, int offset, int multiplier) {
+      public IDeviceValue<float> IntToFloatAdapter(IDeviceValue<int> deviceValue, int offset, int multiplier) {
          return new IntegerAsFloatDeviceValueAdapter(deviceValue, offset, multiplier);
       }
 
-      public DeviceValue<float> TweeningAdapter(DeviceValue<float> deviceValue, float tweenFactor) {
+      public IDeviceValue<float> TweeningAdapter(IDeviceValue<float> deviceValue, float tweenFactor) {
          var result = new TweeningDeviceValueAdapter(deviceValue, tweenFactor);
          result.Initialize();
          return result;
       }
 
-      public DeviceValue<T> AsyncCachedBacked<T>(DeviceValue<T> inner) {
+      public IDeviceValue<T> AsyncCachedBacked<T>(IDeviceValue<T> inner) {
          var result = new AsyncCacheBackedDeviceValue<T>(inner);
          result.Initialize();
          return result;

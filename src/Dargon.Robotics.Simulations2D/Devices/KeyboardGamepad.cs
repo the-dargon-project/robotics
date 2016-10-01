@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Input;
 
 namespace Dargon.Robotics.Simulations2D.Devices {
-   public class KeyboardGamepad : Gamepad {
+   public class KeyboardGamepad : IGamepad {
       public float LeftX => GetValue(Keys.A, Keys.D);
       public float LeftY => GetValue(Keys.S, Keys.W);
 

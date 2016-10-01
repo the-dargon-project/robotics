@@ -1,5 +1,5 @@
 namespace Dargon.Robotics.Devices {
-   public interface Gyroscope : AnalogInput, UpdatableDevice {
+   public interface IGyroscope : IAnalogInput, IUpdatableDevice {
       float GetAngle();
       float GetAngularVelocity();
       float GetAngularAcceleration();

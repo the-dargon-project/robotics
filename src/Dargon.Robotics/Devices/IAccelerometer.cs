@@ -1,5 +1,5 @@
 namespace Dargon.Robotics.Devices {
-   public interface Accelerometer : AnalogInput, UpdatableDevice {
+   public interface IAccelerometer : IAnalogInput, IUpdatableDevice {
       float GetPosition();
       float GetVelocity();
       float GetAcceleration();

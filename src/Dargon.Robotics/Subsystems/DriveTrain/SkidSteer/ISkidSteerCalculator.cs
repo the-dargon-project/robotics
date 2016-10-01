@@ -1,11 +1,11 @@
 ﻿using System;
 
 namespace Dargon.Robotics.Subsystems.DriveTrain.SkidSteer {
-   public interface SkidSteerCalculator {
+   public interface ISkidSteerCalculator {
       SkidDriveValues TankDrive(float leftStick, float rightStick, bool inputsSquared = false);
    }
 
-   public class SkidSteerCalculatorImpl : SkidSteerCalculator {
+   public class SkidSteerCalculatorImpl : ISkidSteerCalculator {
       public SkidDriveValues TankDrive(float leftStick, float rightStick, bool inputsSquared = false) {
          if (inputsSquared) {
             leftStick = leftStick * Math.Abs(leftStick);

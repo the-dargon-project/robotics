@@ -2,9 +2,9 @@
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public abstract class GpioOutputBase<T> : DeviceBase {
-      private readonly DeviceValue<T> value;
+      private readonly IDeviceValue<T> value;
 
-      protected GpioOutputBase(string name, DeviceType type, DeviceValue<T> value) : base(name, type) {
+      protected GpioOutputBase(string name, DeviceType type, IDeviceValue<T> value) : base(name, type) {
          this.value = value;
       }
 

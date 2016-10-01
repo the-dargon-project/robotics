@@ -23,12 +23,12 @@ namespace Dargon.Robotics.Simulations2D {
          robotBody.LinearDamping = constants.LinearDamping;
       }
 
-      public void Render(Renderer renderer) {
+      public void Render(IRenderer renderer) {
          DrawRobotBody(renderer);
          robotState.MotorStates.ForEach(x => DrawMotorBody(renderer, x));
       }
 
-      private void DrawRobotBody(Renderer renderer) {
+      private void DrawRobotBody(IRenderer renderer) {
          renderer.DrawCenteredRectangleWorld(
             robotBody.Position,
             new Vector2(robotState.Width, robotState.Height),
@@ -49,7 +49,7 @@ namespace Dargon.Robotics.Simulations2D {
 
       }
 
-      private void DrawMotorBody(Renderer renderer, SimulationMotorState motorState) {
+      private void DrawMotorBody(IRenderer renderer, SimulationMotorState motorState) {
          var position = robotBody.GetWorldPoint(motorState.RelativePosition);
          var extents = new Vector2(robotState.Width / 10, robotState.Height / 10);
          renderer.DrawCenteredRectangleWorld(

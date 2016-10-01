@@ -1,7 +1,7 @@
 ﻿using System.Net;
 
 namespace Dargon.Robotics.Devices.Values {
-   public class SomeHttpBasedResourceBackedDeviceValue<T> : DeviceValue<T> {
+   public class SomeHttpBasedResourceBackedDeviceValue<T> : IDeviceValue<T> {
       private readonly WebClient webClient;
       private readonly string getResourceTemplate;
       private readonly string setResourceTemplate;

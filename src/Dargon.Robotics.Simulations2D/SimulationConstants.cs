@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Dargon.Robotics.Simulations2D {
+﻿namespace Dargon.Robotics.Simulations2D {
    public class SimulationConstants {
       public float LinearDamping { get; set; }
       public float AngularDamping { get; set; }

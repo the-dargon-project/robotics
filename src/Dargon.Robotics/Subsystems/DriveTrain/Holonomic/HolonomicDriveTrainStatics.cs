@@ -1,6 +1,6 @@
 ﻿namespace Dargon.Robotics.Subsystems.DriveTrain.Holonomic {
    public static class HolonomicDriveTrainStatics {
-      public static HolonomicCalculator Calculator { get; set; } = new HolonomicCalculatorImpl();
+      public static IHolonomicCalculator Calculator { get; set; } = new HolonomicCalculatorImpl();
 
       public static void TankDrive(this HolonomicDriveTrain driveTrain, float left, float right, bool inputsSquared = false) {
          var values = Calculator.TankDrive(left, right, inputsSquared);

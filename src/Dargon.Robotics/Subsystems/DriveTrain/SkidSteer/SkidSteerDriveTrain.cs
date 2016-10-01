@@ -2,17 +2,17 @@
 
 namespace Dargon.Robotics.Subsystems.DriveTrain.SkidSteer {
    public class SkidSteerDriveTrain {
-      private readonly Motor frontLeft;
-      private readonly Motor frontRight;
-      private readonly Motor rearLeft;
-      private readonly Motor rearRight;
+      private readonly IMotor frontLeft;
+      private readonly IMotor frontRight;
+      private readonly IMotor rearLeft;
+      private readonly IMotor rearRight;
 
-      public SkidSteerDriveTrain(Motor frontLeft, Motor frontRight) {
+      public SkidSteerDriveTrain(IMotor frontLeft, IMotor frontRight) {
          this.frontLeft = frontLeft;
          this.frontRight = frontRight;
       }
 
-      public SkidSteerDriveTrain(Motor frontLeft, Motor frontRight, Motor rearLeft, Motor rearRight) {
+      public SkidSteerDriveTrain(IMotor frontLeft, IMotor frontRight, IMotor rearLeft, IMotor rearRight) {
          this.frontLeft = frontLeft;
          this.frontRight = frontRight;
          this.rearLeft = rearLeft;

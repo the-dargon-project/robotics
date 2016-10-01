@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Dargon.Commons;
+using System;
 using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
-using Dargon.Commons;
-using Dargon.Robotics.Devices;
 
 namespace Dargon.Robotics {
-   public class IterativeRobot : Robot {
+   public class IterativeRobot : IRobot {
       private readonly IterativeRobotConfiguration configuration;
       private readonly IterativeRobotUserCode userCode;
 

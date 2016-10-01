@@ -2,12 +2,12 @@
 using System.CodeDom;
 
 namespace Dargon.Robotics.Devices {
-   public interface Servo : Device {
+   public interface IServo : IDevice {
       void Set(float value);
       float Get();
    }
 
-   public class NullServo : Servo {
+   public class NullServo : IServo {
       public NullServo(string name = null) {
          Name = name ?? "NULL_SERVO";
       }

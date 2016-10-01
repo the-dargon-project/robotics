@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using MonogameGamePad = Microsoft.Xna.Framework.Input.GamePad;
 
 namespace Dargon.Robotics.Simulations2D.Devices {
-   public class LocalGamepad : Gamepad {
+   public class LocalGamepad : IGamepad {
       public float LeftX => GetState().ThumbSticks.Left.X;
       public float LeftY => -GetState().ThumbSticks.Left.Y;
 

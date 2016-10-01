@@ -3,7 +3,7 @@ using Dargon.Robotics.Devices.Components;
 using Dargon.Robotics.Devices.Values.Util;
 
 namespace Dargon.Robotics.Simulations2D.Devices {
-   public class SimulationMotorAdapter : DeviceBase, Motor {
+   public class SimulationMotorAdapter : DeviceBase, IMotor {
       private readonly SimulationMotorState simulationMotorState;
       private float lastValue = 0.0f;
 

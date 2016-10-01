@@ -1,5 +1,5 @@
 ﻿namespace Dargon.Robotics {
-   public interface Robot {
+   public interface IRobot {
       void Run();
    }
 }

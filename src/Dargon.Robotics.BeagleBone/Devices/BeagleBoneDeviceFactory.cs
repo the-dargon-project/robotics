@@ -2,11 +2,11 @@
 using Dargon.Commons;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
-   public class BeagleBoneDeviceFactory : DeviceFactory {
-      private readonly DeviceValueFactory deviceValueFactory;
+   public class BeagleBoneDeviceFactory : IDeviceFactory {
+      private readonly IDeviceValueFactory deviceValueFactory;
       private readonly IBeagleBoneGpioMotorDeviceFactory gpioMotorDeviceFactory;
 
-      public BeagleBoneDeviceFactory(DeviceValueFactory deviceValueFactory, IBeagleBoneGpioMotorDeviceFactory gpioMotorDeviceFactory) {
+      public BeagleBoneDeviceFactory(IDeviceValueFactory deviceValueFactory, IBeagleBoneGpioMotorDeviceFactory gpioMotorDeviceFactory) {
          this.deviceValueFactory = deviceValueFactory;
          this.gpioMotorDeviceFactory = gpioMotorDeviceFactory;
       }
@@ -19,9 +19,9 @@ namespace Dargon.Robotics.Devices.BeagleBone {
                DeviceValueAccess.ReadWrite));
       }
 
-      public Motor PwmMotor(int pin, float tweenFactor, float speedMultiplier, bool flipped) => gpioMotorDeviceFactory.PwmMotor(pin, tweenFactor, speedMultiplier, flipped);
+      public IMotor PwmMotor(int pin, float tweenFactor, float speedMultiplier, bool flipped) => gpioMotorDeviceFactory.PwmMotor(pin, tweenFactor, speedMultiplier, flipped);
 
-      public Servo RemoteServo(string getUrl, string setUrl, float defaultAngle) {
+      public IServo RemoteServo(string getUrl, string setUrl, float defaultAngle) {
          var angleValue = deviceValueFactory.AsyncCachedBacked(
             deviceValueFactory.FromHttpBasedResource<float>(getUrl, setUrl, DeviceValueAccess.ReadWrite));
          return new GhettoRemoteServo(

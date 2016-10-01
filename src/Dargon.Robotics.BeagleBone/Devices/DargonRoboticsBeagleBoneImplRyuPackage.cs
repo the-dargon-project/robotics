@@ -11,13 +11,13 @@ namespace Dargon.Robotics.Devices.BeagleBone {
          Optional.Singleton<BeagleBoneGpioMotorDeviceFactoryImpl>()
                  .Implements<IBeagleBoneGpioMotorDeviceFactory>();
          Optional.Singleton<BeagleBoneDeviceFactory>()
-                 .Implements<DeviceFactory>();
+                 .Implements<IDeviceFactory>();
          Optional.Singleton<BeagleBoneDeviceFactory>();
-         Optional.Singleton<DeviceRegistry>(ConstructAndPopulateDeviceRegistry);
+         Optional.Singleton<IDeviceRegistry>(ConstructAndPopulateDeviceRegistry);
          Optional.Singleton<DeviceConfigurationLoaderImpl>();
       }
 
-      public DeviceRegistry ConstructAndPopulateDeviceRegistry(IRyuContainer ryu) {
+      public IDeviceRegistry ConstructAndPopulateDeviceRegistry(IRyuContainer ryu) {
          var deviceRegistry = new DefaultDeviceRegistry();
          var deviceConfigurationLoader = ryu.GetOrThrow<DeviceConfigurationLoaderImpl>();
          deviceConfigurationLoader.LoadDeviceConfiguration(deviceRegistry);

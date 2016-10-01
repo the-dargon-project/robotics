@@ -1,5 +1,5 @@
 ﻿namespace Dargon.Robotics.Devices {
-   public interface Motor : Device {
+   public interface IAnalogOutput : IDevice {
       void Set(float value);
       float GetLastValue();
    }

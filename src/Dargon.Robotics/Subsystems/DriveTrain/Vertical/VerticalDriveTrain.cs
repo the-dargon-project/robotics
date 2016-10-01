@@ -2,19 +2,19 @@
 
 namespace Dargon.Robotics.Subsystems.DriveTrain.Vertical {
 	public class VerticalDriveTrain {
-		private readonly Motor frontLeft;
-		private readonly Motor frontRight;
-		private readonly Motor rear;
+		private readonly IMotor frontLeft;
+		private readonly IMotor frontRight;
+		private readonly IMotor rear;
 
-		public VerticalDriveTrain(Motor frontLeft, Motor frontRight, Motor rear) {
+		public VerticalDriveTrain(IMotor frontLeft, IMotor frontRight, IMotor rear) {
 			this.frontLeft = frontLeft;
 			this.frontRight = frontRight;
 			this.rear = rear;
 		}
 
-		public Motor FrontLeft => frontLeft;
-		public Motor FrontRight => frontRight;
-	   public Motor Rear => rear;
+		public IMotor FrontLeft => frontLeft;
+		public IMotor FrontRight => frontRight;
+	   public IMotor Rear => rear;
 
 		public void SetValues(VerticalDriveValues values) {
 			SetValues(values.FrontLeft, values.FrontRight, values.Rear);

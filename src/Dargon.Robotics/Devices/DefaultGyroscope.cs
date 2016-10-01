@@ -1,10 +1,10 @@
 ﻿namespace Dargon.Robotics.Devices {
-   public class DefaultGyroscope : DeviceBase, Accelerometer {
-      private readonly AnalogInput angularAcceleration;
-      private readonly Accumulator angularVelocity;
-      private readonly Accumulator angularPosition;
+   public class DefaultGyroscope : DeviceBase, IAccelerometer {
+      private readonly IAnalogInput angularAcceleration;
+      private readonly IAccumulator angularVelocity;
+      private readonly IAccumulator angularPosition;
 
-      public DefaultGyroscope(string name, AnalogInput angularAcceleration, Accumulator angularVelocity, Accumulator angularPosition) : base(name, DeviceType.Gyroscope) {
+      public DefaultGyroscope(string name, IAnalogInput angularAcceleration, IAccumulator angularVelocity, IAccumulator angularPosition) : base(name, DeviceType.Gyroscope) {
          this.angularAcceleration = angularAcceleration;
          this.angularVelocity = angularVelocity;
          this.angularPosition = angularPosition;

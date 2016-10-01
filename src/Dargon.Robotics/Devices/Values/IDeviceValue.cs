@@ -1,5 +1,5 @@
 ﻿namespace Dargon.Robotics.Devices.Values {
-   public interface DeviceValue<T> {
+   public interface IDeviceValue<T> {
       T Get();
       void Set(T value);
    }

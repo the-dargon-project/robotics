@@ -1,9 +1,9 @@
 ﻿namespace Dargon.Robotics.Devices.Values {
-   public class CachedDeviceValueImpl<T> : DeviceValue<T> {
-      private readonly DeviceValue<T> backing;
+   public class CachedDeviceValueImpl<T> : IDeviceValue<T> {
+      private readonly IDeviceValue<T> backing;
       private T cachedValue;
 
-      public CachedDeviceValueImpl(DeviceValue<T> backing) {
+      public CachedDeviceValueImpl(IDeviceValue<T> backing) {
          this.backing = backing;
          this.cachedValue = backing.Get();
       }

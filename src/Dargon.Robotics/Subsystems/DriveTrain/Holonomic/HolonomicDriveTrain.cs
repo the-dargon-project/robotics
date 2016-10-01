@@ -2,22 +2,22 @@
 
 namespace Dargon.Robotics.Subsystems.DriveTrain.Holonomic {
    public class HolonomicDriveTrain {
-      private readonly Motor frontLeft;
-      private readonly Motor frontRight;
-      private readonly Motor rearLeft;
-      private readonly Motor rearRight;
+      private readonly IMotor frontLeft;
+      private readonly IMotor frontRight;
+      private readonly IMotor rearLeft;
+      private readonly IMotor rearRight;
 
-      public HolonomicDriveTrain(Motor frontLeft, Motor frontRight, Motor rearLeft, Motor rearRight) {
+      public HolonomicDriveTrain(IMotor frontLeft, IMotor frontRight, IMotor rearLeft, IMotor rearRight) {
          this.frontLeft = frontLeft;
          this.frontRight = frontRight;
          this.rearLeft = rearLeft;
          this.rearRight = rearRight;
       }
 
-      public Motor FrontLeft => frontLeft;
-      public Motor FrontRight => frontRight;
-      public Motor RearLeft => rearLeft;
-      public Motor RearRight => rearRight;
+      public IMotor FrontLeft => frontLeft;
+      public IMotor FrontRight => frontRight;
+      public IMotor RearLeft => rearLeft;
+      public IMotor RearRight => rearRight;
 
       public void SetValues(HolonomicDriveValues values) {
          SetValues(values.FrontLeft, values.FrontRight, values.RearLeft, values.RearRight);

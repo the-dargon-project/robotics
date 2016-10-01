@@ -1,5 +1,5 @@
 ﻿namespace Dargon.Robotics.Devices {
-   public interface DigitalOutput : Device {
+   public interface DigitalOutput : IDevice {
       void Set(bool value);
       bool GetLastValue();
    }
