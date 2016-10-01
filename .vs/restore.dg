@@ -1,1 +1,9 @@
-#:V:\my-repositories\dargon\robotics\robotics.xproj
+#:V:\my-repositories\dargon\robotics\dependencies\robotics\src\Dargon.Robotics.Simulations2D\Dargon.Robotics.Simulations2D.xproj
+V:\my-repositories\dargon\robotics\dependencies\robotics\src\Dargon.Robotics.Simulations2D\Dargon.Robotics.Simulations2D.xproj|V:\my-repositories\dargon\robotics\dependencies\commons\src\Dargon.Commons\Dargon.Commons.xproj
+V:\my-repositories\dargon\robotics\dependencies\robotics\src\Dargon.Robotics.Simulations2D\Dargon.Robotics.Simulations2D.xproj|V:\my-repositories\dargon\robotics\dependencies\robotics\src\Dargon.Robotics\Dargon.Robotics.xproj
+V:\my-repositories\dargon\robotics\dependencies\commons\src\Dargon.Commons\Dargon.Commons.xproj|V:\my-repositories\dargon\robotics\dependencies\ryu\src\Dargon.Ryu.Api\Dargon.Ryu.Api.xproj
+V:\my-repositories\dargon\robotics\dependencies\robotics\src\Dargon.Robotics\Dargon.Robotics.xproj|V:\my-repositories\dargon\robotics\dependencies\commons\src\Dargon.Commons\Dargon.Commons.xproj
+V:\my-repositories\dargon\robotics\dependencies\robotics\src\Dargon.Robotics\Dargon.Robotics.xproj|V:\my-repositories\dargon\robotics\dependencies\ryu\src\Dargon.Ryu.Api\Dargon.Ryu.Api.xproj
+V:\my-repositories\dargon\robotics\dependencies\robotics\src\Dargon.Robotics\Dargon.Robotics.xproj|V:\my-repositories\dargon\robotics\dependencies\ryu\src\Dargon.Ryu.Impl\Dargon.Ryu.Impl.xproj
+V:\my-repositories\dargon\robotics\dependencies\ryu\src\Dargon.Ryu.Impl\Dargon.Ryu.Impl.xproj|V:\my-repositories\dargon\robotics\dependencies\commons\src\Dargon.Commons\Dargon.Commons.xproj
+V:\my-repositories\dargon\robotics\dependencies\ryu\src\Dargon.Ryu.Impl\Dargon.Ryu.Impl.xproj|V:\my-repositories\dargon\robotics\dependencies\ryu\src\Dargon.Ryu.Api\Dargon.Ryu.Api.xproj
