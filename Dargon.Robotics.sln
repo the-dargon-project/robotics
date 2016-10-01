@@ -26,6 +26,18 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Dargon.Robotics.BeagleBone"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Dargon.Robotics.Simulations2D", "dependencies\robotics\src\Dargon.Robotics.Simulations2D\Dargon.Robotics.Simulations2D.xproj", "{46D6A7E9-6258-4D07-B353-83ACC10A52E3}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "demo-robot", "src\demo-robot\demo-robot.xproj", "{73884410-E98E-4936-924A-CD2C9C9635E5}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "demo-robot-beaglebone", "src\demo-robot-beaglebone\demo-robot-beaglebone.xproj", "{743CCBEC-A3BB-4DDC-89DA-632029FED1AA}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "demo-robot-simulator", "src\demo-robot-simulator\demo-robot-simulator.xproj", "{4B9C3565-0DA8-4424-9A40-611F65AD77AE}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Dargon.Courier.Api", "dependencies\courier\src\Dargon.Courier.Api\Dargon.Courier.Api.xproj", "{5279248E-9513-4ACF-BD3B-8E5B5D896905}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Dargon.Vox", "dependencies\vox\src\Dargon.Vox\Dargon.Vox.xproj", "{64BDC2CE-1457-4AD8-AA1F-B39A5DDC42C2}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Dargon.Courier.Impl", "dependencies\courier\src\Dargon.Courier.Impl\Dargon.Courier.Impl.xproj", "{7A583A0F-6154-47D5-9D6E-D91E94A0C4FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +68,30 @@ Global
 		{46D6A7E9-6258-4D07-B353-83ACC10A52E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46D6A7E9-6258-4D07-B353-83ACC10A52E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46D6A7E9-6258-4D07-B353-83ACC10A52E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73884410-E98E-4936-924A-CD2C9C9635E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73884410-E98E-4936-924A-CD2C9C9635E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73884410-E98E-4936-924A-CD2C9C9635E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73884410-E98E-4936-924A-CD2C9C9635E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{743CCBEC-A3BB-4DDC-89DA-632029FED1AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{743CCBEC-A3BB-4DDC-89DA-632029FED1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{743CCBEC-A3BB-4DDC-89DA-632029FED1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{743CCBEC-A3BB-4DDC-89DA-632029FED1AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B9C3565-0DA8-4424-9A40-611F65AD77AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B9C3565-0DA8-4424-9A40-611F65AD77AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B9C3565-0DA8-4424-9A40-611F65AD77AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B9C3565-0DA8-4424-9A40-611F65AD77AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5279248E-9513-4ACF-BD3B-8E5B5D896905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5279248E-9513-4ACF-BD3B-8E5B5D896905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5279248E-9513-4ACF-BD3B-8E5B5D896905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5279248E-9513-4ACF-BD3B-8E5B5D896905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64BDC2CE-1457-4AD8-AA1F-B39A5DDC42C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64BDC2CE-1457-4AD8-AA1F-B39A5DDC42C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64BDC2CE-1457-4AD8-AA1F-B39A5DDC42C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64BDC2CE-1457-4AD8-AA1F-B39A5DDC42C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A583A0F-6154-47D5-9D6E-D91E94A0C4FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A583A0F-6154-47D5-9D6E-D91E94A0C4FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A583A0F-6154-47D5-9D6E-D91E94A0C4FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A583A0F-6154-47D5-9D6E-D91E94A0C4FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,5 +103,10 @@ Global
 		{8848F79E-7EBB-4D00-9645-FF86C39F8DE4} = {6B4B4214-7CE4-470D-8E43-C42043277C3D}
 		{240EDD6D-F331-40F5-B211-1F091A578420} = {2FC00538-7102-45C1-B58F-E64E3772F18E}
 		{46D6A7E9-6258-4D07-B353-83ACC10A52E3} = {2FC00538-7102-45C1-B58F-E64E3772F18E}
+		{73884410-E98E-4936-924A-CD2C9C9635E5} = {2FC00538-7102-45C1-B58F-E64E3772F18E}
+		{743CCBEC-A3BB-4DDC-89DA-632029FED1AA} = {2FC00538-7102-45C1-B58F-E64E3772F18E}
+		{4B9C3565-0DA8-4424-9A40-611F65AD77AE} = {2FC00538-7102-45C1-B58F-E64E3772F18E}
+		{5279248E-9513-4ACF-BD3B-8E5B5D896905} = {6B4B4214-7CE4-470D-8E43-C42043277C3D}
+		{7A583A0F-6154-47D5-9D6E-D91E94A0C4FB} = {6B4B4214-7CE4-470D-8E43-C42043277C3D}
 	EndGlobalSection
 EndGlobal

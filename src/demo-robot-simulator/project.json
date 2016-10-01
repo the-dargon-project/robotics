@@ -1,0 +1,29 @@
+﻿{
+    "version": "1.0.0-*",
+    "authors": [ "Warty" ],
+
+    "frameworks": {
+        "net461": {
+            "frameworkAssemblies": {
+                "System.Threading.Tasks": "*",
+                "System.Runtime": "*"
+            }
+        }
+    },
+
+    "dependencies": {
+        "Dargon.Ryu.Api": "*",
+        "demo-robot": "*",
+        "Dargon.Robotics.Simulations2D": "*" 
+    },
+
+    "buildOptions": {
+        "allowUnsafe": true,
+        "emitEntryPoint": true
+    },
+
+    "scripts": {
+        "prebuild": [ "" ],
+        "postbuild": [ "powershell ../../../FodyDnx/src/exec-fody-weavers.ps1 -ProjectDir %cd%" ]
+    }
+}

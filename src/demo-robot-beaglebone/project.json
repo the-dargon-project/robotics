@@ -1,0 +1,35 @@
+﻿{
+    "version": "1.0.0-*",
+    "description": "Dargon.Commons Class Library",
+    "authors": [ "Warty" ],
+    "tags": [ "" ],
+    "projectUrl": "",
+    "licenseUrl": "",
+
+    "frameworks": {
+        "net461": {
+            "frameworkAssemblies": {
+                "System.Threading.Tasks": "*",
+                "System.Runtime": "*"
+            }
+        }
+    },
+
+    "dependencies": {
+        "Dargon.Ryu.Api": "*",
+        "Dargon.Ryu.Impl": "*",
+        "demo-robot": "*",
+        "Fody": "1.29.3",
+        "NLombok.Fody": "0.0.5",
+        "NLog": "4.3.8"
+    },
+
+    "compilationOptions": {
+        "allowUnsafe": true
+    },
+
+    "scripts": {
+        "prebuild": [ "" ],
+        "postbuild": [ "powershell ../../../FodyDnx/src/exec-fody-weavers.ps1 -ProjectDir %cd%" ]
+    }
+}

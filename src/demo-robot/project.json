@@ -1,0 +1,28 @@
+﻿{
+    "version": "1.0.0-*",
+    "description": "Dargon.Commons Class Library",
+    "authors": [ "Warty" ],
+
+    "frameworks": {
+        "net461": {
+            "frameworkAssemblies": {
+                "System.Threading.Tasks": "*",
+                "System.Runtime": "*"
+            }
+        }
+    },
+
+    "dependencies": {
+        "Dargon.Ryu.Api": "*",
+        "Dargon.Robotics": "*"
+    },
+
+    "compilationOptions": {
+        "allowUnsafe": true
+    },
+
+    "scripts": {
+        "prebuild": [ "" ],
+        "postbuild": [ "powershell ../../../FodyDnx/src/exec-fody-weavers.ps1 -ProjectDir %cd%" ]
+    }
+}
