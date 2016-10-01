@@ -9,19 +9,13 @@ namespace Dargon.Robotics {
    public class IterativeRobot : Robot {
       private readonly IterativeRobotConfiguration configuration;
       private readonly IterativeRobotUserCode userCode;
-      private readonly Gamepad gamepad;
 
-      public IterativeRobot(IterativeRobotConfiguration configuration, IterativeRobotUserCode userCode, Gamepad gamepad) {
+      public IterativeRobot(IterativeRobotConfiguration configuration, IterativeRobotUserCode userCode) {
          this.configuration = configuration;
          this.userCode = userCode;
-         this.gamepad = gamepad;
       }
 
       public void Run() {
-         RunAsync().Wait();
-      }
-
-      private async Task RunAsync() {
          var stopwatch = new Stopwatch().With(x => x.Start());
          var tickIntervalMillis = 1000 / configuration.IterationsPerSecond;
          userCode.Setup();
