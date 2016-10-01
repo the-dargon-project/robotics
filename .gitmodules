@@ -10,3 +10,11 @@
 	path = dependencies/ryu
 	url = ssh://git@github.com/the-dargon-project/ryu.git
 	branch = master
+[submodule "dependencies/vox"]
+	path = dependencies/vox
+	url = ssh://git@github.com/the-dargon-project/vox.git
+	branch = master
+[submodule "dependencies/courier"]
+	path = dependencies/courier
+	url = ssh://git@github.com/the-dargon-project/courier.git
+	branch = master
