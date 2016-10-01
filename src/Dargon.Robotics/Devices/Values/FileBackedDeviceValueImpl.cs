@@ -1,7 +1,7 @@
 using System.IO;
-using Dargon.Robotics.Devices.Common.Util;
+using Dargon.Robotics.Devices.Values.Util;
 
-namespace Dargon.Robotics.Devices.Common {
+namespace Dargon.Robotics.Devices.Values {
    public class FileBackedDeviceValueImpl<T> : DeviceValue<T> {
       private readonly string path;
       private readonly DeviceValueAccess access;

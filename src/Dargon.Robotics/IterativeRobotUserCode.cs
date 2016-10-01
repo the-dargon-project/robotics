@@ -1,4 +1,4 @@
-﻿namespace Dargon.Robotics.Codebases.Iterative {
+﻿namespace Dargon.Robotics {
    public class IterativeRobotConfiguration {
       public IterativeRobotConfiguration(int iterationsPerSecond) {
          IterationsPerSecond = iterationsPerSecond;

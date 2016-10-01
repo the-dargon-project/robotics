@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Dargon.Robotics.Devices.Common {
+namespace Dargon.Robotics.Devices.Values {
    public class DeviceAccessDeniedException : Exception {
       private readonly DeviceValueAccess accessGranted;
       private readonly DeviceValueAccess accessRequired;

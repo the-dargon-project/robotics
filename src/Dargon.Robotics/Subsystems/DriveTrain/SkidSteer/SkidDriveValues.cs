@@ -1,4 +1,4 @@
-namespace Dargon.Robotics.Subsystems.DriveTrains.SkidSteer {
+namespace Dargon.Robotics.Subsystems.DriveTrain.SkidSteer {
    public struct SkidDriveValues {
       public static readonly SkidDriveValues kZero = new SkidDriveValues(0.0f, 0.0f);
 

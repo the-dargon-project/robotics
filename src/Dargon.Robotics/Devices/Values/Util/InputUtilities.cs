@@ -1,7 +1,7 @@
-﻿using NLog;
-using System;
+﻿using System;
+using NLog;
 
-namespace Dargon.Robotics.Devices.Common {
+namespace Dargon.Robotics.Devices.Values.Util {
    public static class InputUtilities {
       private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 

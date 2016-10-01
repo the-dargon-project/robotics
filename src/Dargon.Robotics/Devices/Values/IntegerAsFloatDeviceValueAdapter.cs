@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dargon.Robotics.Devices.Common {
+﻿namespace Dargon.Robotics.Devices.Values {
    public class IntegerAsFloatDeviceValueAdapter : DeviceValue<float> {
       private readonly DeviceValue<int> _deviceValue;
       private readonly int _offset;

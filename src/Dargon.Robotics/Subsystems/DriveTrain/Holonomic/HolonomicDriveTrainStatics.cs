@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dargon.Robotics.Subsystems.DriveTrains.Holonomic {
+﻿namespace Dargon.Robotics.Subsystems.DriveTrain.Holonomic {
    public static class HolonomicDriveTrainStatics {
       public static HolonomicCalculator Calculator { get; set; } = new HolonomicCalculatorImpl();
 

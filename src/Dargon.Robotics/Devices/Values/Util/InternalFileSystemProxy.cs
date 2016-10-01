@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Dargon.Robotics.Devices.Common.Util {
+namespace Dargon.Robotics.Devices.Values.Util {
    public class InternalFileSystemProxy : IInternalFileSystemProxy {
       public string ResolveAbsolutePath(string pattern) {
          var parts = pattern.Split('/');

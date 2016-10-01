@@ -1,8 +1,7 @@
-﻿using Dargon.Robotics.Subsystems.DriveTrains.SkidSteer;
-using Dargon.Ryu;
+﻿using Dargon.Ryu;
 using Dargon.Ryu.Modules;
 
-namespace Dargon.Robotics.Subsystems.DriveTrains.Holonomic {
+namespace Dargon.Robotics.Subsystems.DriveTrain.Holonomic {
    public class DargonRoboticsSubsystemsDriveTrainsImplHolonomicRyuPackage : RyuModule {
       public DargonRoboticsSubsystemsDriveTrainsImplHolonomicRyuPackage() {
          Required.Singleton<HolonomicCalculator>(ConstructAndConfigureHolonomicCalculator);

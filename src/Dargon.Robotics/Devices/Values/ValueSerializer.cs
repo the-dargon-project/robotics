@@ -1,7 +1,7 @@
-using Dargon.Commons;
 using System;
+using Dargon.Commons;
 
-namespace Dargon.Robotics.Devices.Common {
+namespace Dargon.Robotics.Devices.Values {
    public static class ValueSerializer<T> {
       public static T Deserialize(string s, DeviceValueAccess access) {
          if ((access & DeviceValueAccess.Read) == 0) {

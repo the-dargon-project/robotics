@@ -1,7 +1,6 @@
-﻿using System;
-using Dargon.Robotics.Devices;
+﻿using Dargon.Robotics.Devices;
 
-namespace Dargon.Robotics.Subsystems.DriveTrains.SkidSteer {
+namespace Dargon.Robotics.Subsystems.DriveTrain.SkidSteer {
    public class SkidSteerDriveTrain {
       private readonly Motor frontLeft;
       private readonly Motor frontRight;

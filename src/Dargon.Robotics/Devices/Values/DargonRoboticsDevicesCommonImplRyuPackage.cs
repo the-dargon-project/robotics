@@ -1,8 +1,7 @@
-﻿using Dargon.Robotics.Devices.Common.Util;
-using Dargon.Ryu;
+﻿using Dargon.Robotics.Devices.Values.Util;
 using Dargon.Ryu.Modules;
 
-namespace Dargon.Robotics.Devices.Common {
+namespace Dargon.Robotics.Devices.Values {
    public class DargonRoboticsDevicesCommonImplRyuPackage : RyuModule {
       public DargonRoboticsDevicesCommonImplRyuPackage() {
          Required.Singleton<DefaultDeviceValueFactoryImpl>().Implements<DeviceValueFactory>();

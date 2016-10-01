@@ -1,12 +1,13 @@
 ﻿using Dargon.Commons;
 using Dargon.Commons.Collections;
+using Dargon.Robotics.Devices;
 using SCG = System.Collections.Generic;
 
-namespace Dargon.Robotics.Devices {
+namespace Dargon.Robotics.DeviceRegistries {
    public class DefaultDeviceRegistry : DeviceRegistry {
       private readonly ConcurrentSet<Device> devices = new ConcurrentSet<Device>(); 
       private readonly ConcurrentDictionary<string, Device> devicesByAlias = new ConcurrentDictionary<string, Device>();
-      private readonly ConcurrentDictionary<DeviceType, ISet<Device>> devicesByType = new ConcurrentDictionary<DeviceType, ISet<Device>>();
+      private readonly ConcurrentDictionary<DeviceType, Commons.Collections.ISet<Device>> devicesByType = new ConcurrentDictionary<DeviceType, Commons.Collections.ISet<Device>>();
 
       public void AddDevice(string alias, Device device) {
          devices.TryAdd(device);
@@ -16,7 +17,7 @@ namespace Dargon.Robotics.Devices {
             (update, existing) => { throw new NameConflictExeption(alias, device.Name); });
          devicesByType.AddOrUpdate(
             device.Type,
-            add => new HashSet<Device> { device },
+            add => new Commons.Collections.HashSet<Device> { device },
             (update, existing) => existing.With(x => x.Add(device))
          );
       }

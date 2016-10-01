@@ -1,8 +1,8 @@
-using Dargon.Commons.AsyncPrimitives;
 using System;
 using System.Threading.Tasks;
+using Dargon.Commons.AsyncPrimitives;
 
-namespace Dargon.Robotics.Devices.Common {
+namespace Dargon.Robotics.Devices.Values {
    public class TweeningDeviceValueAdapter : DeviceValue<float> {
       private readonly object sync = new object();
       private readonly DeviceValue<float> deviceValue;

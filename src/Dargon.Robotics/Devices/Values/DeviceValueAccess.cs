@@ -1,6 +1,6 @@
 using System;
 
-namespace Dargon.Robotics.Devices.Common {
+namespace Dargon.Robotics.Devices.Values {
    [Flags]
    public enum DeviceValueAccess {
       None = 0,

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Net;
-using Dargon.Robotics.Devices.Common.Util;
+using Dargon.Robotics.Devices.Values.Util;
 
-namespace Dargon.Robotics.Devices.Common {
+namespace Dargon.Robotics.Devices.Values {
    public class DefaultDeviceValueFactoryImpl : DeviceValueFactory {
       private readonly WebClient wc = new WebClient();
       private readonly IInternalFileSystemProxy internalFileSystemProxy;
