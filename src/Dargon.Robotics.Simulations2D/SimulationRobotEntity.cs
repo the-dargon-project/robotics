@@ -7,20 +7,27 @@ namespace Dargon.Robotics.Simulations2D {
    public class SimulationRobotEntity {
       private readonly SimulationConstants constants;
       private readonly SimulationRobotState robotState;
+      private readonly Vector2 centerOfMass;
       private Body robotBody;
 
-      public SimulationRobotEntity(SimulationConstants constants, SimulationRobotState robotState) {
+      public SimulationRobotEntity(SimulationConstants constants, SimulationRobotState robotState, Vector2 centerOfMass = default(Vector2)) {
          this.constants = constants;
          this.robotState = robotState;
+         this.centerOfMass = centerOfMass;
       }
 
       public void Initialize(World world) {
          robotBody = BodyFactory.CreateRectangle(world, robotState.Width, robotState.Height, robotState.Density);
          robotBody.BodyType = BodyType.Dynamic;
          robotBody.Position = new Vector2(10, 10);
-//         robotBody.Rotation = (float)Math.PI;
+         robotBody.LocalCenter = centerOfMass;
+         //         robotBody.Rotation = (float)Math.PI;
          robotBody.AngularDamping = constants.AngularDamping;
          robotBody.LinearDamping = constants.LinearDamping;
+      }
+
+      public void SetLocalCenter(Vector2 vector) {
+         robotBody.LocalCenter = vector;
       }
 
       public void Render(IRenderer renderer) {
@@ -37,9 +44,9 @@ namespace Dargon.Robotics.Simulations2D {
          
          // Draw up vector
          renderer.DrawLineSegmentWorld(
-            robotBody.Position,
+            robotBody.GetWorldPoint(robotBody.LocalCenter),
             robotBody.GetWorldPoint(Vector2.UnitY),
-            Color.Magenta);
+            Color.Lime);
 
          // Draw friction vector
 //         renderer.DrawForceVectorWorld(

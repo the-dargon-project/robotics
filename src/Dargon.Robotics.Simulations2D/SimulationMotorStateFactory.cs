@@ -35,6 +35,30 @@ namespace Dargon.Robotics.Simulations2D {
          motorStates[3] = new SimulationMotorState("Drive.Motors.FrontRight", new Vector2(halfWidth, backFrontSpacing), forceTopRight);
          return motorStates;
       }
+
+
+      /// <summary>
+      /// Given robot :[^]:, fl/fr is |, rl is \, rr is /
+      /// </summary>
+      /// <param name="robotWidth">Width of robot</param>
+      /// <param name="robotHeight">Height of robot (well, y-axis 'height')</param>
+      /// <param name="wheelForceAngle">magnitude of mecanum wheels' force vectors' angles (relative to ^ direction) in radians</param>
+      /// <param name="wheelForceAmplitude">Maximum effective force applied by wheel</param>
+      /// <returns></returns>
+      public static SimulationMotorState[] HybridDrive(float robotWidth, float robotHeight, float wheelForceAngle, float wheelForceAmplitude) {
+         var forwardForceVector = new Vector2(0, wheelForceAmplitude);
+         var forceRearLeft = Vector2.Transform(forwardForceVector, Matrix.CreateRotationZ(-wheelForceAngle));
+         var forceRearRight = Vector2.Transform(forwardForceVector, Matrix.CreateRotationZ(wheelForceAngle));
+         var motorStates = new SimulationMotorState[4];
+         float halfWidth = robotWidth / 2, halfHeight = robotHeight / 2;
+         float backFrontSpacing = halfHeight / 2;
+         motorStates[0] = new SimulationMotorState("Drive.Motors.RearRight", new Vector2(halfWidth, -backFrontSpacing), forceRearLeft);
+         motorStates[1] = new SimulationMotorState("Drive.Motors.RearLeft", new Vector2(-halfWidth, -backFrontSpacing), forceRearRight);
+         motorStates[2] = new SimulationMotorState("Drive.Motors.FrontLeft", new Vector2(-halfWidth, backFrontSpacing), forwardForceVector);
+         motorStates[3] = new SimulationMotorState("Drive.Motors.FrontRight", new Vector2(halfWidth, backFrontSpacing), forwardForceVector);
+         return motorStates;
+      }
+
       public static SimulationMotorState[] RovDrive(float robotWidth, float robotHeight, float wheelForceAngle, float wheelForceAmplitude) {
          var forceVector = new Vector2(0, wheelForceAmplitude);
          var forceTopLeft = Vector2.Transform(forceVector, Matrix.CreateRotationZ(-wheelForceAngle));
