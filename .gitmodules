@@ -1,0 +1,4 @@
+[submodule "dependencies/robotics"]
+	path = dependencies/robotics
+	url = ssh://git@github.com/the-dargon-project/robotics.git
+	branch = master
