@@ -1,0 +1,19 @@
+{
+    "version": "1.0.0-*",
+
+    "dependencies": {
+        "Dargon.Commons": "*",
+        "Dargon.Ryu.Api": "*",
+        "Dargon.Ryu.Impl": "*",
+        "MathNet.Numerics": "3.13.1"
+    },
+
+    "frameworks": { 
+        "net461": { }
+    },
+
+    "scripts": {
+        "prebuild": [ "" ],
+        "postbuild": [ "powershell ../../../FodyDnx/src/exec-fody-weavers.ps1 -ProjectDir %cd%" ]
+    }
+}
