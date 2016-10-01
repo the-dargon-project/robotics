@@ -1,10 +1,7 @@
+using Dargon.Commons;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
-using ItzWarty;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Linq;
 
 namespace Dargon.Robotics.Simulations2D {
    public class SimulationRobotEntity {

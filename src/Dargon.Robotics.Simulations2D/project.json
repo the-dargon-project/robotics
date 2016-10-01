@@ -1,0 +1,23 @@
+{
+    "version": "1.0.0-*",
+
+    "dependencies": {
+        "Dargon.Commons": "*",
+        "Dargon.Robotics": "*",
+        "FarseerPhysics.Portable": "3.5.1",
+        "MonoGame.Framework.DesktopGL": "3.5.1.1679"
+    },
+
+    "frameworks": {
+        "net461": {
+            "frameworkAssemblies": {
+                "System.Xml": "4.0.0.0"
+            }
+        }
+    },
+
+    "scripts": {
+        "prebuild": [ "" ],
+        "postbuild": [ "powershell ../../../FodyDnx/src/exec-fody-weavers.ps1 -ProjectDir %cd%" ]
+    }
+}

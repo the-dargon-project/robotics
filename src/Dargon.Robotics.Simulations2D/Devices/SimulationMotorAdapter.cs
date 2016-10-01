@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dargon.Robotics.Devices;
-using Dargon.Robotics.Devices.Common;
+﻿using Dargon.Robotics.Devices;
 using Dargon.Robotics.Devices.Components;
+using Dargon.Robotics.Devices.Values.Util;
 
 namespace Dargon.Robotics.Simulations2D.Devices {
    public class SimulationMotorAdapter : DeviceBase, Motor {

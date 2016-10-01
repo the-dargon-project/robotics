@@ -1,0 +1,303 @@
+{
+  "locked": false,
+  "version": 2,
+  "targets": {
+    ".NETFramework,Version=v4.6.1": {
+      "Castle.Core/3.3.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Castle.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Core.dll": {}
+        }
+      },
+      "FarseerPhysics.Portable/3.5.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net4+sl4+wp8+win8/FarseerPhysics.Portable.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net4+sl4+wp8+win8/FarseerPhysics.Portable.dll": {}
+        }
+      },
+      "Fody/1.29.3": {
+        "type": "package"
+      },
+      "MathNet.Numerics/3.13.1": {
+        "type": "package",
+        "compile": {
+          "lib/net40/MathNet.Numerics.dll": {}
+        },
+        "runtime": {
+          "lib/net40/MathNet.Numerics.dll": {}
+        }
+      },
+      "MonoGame.Framework.DesktopGL/3.5.1.1679": {
+        "type": "package",
+        "compile": {
+          "lib/net40/MonoGame.Framework.dll": {},
+          "lib/net40/NVorbis.dll": {},
+          "lib/net40/OpenTK.dll": {}
+        },
+        "runtime": {
+          "lib/net40/MonoGame.Framework.dll": {},
+          "lib/net40/NVorbis.dll": {},
+          "lib/net40/OpenTK.dll": {}
+        }
+      },
+      "NLog/4.3.9": {
+        "type": "package",
+        "compile": {
+          "lib/net45/NLog.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NLog.dll": {}
+        }
+      },
+      "NLombok.Fody/0.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "(, )"
+        },
+        "compile": {
+          "Lib/dotnet/Fody.NLombok.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/Fody.NLombok.dll": {}
+        }
+      },
+      "Dargon.Commons/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "dependencies": {
+          "Dargon.Ryu.Api": "1.0.0",
+          "Fody": "1.29.3",
+          "NLombok.Fody": "0.0.5"
+        },
+        "frameworkAssemblies": [
+          "System.Runtime",
+          "System.Threading.Tasks"
+        ],
+        "compile": {
+          "net461/Dargon.Commons.dll": {}
+        },
+        "runtime": {
+          "net461/Dargon.Commons.dll": {}
+        }
+      },
+      "Dargon.Robotics/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "dependencies": {
+          "Dargon.Commons": "1.0.0",
+          "Dargon.Ryu.Api": "1.0.0",
+          "Dargon.Ryu.Impl": "1.0.0",
+          "MathNet.Numerics": "3.13.1",
+          "NLog": "4.3.9"
+        },
+        "compile": {
+          "net461/Dargon.Robotics.dll": {}
+        },
+        "runtime": {
+          "net461/Dargon.Robotics.dll": {}
+        }
+      },
+      "Dargon.Ryu.Api/0.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "compile": {
+          "net461/Dargon.Ryu.Api.dll": {}
+        },
+        "runtime": {
+          "net461/Dargon.Ryu.Api.dll": {}
+        }
+      },
+      "Dargon.Ryu.Impl/0.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "dependencies": {
+          "Castle.Core": "3.3.3",
+          "Dargon.Commons": "1.0.0",
+          "Dargon.Ryu.Api": "1.0.0"
+        },
+        "compile": {
+          "net461/Dargon.Ryu.Impl.dll": {}
+        },
+        "runtime": {
+          "net461/Dargon.Ryu.Impl.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Castle.Core/3.3.3": {
+      "sha512": "tvVrLbHhtAGubUUDbEkH9JlivdlJOTI25u3hlyHpPxuJdTVi/yVQKWCYvGpafGPm7G1ibdWj4brqhtSQkAmN+g==",
+      "type": "package",
+      "path": "Castle.Core/3.3.3",
+      "files": [
+        "ASL - Apache Software Foundation License.txt",
+        "BreakingChanges.txt",
+        "Castle.Core.3.3.3.nupkg.sha512",
+        "Castle.Core.nuspec",
+        "Changes.txt",
+        "License.txt",
+        "lib/net35/Castle.Core.dll",
+        "lib/net35/Castle.Core.xml",
+        "lib/net40-client/Castle.Core.dll",
+        "lib/net40-client/Castle.Core.xml",
+        "lib/net45/Castle.Core.dll",
+        "lib/net45/Castle.Core.xml",
+        "lib/sl4/Castle.Core.dll",
+        "lib/sl4/Castle.Core.xml",
+        "lib/sl5/Castle.Core.dll",
+        "lib/sl5/Castle.Core.xml",
+        "readme.txt"
+      ]
+    },
+    "FarseerPhysics.Portable/3.5.1": {
+      "sha512": "lOlwGyDonsk5xHfa1+a4jGUdkENWq4h6HiWoeUtVo0sWDqvrb64TLKBgRAMvZ5V+r6eZpPeeqMTX51CQ3G/BHw==",
+      "type": "package",
+      "path": "FarseerPhysics.Portable/3.5.1",
+      "files": [
+        "FarseerPhysics.Portable.3.5.1.nupkg.sha512",
+        "FarseerPhysics.Portable.nuspec",
+        "lib/portable-net4+sl4+wp8+win8/FarseerPhysics.Portable.dll"
+      ]
+    },
+    "Fody/1.29.3": {
+      "sha512": "I+dC/ez9Tl2QH+YuUhZBoqsMJKk3JzNszHpYSEFHzNBES1C5KcNJJPtc0gRUrQBpCz5x9oxPBfMZaI0UXFg9rw==",
+      "type": "package",
+      "path": "Fody/1.29.3",
+      "files": [
+        "Content/FodyWeavers.xml",
+        "Fody.1.29.3.nupkg.sha512",
+        "Fody.dll",
+        "Fody.nuspec",
+        "Fody.pdb",
+        "FodyCommon.dll",
+        "FodyCommon.pdb",
+        "FodyIsolated.dll",
+        "FodyIsolated.pdb",
+        "Mono.Cecil.Mdb.dll",
+        "Mono.Cecil.Pdb.dll",
+        "Mono.Cecil.Rocks.dll",
+        "Mono.Cecil.dll",
+        "build/dotnet/Fody.targets",
+        "build/portable-net+sl+win+wpa+wp/Fody.targets"
+      ]
+    },
+    "MathNet.Numerics/3.13.1": {
+      "sha512": "+0crRPAA0Xs97bbhX9nFKM736OmCwek/3es8leu4q3VUpUxRzZpoReat+pYtA6zSoBDGdXlhkltBetmDclplPg==",
+      "type": "package",
+      "path": "MathNet.Numerics/3.13.1",
+      "files": [
+        "MathNet.Numerics.3.13.1.nupkg.sha512",
+        "MathNet.Numerics.nuspec",
+        "lib/net35/MathNet.Numerics.dll",
+        "lib/net35/MathNet.Numerics.xml",
+        "lib/net40/MathNet.Numerics.dll",
+        "lib/net40/MathNet.Numerics.xml",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/MathNet.Numerics.XML",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/MathNet.Numerics.dll",
+        "lib/portable-net45+netcore45+MonoAndroid1+MonoTouch1/MathNet.Numerics.XML",
+        "lib/portable-net45+netcore45+MonoAndroid1+MonoTouch1/MathNet.Numerics.dll",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/MathNet.Numerics.XML",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/MathNet.Numerics.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/MathNet.Numerics.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/MathNet.Numerics.dll",
+        "lib/portable-net45+sl5+netcore45+MonoAndroid1+MonoTouch1/MathNet.Numerics.XML",
+        "lib/portable-net45+sl5+netcore45+MonoAndroid1+MonoTouch1/MathNet.Numerics.dll",
+        "license.txt",
+        "readme.txt"
+      ]
+    },
+    "MonoGame.Framework.DesktopGL/3.5.1.1679": {
+      "sha512": "19Lc0ce+j+YGrRbmNM343vbbQZv3HTx7GOaakengTPBjmuRj2wcXNh2iB/ZMCAgavl+lbvxSP2Gio7adSR0xBw==",
+      "type": "package",
+      "path": "MonoGame.Framework.DesktopGL/3.5.1.1679",
+      "files": [
+        "MonoGame.Framework.DesktopGL.3.5.1.1679.nupkg.sha512",
+        "MonoGame.Framework.DesktopGL.nuspec",
+        "lib/net40/MonoGame.Framework.dll",
+        "lib/net40/MonoGame.Framework.xml",
+        "lib/net40/NVorbis.dll",
+        "lib/net40/OpenTK.dll",
+        "readme.txt"
+      ]
+    },
+    "NLog/4.3.9": {
+      "sha512": "I8Gxg4Mrk5whZJZu+GNBuYZfG8Rjk0O6LRvAiOZyA8mDJZZyvfB6LygngOH3rlK/PkPol4yZzvV6FTI8aAUJ4A==",
+      "type": "package",
+      "path": "NLog/4.3.9",
+      "files": [
+        "NLog.4.3.9.nupkg.sha512",
+        "NLog.nuspec",
+        "lib/MonoAndroid10/NLog.dll",
+        "lib/MonoAndroid10/NLog.xml",
+        "lib/Xamarin.iOS10/NLog.dll",
+        "lib/Xamarin.iOS10/NLog.xml",
+        "lib/net35/NLog.dll",
+        "lib/net35/NLog.xml",
+        "lib/net40/NLog.dll",
+        "lib/net40/NLog.xml",
+        "lib/net45/NLog.dll",
+        "lib/net45/NLog.xml",
+        "lib/sl4/NLog.dll",
+        "lib/sl4/NLog.xml",
+        "lib/sl5/NLog.dll",
+        "lib/sl5/NLog.xml",
+        "lib/wp8/NLog.dll",
+        "lib/wp8/NLog.xml"
+      ]
+    },
+    "NLombok.Fody/0.0.5": {
+      "sha512": "N+NO9OuW7Rxlqr0hNMRf/kOb5N0Vk5SH7x9BKcEf3tmoCYOO+ZJh9tl8ln26QUvjazns9xt60Q2rFkO375gvlw==",
+      "type": "package",
+      "path": "NLombok.Fody/0.0.5",
+      "files": [
+        "Fody.NLombok.dll",
+        "Lib/dotnet/Fody.NLombok.dll",
+        "Lib/portable-net4+sl5+wpa81+wp8+win8+MonoAndroid16+MonoTouch40/Fody.NLombok.dll",
+        "NLombok.Fody.0.0.5.nupkg.sha512",
+        "NLombok.Fody.dll",
+        "NLombok.Fody.nuspec",
+        "Tools/install.ps1",
+        "Tools/uninstall.ps1"
+      ]
+    },
+    "Dargon.Commons/1.0.0": {
+      "type": "project",
+      "path": "../../../commons/src/Dargon.Commons/project.json",
+      "msbuildProject": "../../../commons/src/Dargon.Commons/Dargon.Commons.xproj"
+    },
+    "Dargon.Robotics/1.0.0": {
+      "type": "project",
+      "path": "../Dargon.Robotics/project.json",
+      "msbuildProject": "../Dargon.Robotics/Dargon.Robotics.xproj"
+    },
+    "Dargon.Ryu.Api/0.0.0": {
+      "type": "project",
+      "path": "../../../ryu/src/Dargon.Ryu.Api/project.json",
+      "msbuildProject": "../../../ryu/src/Dargon.Ryu.Api/Dargon.Ryu.Api.xproj"
+    },
+    "Dargon.Ryu.Impl/0.0.0": {
+      "type": "project",
+      "path": "../../../ryu/src/Dargon.Ryu.Impl/project.json",
+      "msbuildProject": "../../../ryu/src/Dargon.Ryu.Impl/Dargon.Ryu.Impl.xproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "Dargon.Commons",
+      "Dargon.Robotics",
+      "FarseerPhysics.Portable >= 3.5.1",
+      "MonoGame.Framework.DesktopGL >= 3.5.1.1679"
+    ],
+    ".NETFramework,Version=v4.6.1": [
+      "System.Xml >= 4.0.0"
+    ]
+  },
+  "tools": {},
+  "projectFileToolGroups": {}
+}
