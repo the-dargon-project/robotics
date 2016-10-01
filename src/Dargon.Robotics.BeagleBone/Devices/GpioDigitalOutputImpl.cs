@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dargon.Robotics.Devices.Common;
+﻿using Dargon.Robotics.Devices.Values;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public class GpioDigitalOutputImpl : GpioOutputBase<bool>, DigitalOutput {

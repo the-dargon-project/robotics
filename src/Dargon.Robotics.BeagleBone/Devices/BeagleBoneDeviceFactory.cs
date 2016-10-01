@@ -1,5 +1,5 @@
-﻿using Dargon.Robotics.Devices.Common;
-using ItzWarty;
+﻿using Dargon.Robotics.Devices.Values;
+using Dargon.Commons;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public class BeagleBoneDeviceFactory : DeviceFactory {

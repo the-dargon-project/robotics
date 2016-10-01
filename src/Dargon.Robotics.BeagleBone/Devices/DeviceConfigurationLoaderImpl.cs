@@ -1,14 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using Dargon.Robotics.Devices.Common;
+using Dargon.Commons;
+using Dargon.Robotics.DeviceRegistries;
 using Dargon.Robotics.Devices.Components;
 using IniParser.Model;
 using IniParser.Parser;
-using ItzWarty;
-using MathNet.Numerics.LinearAlgebra.Single;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public class DeviceConfigurationLoaderImpl {

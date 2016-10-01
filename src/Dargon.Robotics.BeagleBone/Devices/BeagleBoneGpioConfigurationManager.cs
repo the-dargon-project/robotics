@@ -1,6 +1,6 @@
-﻿using System;
-using Dargon.Robotics.Devices.Common.Util;
-using ItzWarty;
+﻿using Dargon.Commons;
+using Dargon.Robotics.Devices.Values.Util;
+using System;
 using System.ComponentModel;
 using System.IO;
 

@@ -1,5 +1,4 @@
-﻿using System;
-using Dargon.Robotics.Devices.Common;
+﻿using Dargon.Robotics.Devices.Values;
 
 namespace Dargon.Robotics.Devices.BeagleBone {
    public class GpioMotorImpl : GpioOutputBase<float>, Motor {

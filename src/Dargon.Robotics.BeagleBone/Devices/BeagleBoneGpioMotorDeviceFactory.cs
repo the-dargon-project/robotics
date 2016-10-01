@@ -1,5 +1,5 @@
-﻿using Dargon.Robotics.Devices.Common;
-using Dargon.Robotics.Devices.Common.Util;
+﻿using Dargon.Robotics.Devices.Values;
+using Dargon.Robotics.Devices.Values.Util;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;

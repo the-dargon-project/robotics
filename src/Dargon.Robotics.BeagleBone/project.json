@@ -2,10 +2,18 @@
     "version": "1.0.0-*",
 
     "dependencies": {
+        "Dargon.Robotics": "*",
+        "ini-parser": "2.3.0",
+        "MathNet.Numerics": "3.13.1",
+        "MathNet.Spatial": "0.2.0-alpha" 
     },
 
-    "frameworks": { 
-        "net461": { }
+    "frameworks": {
+        "net461": {
+            "frameworkAssemblies": {
+                "System.Xml": "4.0.0.0"
+            }
+        }
     },
 
     "scripts": {
