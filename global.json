@@ -1,0 +1,12 @@
+{
+    "projects": [
+        "dependencies/vox/src",
+        "dependencies/vox/test",
+        "dependencies/commons/src",
+        "dependencies/ryu/src",
+        "dependencies/NMockito/src"
+    ],
+    "sdk": {
+        "version": "1.0.0-preview1-002702"
+    }
+}
