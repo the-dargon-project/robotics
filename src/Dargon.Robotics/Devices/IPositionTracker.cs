@@ -48,7 +48,7 @@ namespace Dargon.Robotics.Devices {
          var leftShaftAngularVelocity = leftShaftEncoder.AngularVelocity;
          var rightShaftAngularVelocity = rightShaftEncoder.AngularVelocity;
 
-         Console.WriteLine(leftShaftAngle + " " + rightShaftAngle);
+//         Console.WriteLine(leftShaftAngle + " " + rightShaftAngle);
 
          // compute position from wheel displacement and gyro
          var deltaLeftShaftAngle = leftShaftAngle - lastLeftShaftAngle;
@@ -60,6 +60,8 @@ namespace Dargon.Robotics.Devices {
          // compute velocity from wheel rate and gyro.
          var forwardAlignedVelocityMagnitude = wheelMetersPerShaftRadian * (leftShaftAngularVelocity + rightShaftAngularVelocity) / 2.0f;
          velocity = new Vector2D(0, forwardAlignedVelocityMagnitude).Rotate(Angle.FromRadians(theta));
+
+         Console.WriteLine(displacement + " " + position);
 
          // update last angle
          lastLeftShaftAngle = leftShaftAngle;

@@ -37,6 +37,8 @@ namespace Dargon.Robotics.Simulations2D {
       }
 
       private void DrawRobotBody(IRenderer renderer) {
+         renderer.DrawCenteredRectangleWorld(new Vector2(10, 10), Vector2.One / 4, 0, Color.DarkGray);
+
          renderer.DrawCenteredRectangleWorld(
             robotBody.Position,
             new Vector2(robotState.Width, robotState.Height),
@@ -72,8 +74,9 @@ namespace Dargon.Robotics.Simulations2D {
       public void ApplyForces() {
          var motors = robotState.MotorStates;
          motors.ForEach(ApplyMotorForces);
+//         motors.ForEach(ApplyWheelDragFrictionForces);
       }
-      
+
       private void ApplyMotorForces(SimulationMotorState motorState) {
          var forceVectorWorld = Vector2.Transform(motorState.CurrentForceVector, Matrix.CreateRotationZ(robotBody.Rotation));
 //         Console.WriteLine(forceVectorWorld);
@@ -84,6 +87,12 @@ namespace Dargon.Robotics.Simulations2D {
          //         renderer.DrawForceVectorWorld(position, forceVectorWorld, Color.Cyan);
       }
 
+//      private void ApplyWheelDragFrictionForces(SimulationMotorState motorState) {
+//         var forceVectorWorld = Vector2.Transform(
+//            motorState.CurrentForceVector, 
+//            Matrix.CreateRotationZ(robotBody.Rotation));
+//      }
+
       public void UpdateSensors(float dtSeconds) {
          robotState.WheelShaftEncoderStates.ForEach(x => UpdateWheelShaftEncoder(dtSeconds, x));
 
@@ -93,8 +102,6 @@ namespace Dargon.Robotics.Simulations2D {
 
          var position = robotBody.Position;
          var velocity = robotBody.LinearVelocity;
-
-         
       }
 
       private void UpdateWheelShaftEncoder(float dtSeconds, SimulationWheelShaftEncoderState wheelShaftEncoderState) {

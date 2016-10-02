@@ -21,8 +21,9 @@
       }
 
       public static SimulationConstants WideLandRobot() {
+         // Higher damping = less skidding along simulated drive wheels.
          return new SimulationConstants {
-            AngularDamping = 8.75f,
+            AngularDamping = 16.75f,
             LinearDamping = 16.0f,
             WidthMeters = 0.96f,
             HeightMeters = 0.71f,
