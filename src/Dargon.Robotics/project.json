@@ -6,11 +6,16 @@
         "Dargon.Ryu.Api": "*",
         "Dargon.Ryu.Impl": "*",
         "MathNet.Numerics": "3.13.1",
+        "MathNet.Spatial": "0.2.0-alpha",
         "NLog": "4.3.9"
     },
 
-    "frameworks": { 
-        "net461": { }
+    "frameworks": {
+        "net461": {
+            "frameworkAssemblies": {
+                "System.Xml": "4.0.0.0"
+            }
+        }
     },
 
     "scripts": {

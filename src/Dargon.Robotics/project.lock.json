@@ -24,6 +24,18 @@
           "lib/net40/MathNet.Numerics.dll": {}
         }
       },
+      "MathNet.Spatial/0.2.0-alpha": {
+        "type": "package",
+        "dependencies": {
+          "MathNet.Numerics": "3.0.2"
+        },
+        "compile": {
+          "lib/net40/MathNet.Spatial.dll": {}
+        },
+        "runtime": {
+          "lib/net40/MathNet.Spatial.dll": {}
+        }
+      },
       "NLog/4.3.9": {
         "type": "package",
         "compile": {
@@ -163,6 +175,19 @@
         "readme.txt"
       ]
     },
+    "MathNet.Spatial/0.2.0-alpha": {
+      "sha512": "h43Up8kAcIFo3A0hPlvd/zqimrIYg7UyF8N1VKtZ1r1j5+s8j6RL3MnsfnHDPIS+KXrNCzsXSMK+ZNRtRk+ayg==",
+      "type": "package",
+      "path": "MathNet.Spatial/0.2.0-alpha",
+      "files": [
+        "MathNet.Spatial.0.2.0-alpha.nupkg.sha512",
+        "MathNet.Spatial.nuspec",
+        "lib/net40/MathNet.Spatial.dll",
+        "lib/net40/MathNet.Spatial.xml",
+        "license.txt",
+        "readme.txt"
+      ]
+    },
     "NLog/4.3.9": {
       "sha512": "I8Gxg4Mrk5whZJZu+GNBuYZfG8Rjk0O6LRvAiOZyA8mDJZZyvfB6LygngOH3rlK/PkPol4yZzvV6FTI8aAUJ4A==",
       "type": "package",
@@ -225,9 +250,12 @@
       "Dargon.Ryu.Api",
       "Dargon.Ryu.Impl",
       "MathNet.Numerics >= 3.13.1",
+      "MathNet.Spatial >= 0.2.0-alpha",
       "NLog >= 4.3.9"
     ],
-    ".NETFramework,Version=v4.6.1": []
+    ".NETFramework,Version=v4.6.1": [
+      "System.Xml >= 4.0.0"
+    ]
   },
   "tools": {},
   "projectFileToolGroups": {}

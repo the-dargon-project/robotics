@@ -33,6 +33,18 @@
           "lib/net40/MathNet.Numerics.dll": {}
         }
       },
+      "MathNet.Spatial/0.2.0-alpha": {
+        "type": "package",
+        "dependencies": {
+          "MathNet.Numerics": "3.0.2"
+        },
+        "compile": {
+          "lib/net40/MathNet.Spatial.dll": {}
+        },
+        "runtime": {
+          "lib/net40/MathNet.Spatial.dll": {}
+        }
+      },
       "MonoGame.Framework.DesktopGL/3.5.1.1679": {
         "type": "package",
         "compile": {
@@ -94,8 +106,12 @@
           "Dargon.Ryu.Api": "1.0.0",
           "Dargon.Ryu.Impl": "1.0.0",
           "MathNet.Numerics": "3.13.1",
+          "MathNet.Spatial": "0.2.0-alpha",
           "NLog": "4.3.9"
         },
+        "frameworkAssemblies": [
+          "System.Xml"
+        ],
         "compile": {
           "net461/Dargon.Robotics.dll": {}
         },
@@ -208,6 +224,19 @@
         "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/MathNet.Numerics.dll",
         "lib/portable-net45+sl5+netcore45+MonoAndroid1+MonoTouch1/MathNet.Numerics.XML",
         "lib/portable-net45+sl5+netcore45+MonoAndroid1+MonoTouch1/MathNet.Numerics.dll",
+        "license.txt",
+        "readme.txt"
+      ]
+    },
+    "MathNet.Spatial/0.2.0-alpha": {
+      "sha512": "h43Up8kAcIFo3A0hPlvd/zqimrIYg7UyF8N1VKtZ1r1j5+s8j6RL3MnsfnHDPIS+KXrNCzsXSMK+ZNRtRk+ayg==",
+      "type": "package",
+      "path": "MathNet.Spatial/0.2.0-alpha",
+      "files": [
+        "MathNet.Spatial.0.2.0-alpha.nupkg.sha512",
+        "MathNet.Spatial.nuspec",
+        "lib/net40/MathNet.Spatial.dll",
+        "lib/net40/MathNet.Spatial.xml",
         "license.txt",
         "readme.txt"
       ]

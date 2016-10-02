@@ -59,7 +59,7 @@ namespace Dargon.Robotics.Simulations2D {
          GraphicsDevice.Clear(Color.Black);
          spriteBatch.Begin();
          robotEntity.Render(this);
-         for (var i = 0; i < 2; i++) {
+         for (var i = 0; i < 30; i++) {
             DrawLineSegmentWorld(new Vector2(i, 0), new Vector2(i, 40), Color.Gray);
             DrawLineSegmentWorld(new Vector2(0, i), new Vector2(40, i), Color.Gray);
          }

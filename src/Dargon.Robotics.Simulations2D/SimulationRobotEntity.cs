@@ -1,3 +1,4 @@
+using System;
 using Dargon.Commons;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
@@ -84,33 +85,36 @@ namespace Dargon.Robotics.Simulations2D {
       }
 
       public void UpdateSensors(float dtSeconds) {
-         var wheelEncoders = robotState.WheelEncoderStates;
-         wheelEncoders.ForEach(x => UpdateWheelEncoders(dtSeconds, x));
-//         if (StaticRandom.Next(0, 2000) == 0) {
-//            Console.WriteLine(wheelEncoders.Select(x => x.Name + ": " + x.Position).Join(", "));
-//         }
+         robotState.WheelShaftEncoderStates.ForEach(x => UpdateWheelShaftEncoder(dtSeconds, x));
 
-         var accelerometer = robotState.AccelerometerState;
+         var yawGyroscope = robotState.YawGyroscopeState;
+         yawGyroscope.Angle = robotBody.Rotation;
+         yawGyroscope.AngularVelocity = robotBody.AngularVelocity;
+
          var position = robotBody.Position;
          var velocity = robotBody.LinearVelocity;
+
+         
       }
 
-      private void UpdateWheelEncoders(float dtSeconds, SimulationWheelEncoderState wheelEncoderState) {
-         var motor = wheelEncoderState.Motor;
+      private void UpdateWheelShaftEncoder(float dtSeconds, SimulationWheelShaftEncoderState wheelShaftEncoderState) {
+         var motor = wheelShaftEncoderState.Motor;
          var currentWorldPosition = robotBody.GetWorldPoint(motor.RelativePosition);
-         if (!wheelEncoderState.HasBeenUpdated) {
-            wheelEncoderState.HasBeenUpdated = true;
+         if (!wheelShaftEncoderState.HasBeenUpdated) {
+            wheelShaftEncoderState.HasBeenUpdated = true;
          } else {
-            var deltaPositionAbsolute = currentWorldPosition - wheelEncoderState.LastWorldPosition;
+            var deltaPositionAbsolute = currentWorldPosition - wheelShaftEncoderState.LastWorldPosition;
             var deltaPositionRelative = Vector2.Transform(deltaPositionAbsolute, Matrix.CreateRotationZ(-robotBody.Rotation));
             var countedDirection = motor.MaxForceVector;
             countedDirection.Normalize();
             var deltaPosition = Vector2.Dot(deltaPositionRelative, countedDirection);
             var velocity = deltaPosition / dtSeconds;
-            wheelEncoderState.Position += deltaPosition;
-            wheelEncoderState.Velocity = velocity;
+            // arc length = theta * r => theta = arc length / r
+            wheelShaftEncoderState.Angle += deltaPosition / wheelShaftEncoderState.WheelRadius;
+            // omega = delta arc length / r
+            wheelShaftEncoderState.AngularVelocity = velocity / wheelShaftEncoderState.WheelRadius;
          }
-         wheelEncoderState.LastWorldPosition = currentWorldPosition;
+         wheelShaftEncoderState.LastWorldPosition = currentWorldPosition;
       }
    }
 }

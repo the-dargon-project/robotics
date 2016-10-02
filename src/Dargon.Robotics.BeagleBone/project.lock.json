@@ -93,8 +93,12 @@
           "Dargon.Ryu.Api": "1.0.0",
           "Dargon.Ryu.Impl": "1.0.0",
           "MathNet.Numerics": "3.13.1",
+          "MathNet.Spatial": "0.2.0-alpha",
           "NLog": "4.3.9"
         },
+        "frameworkAssemblies": [
+          "System.Xml"
+        ],
         "compile": {
           "net461/Dargon.Robotics.dll": {}
         },

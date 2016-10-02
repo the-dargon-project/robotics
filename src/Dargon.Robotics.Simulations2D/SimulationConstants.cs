@@ -12,8 +12,8 @@
 
       public static SimulationConstants LandRobot() {
          return new SimulationConstants {
-            AngularDamping = 3.75f,
-            LinearDamping = 2.0f,
+            AngularDamping = 8.75f,
+            LinearDamping = 16.0f,
             Width = 0.66f,
             Height = 0.66f,
             Density = kAluminumDensity * 0.0125f // brings us to ~64 pounds

@@ -29,12 +29,13 @@ namespace Dargon.Robotics.Devices {
       None = 0,
       AnalogInput    = 0x00000001U,
       AnalogOutput   = 0x00000002U,
-      Encoder        = 0x00000004U,
+      RotaryEncoder  = 0x00000004U,
       Motor          = 0x00000008U,
       DigitalOutput  = 0x00000010U,
       Accumulator    = 0x00000020U,
       Accelerometer  = 0x00000040U,
       Gyroscope      = 0x00000080U,
       Servo          = 0x00000100U,
+      PositionTracker = 0x00000200U,
    }
 }
