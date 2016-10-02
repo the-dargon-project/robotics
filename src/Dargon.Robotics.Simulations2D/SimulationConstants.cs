@@ -2,8 +2,8 @@
    public class SimulationConstants {
       public float LinearDamping { get; set; }
       public float AngularDamping { get; set; }
-      public float Width { get; set; }
-      public float Height { get; set; }
+      public float WidthMeters { get; set; }
+      public float HeightMeters { get; set; }
       public float Density { get; set; }
    }
 
@@ -14,8 +14,18 @@
          return new SimulationConstants {
             AngularDamping = 3.75f,
             LinearDamping = 2.0f,
-            Width = 0.66f,
-            Height = 0.66f,
+            WidthMeters = 0.66f,
+            HeightMeters = 0.66f,
+            Density = kAluminumDensity * 0.0125f // brings us to ~64 pounds
+         };
+      }
+
+      public static SimulationConstants WideLandRobot() {
+         return new SimulationConstants {
+            AngularDamping = 3.75f,
+            LinearDamping = 2.0f,
+            WidthMeters = 0.96f,
+            HeightMeters = 0.71f,
             Density = kAluminumDensity * 0.0125f // brings us to ~64 pounds
          };
       }
@@ -24,8 +34,8 @@
          return new SimulationConstants {
             AngularDamping = 30.0f,
             LinearDamping = 1.0f,
-            Width = 0.66f,
-            Height = 0.66f,
+            WidthMeters = 0.66f,
+            HeightMeters = 0.66f,
             Density = kAluminumDensity * 0.0475f // brings us to ~100 pounds
          };
       }
