@@ -24,7 +24,7 @@
          // Higher damping = less skidding along simulated drive wheels.
          return new SimulationConstants {
             AngularDamping = 16.75f,
-            LinearDamping = 16.0f,
+            LinearDamping = 8.0f,
             WidthMeters = 0.96f,
             HeightMeters = 0.71f,
             Density = kAluminumDensity * 0.0125f // brings us to ~64 pounds

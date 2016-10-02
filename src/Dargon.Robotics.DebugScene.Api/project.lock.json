@@ -12,15 +12,6 @@
           "lib/net45/Castle.Core.dll": {}
         }
       },
-      "FarseerPhysics.Portable/3.5.1": {
-        "type": "package",
-        "compile": {
-          "lib/portable-net4+sl4+wp8+win8/FarseerPhysics.Portable.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net4+sl4+wp8+win8/FarseerPhysics.Portable.dll": {}
-        }
-      },
       "Fody/1.29.3": {
         "type": "package"
       },
@@ -43,19 +34,6 @@
         },
         "runtime": {
           "lib/net40/MathNet.Spatial.dll": {}
-        }
-      },
-      "MonoGame.Framework.DesktopGL/3.5.1.1679": {
-        "type": "package",
-        "compile": {
-          "lib/net40/MonoGame.Framework.dll": {},
-          "lib/net40/NVorbis.dll": {},
-          "lib/net40/OpenTK.dll": {}
-        },
-        "runtime": {
-          "lib/net40/MonoGame.Framework.dll": {},
-          "lib/net40/NVorbis.dll": {},
-          "lib/net40/OpenTK.dll": {}
         }
       },
       "NLog/4.3.9": {
@@ -96,49 +74,6 @@
         },
         "runtime": {
           "net461/Dargon.Commons.dll": {}
-        }
-      },
-      "Dargon.Robotics/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.6.1",
-        "dependencies": {
-          "Dargon.Commons": "1.0.0",
-          "Dargon.Ryu.Api": "1.0.0",
-          "Dargon.Ryu.Impl": "1.0.0",
-          "MathNet.Numerics": "3.13.1",
-          "MathNet.Spatial": "0.2.0-alpha",
-          "NLog": "4.3.9"
-        },
-        "frameworkAssemblies": [
-          "System.Xml"
-        ],
-        "compile": {
-          "net461/Dargon.Robotics.dll": {}
-        },
-        "runtime": {
-          "net461/Dargon.Robotics.dll": {}
-        }
-      },
-      "Dargon.Robotics.DebugScene.Api/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.6.1",
-        "dependencies": {
-          "Dargon.Commons": "1.0.0",
-          "Dargon.Ryu.Api": "1.0.0",
-          "Dargon.Ryu.Impl": "1.0.0",
-          "MathNet.Numerics": "3.13.1",
-          "MathNet.Spatial": "0.2.0-alpha",
-          "NLog": "4.3.9"
-        },
-        "frameworkAssemblies": [
-          "System.Drawing",
-          "System.Xml"
-        ],
-        "compile": {
-          "net461/Dargon.Robotics.DebugScene.Api.dll": {}
-        },
-        "runtime": {
-          "net461/Dargon.Robotics.DebugScene.Api.dll": {}
         }
       },
       "Dargon.Ryu.Api/0.0.0": {
@@ -191,16 +126,6 @@
         "lib/sl5/Castle.Core.dll",
         "lib/sl5/Castle.Core.xml",
         "readme.txt"
-      ]
-    },
-    "FarseerPhysics.Portable/3.5.1": {
-      "sha512": "lOlwGyDonsk5xHfa1+a4jGUdkENWq4h6HiWoeUtVo0sWDqvrb64TLKBgRAMvZ5V+r6eZpPeeqMTX51CQ3G/BHw==",
-      "type": "package",
-      "path": "FarseerPhysics.Portable/3.5.1",
-      "files": [
-        "FarseerPhysics.Portable.3.5.1.nupkg.sha512",
-        "FarseerPhysics.Portable.nuspec",
-        "lib/portable-net4+sl4+wp8+win8/FarseerPhysics.Portable.dll"
       ]
     },
     "Fody/1.29.3": {
@@ -263,20 +188,6 @@
         "readme.txt"
       ]
     },
-    "MonoGame.Framework.DesktopGL/3.5.1.1679": {
-      "sha512": "19Lc0ce+j+YGrRbmNM343vbbQZv3HTx7GOaakengTPBjmuRj2wcXNh2iB/ZMCAgavl+lbvxSP2Gio7adSR0xBw==",
-      "type": "package",
-      "path": "MonoGame.Framework.DesktopGL/3.5.1.1679",
-      "files": [
-        "MonoGame.Framework.DesktopGL.3.5.1.1679.nupkg.sha512",
-        "MonoGame.Framework.DesktopGL.nuspec",
-        "lib/net40/MonoGame.Framework.dll",
-        "lib/net40/MonoGame.Framework.xml",
-        "lib/net40/NVorbis.dll",
-        "lib/net40/OpenTK.dll",
-        "readme.txt"
-      ]
-    },
     "NLog/4.3.9": {
       "sha512": "I8Gxg4Mrk5whZJZu+GNBuYZfG8Rjk0O6LRvAiOZyA8mDJZZyvfB6LygngOH3rlK/PkPol4yZzvV6FTI8aAUJ4A==",
       "type": "package",
@@ -322,16 +233,6 @@
       "path": "../../../commons/src/Dargon.Commons/project.json",
       "msbuildProject": "../../../commons/src/Dargon.Commons/Dargon.Commons.xproj"
     },
-    "Dargon.Robotics/1.0.0": {
-      "type": "project",
-      "path": "../Dargon.Robotics/project.json",
-      "msbuildProject": "../Dargon.Robotics/Dargon.Robotics.xproj"
-    },
-    "Dargon.Robotics.DebugScene.Api/1.0.0": {
-      "type": "project",
-      "path": "../Dargon.Robotics.DebugScene.Api/project.json",
-      "msbuildProject": "../Dargon.Robotics.DebugScene.Api/Dargon.Robotics.DebugScene.Api.xproj"
-    },
     "Dargon.Ryu.Api/0.0.0": {
       "type": "project",
       "path": "../../../ryu/src/Dargon.Ryu.Api/project.json",
@@ -346,12 +247,14 @@
   "projectFileDependencyGroups": {
     "": [
       "Dargon.Commons",
-      "Dargon.Robotics",
-      "Dargon.Robotics.DebugScene.Api",
-      "FarseerPhysics.Portable >= 3.5.1",
-      "MonoGame.Framework.DesktopGL >= 3.5.1.1679"
+      "Dargon.Ryu.Api",
+      "Dargon.Ryu.Impl",
+      "MathNet.Numerics >= 3.13.1",
+      "MathNet.Spatial >= 0.2.0-alpha",
+      "NLog >= 4.3.9"
     ],
     ".NETFramework,Version=v4.6.1": [
+      "System.Drawing >= 4.0.0",
       "System.Xml >= 4.0.0"
     ]
   },

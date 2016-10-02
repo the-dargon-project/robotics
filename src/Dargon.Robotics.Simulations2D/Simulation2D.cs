@@ -1,3 +1,4 @@
+using Dargon.Robotics.DebugScene;
 using Dargon.Robotics.Simulations2D.Utilities;
 using FarseerPhysics;
 using FarseerPhysics.Dynamics;
@@ -13,13 +14,15 @@ namespace Dargon.Robotics.Simulations2D {
       private readonly GraphicsDeviceManager graphicsDeviceManager;
       private readonly World world;
       private readonly SimulationRobotEntity robotEntity;
+      private readonly IDebugRenderContext debugRenderContext;
       private int ticksExecuted = 0;
       private SpriteBatch spriteBatch;
       private Texture2D whiteRectangle;
       private RenderTarget2D invertedRenderTarget;
 
-      public Simulation2D(SimulationRobotEntity robotEntity) {
+      public Simulation2D(SimulationRobotEntity robotEntity, IDebugRenderContext debugRenderContext) {
          this.robotEntity = robotEntity;
+         this.debugRenderContext = debugRenderContext;
 
          Content.RootDirectory = "Assets";
          ConvertUnits.SetDisplayUnitToSimUnitRatio(50f);
@@ -62,6 +65,14 @@ namespace Dargon.Robotics.Simulations2D {
          for (var i = 0; i < 30; i++) {
             DrawLineSegmentWorld(new Vector2(i, 0), new Vector2(i, 40), Color.Gray);
             DrawLineSegmentWorld(new Vector2(0, i), new Vector2(40, i), Color.Gray);
+         }
+         var debugScene = debugRenderContext.CurrentScene;
+         foreach (var quad in debugScene.Quads) {
+            DrawCenteredRectangleWorld(
+               new Vector2((float)quad.Position.X, (float)quad.Position.Y),
+               new Vector2((float)quad.Extents.X, (float)quad.Extents.Y),
+               quad.Rotation,
+               new Color(quad.Color.R, quad.Color.G, quad.Color.B, quad.Color.A));
          }
          spriteBatch.End();
          GraphicsDevice.SetRenderTarget(null);

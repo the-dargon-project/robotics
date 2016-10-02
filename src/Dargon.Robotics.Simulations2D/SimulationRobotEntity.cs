@@ -20,7 +20,7 @@ namespace Dargon.Robotics.Simulations2D {
       public void Initialize(World world) {
          robotBody = BodyFactory.CreateRectangle(world, robotState.Width, robotState.Height, robotState.Density);
          robotBody.BodyType = BodyType.Dynamic;
-         robotBody.Position = new Vector2(10, 10);
+         robotBody.Position = new Vector2(0, 0);
          robotBody.LocalCenter = centerOfMass;
          //         robotBody.Rotation = (float)Math.PI;
          robotBody.AngularDamping = constants.AngularDamping;
@@ -72,6 +72,14 @@ namespace Dargon.Robotics.Simulations2D {
       }
 
       public void ApplyForces() {
+         // HACK: Constrain velocity to forward.
+         var forward = Vector2.Transform(Vector2.UnitY, Matrix.CreateRotationZ(robotBody.Rotation));
+         if (robotBody.LinearVelocity.Length() > 0) {
+            var linearVelocityNormalized = robotBody.LinearVelocity;
+            linearVelocityNormalized.Normalize();
+            robotBody.LinearVelocity = linearVelocityNormalized * Math.Abs(Vector2.Dot(robotBody.LinearVelocity, forward));
+         }
+
          var motors = robotState.MotorStates;
          motors.ForEach(ApplyMotorForces);
 //         motors.ForEach(ApplyWheelDragFrictionForces);
