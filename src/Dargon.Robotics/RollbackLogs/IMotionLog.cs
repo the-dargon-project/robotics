@@ -1,43 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using Castle.Components.DictionaryAdapter;
-using Dargon.Commons;
+﻿using Dargon.Commons.Collections;
 using Dargon.Robotics.Devices;
 using MathNet.Spatial.Euclidean;
+using System;
+using System.Linq;
+using SCG = System.Collections.Generic;
 
 namespace Dargon.Robotics.RollbackLogs {
    public interface IStateSnapshotLog<TSnapshot> : IUpdatable {
-      bool TryGetInterpolatedSnapshot(DateTime when, out TSnapshot snapshot);
+      bool TryGetInterpolatedSnapshot(DateTime when, out TSnapshot result);
+      SCG.IEnumerable<TSnapshot> EnumerateSnapshots();
+      SCG.IEnumerable<SnapshotEntry<TSnapshot>> EnumerateSnapshotEntries();
    }
 
    public interface IMotionStateSnapshotLog : IStateSnapshotLog<MotionSnapshot> {
    }
 
    public abstract class StateSnapshotLogBase<TSnapshot> : IStateSnapshotLog<TSnapshot> {
-      private readonly LinkedList<SnapshotEntry<TSnapshot>> storage = new LinkedList<SnapshotEntry<TSnapshot>>();
+      private readonly ConcurrentQueue<SnapshotEntry<TSnapshot>> storage = new ConcurrentQueue<SnapshotEntry<TSnapshot>>();
       private readonly TimeSpan snapshotCullingExpiration;
 
       protected StateSnapshotLogBase(TimeSpan snapshotCullingExpiration) {
          this.snapshotCullingExpiration = snapshotCullingExpiration;
       }
 
-      public bool TryGetInterpolatedSnapshot(DateTime when, out TSnapshot snapshot) {
-         var current = storage.First;
-
-         // run down list until we reach a node timestamped after when.
-         while (current != null && current.Value.Timestamp < when) {
-            current = current.Next;
+      public bool TryGetInterpolatedSnapshot(DateTime when, out TSnapshot result) {
+         SnapshotEntry<TSnapshot> firstSnapshot = null;
+         SnapshotEntry<TSnapshot> secondSnapshot = null;
+         foreach (var snapshot in storage) {
+            if (snapshot.Timestamp < when) {
+               firstSnapshot = snapshot;
+            } else {
+               secondSnapshot = snapshot;
+               break;
+            }
          }
 
-         // if the node doesn't exist or a node doesn't exist before it, fail as we'd have to extrapolate.
-         if (current == null || current.Previous == null) {
-            snapshot = default(TSnapshot);
+         if (firstSnapshot == null || secondSnapshot == null) {
+            result = default(TSnapshot);
             return false;
          }
-
-         // Interpolate between current and the snapshot before it.
-         snapshot = InterpolateSnapshots(current.Previous.Value, current.Value, when);
+         
+         result = InterpolateSnapshots(firstSnapshot, secondSnapshot, when);
          return true;
+      }
+
+      public SCG.IEnumerable<TSnapshot> EnumerateSnapshots() {
+         return storage.Select(e => e.Snapshot).ToList();
+      }
+
+      public SCG.IEnumerable<SnapshotEntry<TSnapshot>> EnumerateSnapshotEntries() {
+         return storage.ToList();
       }
 
       public void Update() {
@@ -50,11 +62,13 @@ namespace Dargon.Robotics.RollbackLogs {
             Timestamp = now,
             Expires = now + snapshotCullingExpiration
          };
-         storage.AddLast(entry);
+         storage.Enqueue(entry);
 
          // cull old snapshot entries
-         while (storage.Count != 0 && storage.First.Value.Expires < now) {
-            storage.RemoveFirst();
+         SnapshotEntry<TSnapshot> peekedEntry;
+         while (storage.TryPeek(out peekedEntry) && peekedEntry.Expires < now) {
+            SnapshotEntry<TSnapshot> throwaway;
+            storage.TryDequeue(out throwaway);
          }
       }
 

@@ -9,14 +9,14 @@ namespace Dargon.Robotics.Simulations2D {
       private readonly SimulationConstants constants;
       private readonly SimulationRobotState robotState;
       private readonly Vector2 centerOfMass;
-      private readonly bool suppressNonforwardMotion;
+      private readonly float nonforwardMotionSuppressionFactor;
       private Body robotBody;
 
-      public SimulationRobotEntity(SimulationConstants constants, SimulationRobotState robotState, Vector2 centerOfMass = default(Vector2), bool suppressNonforwardMotion = false) {
+      public SimulationRobotEntity(SimulationConstants constants, SimulationRobotState robotState, Vector2 centerOfMass = default(Vector2), float nonforwardMotionSuppressionFactor = 0.0f) {
          this.constants = constants;
          this.robotState = robotState;
          this.centerOfMass = centerOfMass;
-         this.suppressNonforwardMotion = suppressNonforwardMotion;
+         this.nonforwardMotionSuppressionFactor = nonforwardMotionSuppressionFactor;
       }
 
       public void Initialize(World world) {
@@ -74,13 +74,14 @@ namespace Dargon.Robotics.Simulations2D {
       }
 
       public void ApplyForces() {
-         if (suppressNonforwardMotion) {
-            var forward = Vector2.Transform(Vector2.UnitY, Matrix.CreateRotationZ(robotBody.Rotation));
-            if (robotBody.LinearVelocity.Length() > 0) {
-               var linearVelocityNormalized = robotBody.LinearVelocity;
-               linearVelocityNormalized.Normalize();
-               robotBody.LinearVelocity = linearVelocityNormalized * Math.Abs(Vector2.Dot(robotBody.LinearVelocity, forward));
-            }
+         var forward = Vector2.Transform(Vector2.UnitY, Matrix.CreateRotationZ(robotBody.Rotation));
+         if (robotBody.LinearVelocity.Length() > 0) {
+            var linearVelocityNormalized = robotBody.LinearVelocity;
+            linearVelocityNormalized.Normalize();
+            var forwardOnlyMotion = linearVelocityNormalized * Math.Abs(Vector2.Dot(robotBody.LinearVelocity, forward));
+            var forwardOnlyMotionRatio = nonforwardMotionSuppressionFactor;
+            var nonforwardMotionRatio = 1.0 - forwardOnlyMotionRatio;
+            robotBody.LinearVelocity = robotBody.LinearVelocity * (float)nonforwardMotionRatio + forwardOnlyMotion * (float)forwardOnlyMotionRatio;
          }
 
          var motors = robotState.MotorStates;
