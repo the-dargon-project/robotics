@@ -58,11 +58,11 @@ namespace Dargon.Robotics.Simulations2D {
          base.Draw(gameTime);
 
          GraphicsDevice.SetRenderTarget(invertedRenderTarget);
-         GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
+         GraphicsDevice.RasterizerState = RasterizerState.CullNone;
          GraphicsDevice.Clear(Color.Black);
-         spriteBatch.Begin();
+         spriteBatch.Begin(transformMatrix: Matrix.CreateTranslation(0, 0, 0));
          robotEntity.Render(this);
-         for (var i = 0; i < 30; i++) {
+         for (var i = -15; i < 15; i++) {
             DrawLineSegmentWorld(new Vector2(i, 0), new Vector2(i, 40), Color.Gray);
             DrawLineSegmentWorld(new Vector2(0, i), new Vector2(40, i), Color.Gray);
          }

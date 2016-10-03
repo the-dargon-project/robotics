@@ -9,12 +9,14 @@ namespace Dargon.Robotics.Simulations2D {
       private readonly SimulationConstants constants;
       private readonly SimulationRobotState robotState;
       private readonly Vector2 centerOfMass;
+      private readonly bool suppressNonforwardMotion;
       private Body robotBody;
 
-      public SimulationRobotEntity(SimulationConstants constants, SimulationRobotState robotState, Vector2 centerOfMass = default(Vector2)) {
+      public SimulationRobotEntity(SimulationConstants constants, SimulationRobotState robotState, Vector2 centerOfMass = default(Vector2), bool suppressNonforwardMotion = false) {
          this.constants = constants;
          this.robotState = robotState;
          this.centerOfMass = centerOfMass;
+         this.suppressNonforwardMotion = suppressNonforwardMotion;
       }
 
       public void Initialize(World world) {
@@ -72,12 +74,13 @@ namespace Dargon.Robotics.Simulations2D {
       }
 
       public void ApplyForces() {
-         // HACK: Constrain velocity to forward.
-         var forward = Vector2.Transform(Vector2.UnitY, Matrix.CreateRotationZ(robotBody.Rotation));
-         if (robotBody.LinearVelocity.Length() > 0) {
-            var linearVelocityNormalized = robotBody.LinearVelocity;
-            linearVelocityNormalized.Normalize();
-            robotBody.LinearVelocity = linearVelocityNormalized * Math.Abs(Vector2.Dot(robotBody.LinearVelocity, forward));
+         if (suppressNonforwardMotion) {
+            var forward = Vector2.Transform(Vector2.UnitY, Matrix.CreateRotationZ(robotBody.Rotation));
+            if (robotBody.LinearVelocity.Length() > 0) {
+               var linearVelocityNormalized = robotBody.LinearVelocity;
+               linearVelocityNormalized.Normalize();
+               robotBody.LinearVelocity = linearVelocityNormalized * Math.Abs(Vector2.Dot(robotBody.LinearVelocity, forward));
+            }
          }
 
          var motors = robotState.MotorStates;
@@ -123,6 +126,7 @@ namespace Dargon.Robotics.Simulations2D {
             var countedDirection = motor.MaxForceVector;
             countedDirection.Normalize();
             var deltaPosition = Vector2.Dot(deltaPositionRelative, countedDirection);
+//            var deltaPosition = deltaPositionRelative.Length();
             var velocity = deltaPosition / dtSeconds;
             // arc length = theta * r => theta = arc length / r
             wheelShaftEncoderState.Angle += deltaPosition / wheelShaftEncoderState.WheelRadius;
