@@ -24,7 +24,7 @@ namespace Dargon.Robotics {
             var timeElapsedMillis = stopwatch.ElapsedMilliseconds;
             var timeToSleepMillis = tickIntervalMillis - timeElapsedMillis;
             if (timeToSleepMillis > 1) {
-               Console.WriteLine($"Finished in {timeElapsedMillis}/{tickIntervalMillis} ms.");
+//               Console.WriteLine($"Finished in {timeElapsedMillis}/{tickIntervalMillis} ms.");
                Thread.Sleep((int)timeToSleepMillis);
             } else if(timeToSleepMillis < 0) {
                Console.Error.WriteLine($"Warning: Iteration took {-timeToSleepMillis} millis too long to execute.");

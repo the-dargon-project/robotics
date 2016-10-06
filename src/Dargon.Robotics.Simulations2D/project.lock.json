@@ -21,9 +21,6 @@
           "lib/portable-net4+sl4+wp8+win8/FarseerPhysics.Portable.dll": {}
         }
       },
-      "Fody/1.29.3": {
-        "type": "package"
-      },
       "MathNet.Numerics/3.13.1": {
         "type": "package",
         "compile": {
@@ -67,25 +64,11 @@
           "lib/net45/NLog.dll": {}
         }
       },
-      "NLombok.Fody/0.0.5": {
-        "type": "package",
-        "dependencies": {
-          "Fody": "(, )"
-        },
-        "compile": {
-          "Lib/dotnet/Fody.NLombok.dll": {}
-        },
-        "runtime": {
-          "Lib/dotnet/Fody.NLombok.dll": {}
-        }
-      },
       "Dargon.Commons/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6.1",
         "dependencies": {
-          "Dargon.Ryu.Api": "1.0.0",
-          "Fody": "1.29.3",
-          "NLombok.Fody": "0.0.5"
+          "Dargon.Ryu.Api": "1.0.0"
         },
         "frameworkAssemblies": [
           "System.Runtime",
@@ -203,28 +186,6 @@
         "lib/portable-net4+sl4+wp8+win8/FarseerPhysics.Portable.dll"
       ]
     },
-    "Fody/1.29.3": {
-      "sha512": "I+dC/ez9Tl2QH+YuUhZBoqsMJKk3JzNszHpYSEFHzNBES1C5KcNJJPtc0gRUrQBpCz5x9oxPBfMZaI0UXFg9rw==",
-      "type": "package",
-      "path": "Fody/1.29.3",
-      "files": [
-        "Content/FodyWeavers.xml",
-        "Fody.1.29.3.nupkg.sha512",
-        "Fody.dll",
-        "Fody.nuspec",
-        "Fody.pdb",
-        "FodyCommon.dll",
-        "FodyCommon.pdb",
-        "FodyIsolated.dll",
-        "FodyIsolated.pdb",
-        "Mono.Cecil.Mdb.dll",
-        "Mono.Cecil.Pdb.dll",
-        "Mono.Cecil.Rocks.dll",
-        "Mono.Cecil.dll",
-        "build/dotnet/Fody.targets",
-        "build/portable-net+sl+win+wpa+wp/Fody.targets"
-      ]
-    },
     "MathNet.Numerics/3.13.1": {
       "sha512": "+0crRPAA0Xs97bbhX9nFKM736OmCwek/3es8leu4q3VUpUxRzZpoReat+pYtA6zSoBDGdXlhkltBetmDclplPg==",
       "type": "package",
@@ -300,21 +261,6 @@
         "lib/sl5/NLog.xml",
         "lib/wp8/NLog.dll",
         "lib/wp8/NLog.xml"
-      ]
-    },
-    "NLombok.Fody/0.0.5": {
-      "sha512": "N+NO9OuW7Rxlqr0hNMRf/kOb5N0Vk5SH7x9BKcEf3tmoCYOO+ZJh9tl8ln26QUvjazns9xt60Q2rFkO375gvlw==",
-      "type": "package",
-      "path": "NLombok.Fody/0.0.5",
-      "files": [
-        "Fody.NLombok.dll",
-        "Lib/dotnet/Fody.NLombok.dll",
-        "Lib/portable-net4+sl5+wpa81+wp8+win8+MonoAndroid16+MonoTouch40/Fody.NLombok.dll",
-        "NLombok.Fody.0.0.5.nupkg.sha512",
-        "NLombok.Fody.dll",
-        "NLombok.Fody.nuspec",
-        "Tools/install.ps1",
-        "Tools/uninstall.ps1"
       ]
     },
     "Dargon.Commons/1.0.0": {

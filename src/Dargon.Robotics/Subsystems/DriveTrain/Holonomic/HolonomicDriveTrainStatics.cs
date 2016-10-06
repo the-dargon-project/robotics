@@ -2,6 +2,10 @@
    public static class HolonomicDriveTrainStatics {
       public static IHolonomicCalculator Calculator { get; set; } = new HolonomicCalculatorImpl();
 
+      public static void Halt(this HolonomicDriveTrain driveTrain) {
+         driveTrain.SetValues(new HolonomicDriveValues());
+      }
+
       public static void TankDrive(this HolonomicDriveTrain driveTrain, float left, float right, bool inputsSquared = false) {
          var values = Calculator.TankDrive(left, right, inputsSquared);
          driveTrain.SetValues(values);
