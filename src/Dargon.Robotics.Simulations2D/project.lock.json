@@ -42,17 +42,17 @@
           "lib/net40/MathNet.Spatial.dll": {}
         }
       },
-      "MonoGame.Framework.MacOS/3.5.1.1679": {
+      "MonoGame.Framework.DesktopGL/3.5.1.1679": {
         "type": "package",
         "compile": {
-          "lib/net45/MonoGame.Framework.dll": {},
-          "lib/net45/OpenTK.dll": {},
-          "lib/net45/Tao.Sdl.dll": {}
+          "lib/net40/MonoGame.Framework.dll": {},
+          "lib/net40/NVorbis.dll": {},
+          "lib/net40/OpenTK.dll": {}
         },
         "runtime": {
-          "lib/net45/MonoGame.Framework.dll": {},
-          "lib/net45/OpenTK.dll": {},
-          "lib/net45/Tao.Sdl.dll": {}
+          "lib/net40/MonoGame.Framework.dll": {},
+          "lib/net40/NVorbis.dll": {},
+          "lib/net40/OpenTK.dll": {}
         }
       },
       "NLog/4.3.9": {
@@ -224,29 +224,17 @@
         "readme.txt"
       ]
     },
-    "MonoGame.Framework.MacOS/3.5.1.1679": {
-      "sha512": "Qrhng7KDOyduwGDOdWmoX8gxQ7a5XbQV0yZed0ysT4kWB0NASdDtEzvxxoPe7M/D7XJ65Ksez1rIvOKR2N48lg==",
+    "MonoGame.Framework.DesktopGL/3.5.1.1679": {
+      "sha512": "19Lc0ce+j+YGrRbmNM343vbbQZv3HTx7GOaakengTPBjmuRj2wcXNh2iB/ZMCAgavl+lbvxSP2Gio7adSR0xBw==",
       "type": "package",
-      "path": "MonoGame.Framework.MacOS/3.5.1.1679",
+      "path": "MonoGame.Framework.DesktopGL/3.5.1.1679",
       "files": [
-        "MonoGame.Framework.MacOS.3.5.1.1679.nupkg.sha512",
-        "MonoGame.Framework.MacOS.nuspec",
-        "lib/MonoMac/MonoGame.Framework.dll",
-        "lib/MonoMac/MonoGame.Framework.xml",
-        "lib/MonoMac/OpenTK.dll",
-        "lib/MonoMac/Tao.Sdl.dll",
-        "lib/XamarinMac/MonoGame.Framework.dll",
-        "lib/XamarinMac/MonoGame.Framework.xml",
-        "lib/XamarinMac/OpenTK.dll",
-        "lib/XamarinMac/Tao.Sdl.dll",
+        "MonoGame.Framework.DesktopGL.3.5.1.1679.nupkg.sha512",
+        "MonoGame.Framework.DesktopGL.nuspec",
         "lib/net40/MonoGame.Framework.dll",
         "lib/net40/MonoGame.Framework.xml",
+        "lib/net40/NVorbis.dll",
         "lib/net40/OpenTK.dll",
-        "lib/net40/Tao.Sdl.dll",
-        "lib/net45/MonoGame.Framework.dll",
-        "lib/net45/MonoGame.Framework.xml",
-        "lib/net45/OpenTK.dll",
-        "lib/net45/Tao.Sdl.dll",
         "readme.txt"
       ]
     },
@@ -307,7 +295,7 @@
       "Dargon.Robotics",
       "Dargon.Robotics.DebugScene.Api",
       "FarseerPhysics.Portable >= 3.5.1",
-      "MonoGame.Framework.MacOS >= 3.5.1.1679"
+      "MonoGame.Framework.DesktopGL >= 3.5.1.1679"
     ],
     ".NETFramework,Version=v4.6.1": [
       "System.Xml >= 4.0.0"

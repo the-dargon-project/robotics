@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dargon.Commons;
-using Dargon.Robotics.Devices;
+﻿using Dargon.Robotics.Devices;
+using System;
 
 namespace Dargon.Robotics.Simulations2D.Devices {
    public class SimulationGyroscopeAdapter : DeviceBase, IGyroscope {
