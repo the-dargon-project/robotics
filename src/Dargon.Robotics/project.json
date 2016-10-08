@@ -16,10 +16,5 @@
                 "System.Xml": "4.0.0.0"
             }
         }
-    },
-
-    "scripts": {
-        "prebuild": [ "" ],
-        "postbuild": [ "powershell ../../../FodyDnx/src/exec-fody-weavers.ps1 -ProjectDir %cd%" ]
     }
 }
