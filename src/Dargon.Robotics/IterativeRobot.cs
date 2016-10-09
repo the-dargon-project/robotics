@@ -2,7 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
-using Dargon.Robotics.Debug;
+using Dargon.Robotics.Debugging;
 using Dargon.Ryu.Attributes;
 
 namespace Dargon.Robotics {

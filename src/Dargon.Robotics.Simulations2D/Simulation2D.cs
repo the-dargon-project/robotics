@@ -4,7 +4,7 @@ using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using Dargon.Robotics.Debug;
+using Dargon.Robotics.Debugging;
 
 namespace Dargon.Robotics.Simulations2D {
    public class Simulation2D : Game, IRenderer {

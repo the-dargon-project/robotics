@@ -1,6 +1,6 @@
 ﻿using Dargon.Commons.Collections;
 using System;
-using Dargon.Robotics.Debug;
+using Dargon.Robotics.Debugging;
 using SCG = System.Collections.Generic;
 
 namespace Dargon.Robotics {
