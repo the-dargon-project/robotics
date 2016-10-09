@@ -1,10 +1,10 @@
-using Dargon.Robotics.DebugScene;
 using Dargon.Robotics.Simulations2D.Utilities;
 using FarseerPhysics;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using Dargon.Robotics.Debug;
 
 namespace Dargon.Robotics.Simulations2D {
    public class Simulation2D : Game, IRenderer {

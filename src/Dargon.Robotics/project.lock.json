@@ -200,6 +200,7 @@
       "NLog >= 4.3.9"
     ],
     ".NETFramework,Version=v4.6.1": [
+      "System.Drawing >= 4.0.0",
       "System.Xml >= 4.0.0"
     ]
   },

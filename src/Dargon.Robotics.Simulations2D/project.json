@@ -4,7 +4,6 @@
     "dependencies": {
         "Dargon.Commons": "*",
         "Dargon.Robotics": "*",
-        "Dargon.Robotics.DebugScene.Api": "*",
         "FarseerPhysics.Portable": "3.5.1",
         "MonoGame.Framework.DesktopGL": "3.5.1.1679"
     },

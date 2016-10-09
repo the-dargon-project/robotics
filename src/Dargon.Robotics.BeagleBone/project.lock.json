@@ -80,6 +80,7 @@
           "NLog": "4.3.9"
         },
         "frameworkAssemblies": [
+          "System.Drawing",
           "System.Xml"
         ],
         "compile": {
