@@ -67,6 +67,8 @@ namespace Dargon.Robotics {
                   var status = command.RunIteration();
                   if (status == CommandStatus.Complete || status == CommandStatus.Abort) {
                      Console.WriteLine($"Command {command} finishing: {status}");
+                     activeSubsystems &= ~command.Subsystem;
+
                      executingCommands.RemoveOrThrow(command);
                   }
                }
