@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Dargon.Robotics.Subsystems.DriveTrain.SkidSteer {
+namespace Dargon.Robotics.Devices.DriveTrain.SkidSteer {
    public interface ISkidSteerCalculator {
       SkidDriveValues TankDrive(float leftStick, float rightStick, bool inputsSquared = false);
    }

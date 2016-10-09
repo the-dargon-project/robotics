@@ -1,4 +1,4 @@
-﻿namespace Dargon.Robotics.Subsystems.DriveTrain.Vertical {
+﻿namespace Dargon.Robotics.Devices.DriveTrain.Vertical {
 	public struct VerticalDriveValues {
 		public float FrontLeft { get; set; }
 		public float FrontRight { get; set; }

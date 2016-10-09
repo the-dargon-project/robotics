@@ -1,9 +1,8 @@
-﻿using Dargon.Robotics.Devices;
-using Dargon.Robotics.Devices.Components;
+﻿using Dargon.Robotics.Devices.Components;
 using Dargon.Robotics.Devices.Values.Util;
 using MathNet.Numerics.LinearAlgebra.Single;
 
-namespace Dargon.Robotics.Subsystems.DriveTrain.Holonomic {
+namespace Dargon.Robotics.Devices.DriveTrain.Holonomic {
    public interface IHolonomicCalculator {
       HolonomicDriveValues TankDrive(float left, float right, bool inputsSquared = false);
       HolonomicDriveValues MecanumDrive(HolonomicDriveTrain driveTrain, float x, float y, bool inputsSquared = false);

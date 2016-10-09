@@ -3,19 +3,21 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using Dargon.Robotics.Debug;
+using Dargon.Robotics.DeviceRegistries;
 using Dargon.Ryu.Attributes;
 
 namespace Dargon.Robotics {
-   [InjectRequiredFields]
    public class IterativeRobot : IRobot {
       private readonly IterativeRobotConfiguration configuration;
       private readonly IterativeRobotUserCode userCode;
       private readonly IDebugRenderContext debugRenderContext;
+      private readonly IDeviceRegistry deviceRegistry;
 
-      public IterativeRobot(IterativeRobotConfiguration configuration, IterativeRobotUserCode userCode, IDebugRenderContext debugRenderContext) {
+      public IterativeRobot(IterativeRobotConfiguration configuration, IterativeRobotUserCode userCode, IDebugRenderContext debugRenderContext, IDeviceRegistry deviceRegistry) {
          this.configuration = configuration;
          this.userCode = userCode;
          this.debugRenderContext = debugRenderContext;
+         this.deviceRegistry = deviceRegistry;
       }
 
       public void Run() {
@@ -26,6 +28,7 @@ namespace Dargon.Robotics {
          while (true) {
             stopwatch.Restart();
             debugRenderContext.BeginScene();
+            deviceRegistry.EnumerateUpdatableDevices().ForEach(d => d.Update());
             userCode.OnTick();
             debugRenderContext.EndScene();
             var timeElapsedMillis = stopwatch.ElapsedMilliseconds;

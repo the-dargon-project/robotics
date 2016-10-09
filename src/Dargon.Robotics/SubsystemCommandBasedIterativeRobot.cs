@@ -1,6 +1,7 @@
 ﻿using Dargon.Commons.Collections;
 using System;
 using Dargon.Robotics.Debug;
+using Dargon.Robotics.DeviceRegistries;
 using SCG = System.Collections.Generic;
 
 namespace Dargon.Robotics {
@@ -8,28 +9,27 @@ namespace Dargon.Robotics {
       private SubsystemCommandBasedIterativeRobot(
          IterativeRobotConfiguration iterativeRobotConfiguration, 
          UserCode userCode,
-         IDebugRenderContext debugRenderContext
-      ) : base(iterativeRobotConfiguration, userCode, debugRenderContext) {
+         IDebugRenderContext debugRenderContext,
+         IDeviceRegistry deviceRegistry
+      ) : base(iterativeRobotConfiguration, userCode, debugRenderContext, deviceRegistry) {
       }
 
       public static IRobot Create(
          IterativeRobotConfiguration configuration,
-         SCG.IReadOnlyDictionary<int, ISubsystem> subsystems,
          SCG.IReadOnlyList<ICommand> commands,
-         IDebugRenderContext debugRenderContext
+         IDebugRenderContext debugRenderContext,
+         IDeviceRegistry deviceRegistry
       ) {
-         var userCode = new UserCode(subsystems, commands);
-         return new SubsystemCommandBasedIterativeRobot(configuration, userCode, debugRenderContext);
+         var userCode = new UserCode(commands);
+         return new SubsystemCommandBasedIterativeRobot(configuration, userCode, debugRenderContext, deviceRegistry);
       }
 
       public class UserCode : IterativeRobotUserCode {
          private readonly ConcurrentSet<ICommand> executingCommands = new ConcurrentSet<ICommand>();
-         private readonly SCG.IReadOnlyDictionary<int, ISubsystem> subsystems;
          private readonly SCG.IReadOnlyList<ICommand> commands;
          private int activeSubsystems = 0;
 
-         public UserCode(SCG.IReadOnlyDictionary<int, ISubsystem> subsystems, SCG.IReadOnlyList<ICommand> commands) {
-            this.subsystems = subsystems;
+         public UserCode(SCG.IReadOnlyList<ICommand> commands) {
             this.commands = commands;
          }
 

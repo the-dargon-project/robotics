@@ -1,4 +1,4 @@
-﻿namespace Dargon.Robotics.Subsystems.DriveTrain.Holonomic {
+﻿namespace Dargon.Robotics.Devices.DriveTrain.Holonomic {
    public static class HolonomicDriveTrainStatics {
       public static IHolonomicCalculator Calculator { get; set; } = new HolonomicCalculatorImpl();
 

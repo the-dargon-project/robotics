@@ -26,7 +26,7 @@ namespace Dargon.Robotics.Devices.Values {
       public T Get() => value;
 
       public void Set(T newValue) {
-         this.value = newValue;
+         value = newValue;
          valueUpdatedLatch.Set();
       }
    }

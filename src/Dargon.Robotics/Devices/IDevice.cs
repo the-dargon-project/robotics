@@ -37,5 +37,6 @@ namespace Dargon.Robotics.Devices {
       Gyroscope      = 0x00000080U,
       Servo          = 0x00000100U,
       PositionTracker = 0x00000200U,
+      Subsystem = 0x80000000U,
    }
 }

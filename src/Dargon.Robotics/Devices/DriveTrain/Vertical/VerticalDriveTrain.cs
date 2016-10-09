@@ -1,6 +1,4 @@
-﻿using Dargon.Robotics.Devices;
-
-namespace Dargon.Robotics.Subsystems.DriveTrain.Vertical {
+﻿namespace Dargon.Robotics.Devices.DriveTrain.Vertical {
 	public class VerticalDriveTrain {
 		private readonly IMotor frontLeft;
 		private readonly IMotor frontRight;

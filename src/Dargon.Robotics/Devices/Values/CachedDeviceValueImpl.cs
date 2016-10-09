@@ -5,7 +5,7 @@
 
       public CachedDeviceValueImpl(IDeviceValue<T> backing) {
          this.backing = backing;
-         this.cachedValue = backing.Get();
+         cachedValue = backing.Get();
       }
 
       public T Get() => cachedValue;

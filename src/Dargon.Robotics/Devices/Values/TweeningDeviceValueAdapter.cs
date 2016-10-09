@@ -18,7 +18,7 @@ namespace Dargon.Robotics.Devices.Values {
       public TweeningDeviceValueAdapter(IDeviceValue<float> deviceValue, float tweenFactor) {
          this.deviceValue = deviceValue;
          this.tweenFactor = tweenFactor;
-         this.invTweenFactor = 1 - tweenFactor;
+         invTweenFactor = 1 - tweenFactor;
       }
 
       public void Initialize() {

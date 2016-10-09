@@ -1,4 +1,4 @@
-namespace Dargon.Robotics.Subsystems.DriveTrain.Holonomic {
+namespace Dargon.Robotics.Devices.DriveTrain.Holonomic {
    public struct HolonomicDriveValues {
       public float FrontLeft { get; set; }
       public float FrontRight { get; set; }

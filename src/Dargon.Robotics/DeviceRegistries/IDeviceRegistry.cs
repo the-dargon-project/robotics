@@ -6,5 +6,6 @@ namespace Dargon.Robotics.DeviceRegistries {
       void AddDevice(string alias, IDevice device);
       T GetDevice<T>(string alias = null);
       IEnumerable<IDevice> EnumerateDevices();
+      IEnumerable<IUpdatableDevice> EnumerateUpdatableDevices();
    }
 }

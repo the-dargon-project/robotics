@@ -1,6 +1,4 @@
-﻿using Dargon.Robotics.Devices;
-
-namespace Dargon.Robotics.Subsystems.DriveTrain.Holonomic {
+﻿namespace Dargon.Robotics.Devices.DriveTrain.Holonomic {
    public class HolonomicDriveTrain {
       private readonly IMotor frontLeft;
       private readonly IMotor frontRight;

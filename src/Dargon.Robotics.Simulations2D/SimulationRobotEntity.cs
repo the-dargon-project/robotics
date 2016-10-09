@@ -19,6 +19,8 @@ namespace Dargon.Robotics.Simulations2D {
          this.nonforwardMotionSuppressionFactor = nonforwardMotionSuppressionFactor;
       }
 
+      public Vector2 Position => robotBody.Position;
+
       public void Initialize(World world) {
          robotBody = BodyFactory.CreateRectangle(world, robotState.Width, robotState.Height, robotState.Density);
          robotBody.BodyType = BodyType.Dynamic;

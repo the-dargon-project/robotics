@@ -37,6 +37,8 @@ namespace Dargon.Robotics.Simulations2D {
          robotEntity.Initialize(world);
       }
 
+      public event EventHandler UpdateBegin;
+
       protected override void LoadContent() {
          base.LoadContent();
          spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -90,6 +92,7 @@ namespace Dargon.Robotics.Simulations2D {
 
       protected override void Update(GameTime gameTime) {
          base.Update(gameTime);
+         UpdateBegin?.Invoke(this, EventArgs.Empty);
          var millisecondsElapsed = (DateTime.Now - startTime).TotalMilliseconds;
          var desiredTicksExecuted = millisecondsElapsed * kTicksPerMillisecond;
          while (ticksExecuted < desiredTicksExecuted) {
