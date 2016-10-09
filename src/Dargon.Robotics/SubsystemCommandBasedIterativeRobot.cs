@@ -1,22 +1,25 @@
 ﻿using Dargon.Commons.Collections;
 using System;
+using Dargon.Robotics.Debug;
 using SCG = System.Collections.Generic;
 
 namespace Dargon.Robotics {
    public class SubsystemCommandBasedIterativeRobot : IterativeRobot {
       private SubsystemCommandBasedIterativeRobot(
-         IterativeRobotConfiguration configuration, 
-         UserCode userCode
-      ) : base(configuration, userCode) {
+         IterativeRobotConfiguration iterativeRobotConfiguration, 
+         UserCode userCode,
+         IDebugRenderContext debugRenderContext
+      ) : base(iterativeRobotConfiguration, userCode, debugRenderContext) {
       }
 
-      public static SubsystemCommandBasedIterativeRobot Create(
+      public static IRobot Create(
          IterativeRobotConfiguration configuration,
          SCG.IReadOnlyDictionary<int, ISubsystem> subsystems,
-         SCG.IReadOnlyList<ICommand> commands
+         SCG.IReadOnlyList<ICommand> commands,
+         IDebugRenderContext debugRenderContext
       ) {
          var userCode = new UserCode(subsystems, commands);
-         return new SubsystemCommandBasedIterativeRobot(configuration, userCode);
+         return new SubsystemCommandBasedIterativeRobot(configuration, userCode, debugRenderContext);
       }
 
       public class UserCode : IterativeRobotUserCode {
