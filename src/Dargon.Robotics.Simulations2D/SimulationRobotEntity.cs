@@ -5,7 +5,7 @@ using FarseerPhysics.Factories;
 using Microsoft.Xna.Framework;
 
 namespace Dargon.Robotics.Simulations2D {
-   public class SimulationRobotEntity {
+   public class SimulationRobotEntity : ISimulationEntity {
       private readonly SimulationConstants constants;
       private readonly SimulationRobotState robotState;
       private readonly Vector2 centerOfMass;
@@ -73,7 +73,7 @@ namespace Dargon.Robotics.Simulations2D {
          renderer.DrawForceVectorWorld(position, forceVectorWorld, Color.Cyan);
       }
 
-      public void ApplyForces() {
+      private void ApplyForces() {
          var forward = Vector2.Transform(Vector2.UnitY, Matrix.CreateRotationZ(robotBody.Rotation));
          if (robotBody.LinearVelocity.Length() > 0) {
             var linearVelocityNormalized = robotBody.LinearVelocity;
@@ -105,7 +105,7 @@ namespace Dargon.Robotics.Simulations2D {
 //            Matrix.CreateRotationZ(robotBody.Rotation));
 //      }
 
-      public void UpdateSensors(float dtSeconds) {
+      public void Tick(float dtSeconds) {
          robotState.WheelShaftEncoderStates.ForEach(x => UpdateWheelShaftEncoder(dtSeconds, x));
 
          var yawGyroscope = robotState.YawGyroscopeState;
@@ -114,6 +114,8 @@ namespace Dargon.Robotics.Simulations2D {
 
          var position = robotBody.Position;
          var velocity = robotBody.LinearVelocity;
+
+         ApplyForces();
       }
 
       private void UpdateWheelShaftEncoder(float dtSeconds, SimulationWheelShaftEncoderState wheelShaftEncoderState) {

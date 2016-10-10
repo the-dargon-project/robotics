@@ -4,6 +4,8 @@ using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
+using Dargon.Commons.Collections;
 using Dargon.Robotics.Debugging;
 
 namespace Dargon.Robotics.Simulations2D {
@@ -13,15 +15,15 @@ namespace Dargon.Robotics.Simulations2D {
       private readonly DateTime startTime = DateTime.Now;
       private readonly GraphicsDeviceManager graphicsDeviceManager;
       private readonly World world;
-      private readonly SimulationRobotEntity robotEntity;
+      private readonly ConcurrentSet<ISimulationEntity> entities;
       private readonly IDebugRenderContext debugRenderContext;
       private int ticksExecuted = 0;
       private SpriteBatch spriteBatch;
       private Texture2D whiteRectangle;
       private RenderTarget2D invertedRenderTarget;
 
-      public Simulation2D(SimulationRobotEntity robotEntity, IDebugRenderContext debugRenderContext) {
-         this.robotEntity = robotEntity;
+      public Simulation2D(ConcurrentSet<ISimulationEntity> entities, IDebugRenderContext debugRenderContext) {
+         this.entities = entities;
          this.debugRenderContext = debugRenderContext;
 
          Content.RootDirectory = "Assets";
@@ -34,7 +36,9 @@ namespace Dargon.Robotics.Simulations2D {
 
          var gravity = Vector2.Zero;
          world = new World(gravity);
-         robotEntity.Initialize(world);
+         foreach (var entity in entities) {
+            entity.Initialize(world);
+         }
       }
 
       protected override void LoadContent() {
@@ -61,7 +65,9 @@ namespace Dargon.Robotics.Simulations2D {
          GraphicsDevice.RasterizerState = RasterizerState.CullNone;
          GraphicsDevice.Clear(Color.Black);
          spriteBatch.Begin(transformMatrix: Matrix.CreateTranslation(0, 0, 0));
-         robotEntity.Render(this);
+         foreach(var entity in entities) {
+            entity.Render(this);
+         }
          for (var i = -15; i < 15; i++) {
             DrawLineSegmentWorld(new Vector2(i, 0), new Vector2(i, 40), Color.Gray);
             DrawLineSegmentWorld(new Vector2(0, i), new Vector2(40, i), Color.Gray);
@@ -94,9 +100,10 @@ namespace Dargon.Robotics.Simulations2D {
          var desiredTicksExecuted = millisecondsElapsed * kTicksPerMillisecond;
          while (ticksExecuted < desiredTicksExecuted) {
             ticksExecuted++;
-            robotEntity.ApplyForces();
             world.Step(kTickIntervalSeconds);
-            robotEntity.UpdateSensors(kTickIntervalSeconds);
+            foreach (var entity in entities) {
+               entity.Tick(kTickIntervalSeconds);
+            }
          }
       }
 
