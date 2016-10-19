@@ -12,19 +12,21 @@ namespace Dargon.Robotics.Simulations2D
    {
       private readonly SimulationBallConstants constants;
       private readonly Vector2 centerOfMass;
+      private readonly Vector2 initialPosition;
       private Body body;
 
-      public SimulationBallEntity(SimulationBallConstants constants, Vector2 centerOfMass = default(Vector2))
+      public SimulationBallEntity(SimulationBallConstants constants, Vector2 centerOfMass = default(Vector2), Vector2 initialPosition = default(Vector2))
       {
          this.constants = constants;
          this.centerOfMass = centerOfMass;
+         this.initialPosition = initialPosition;
       }
 
       public void Initialize(World world)
       {
          body = BodyFactory.CreateCircle(world, constants.Radius, constants.Density);
          body.BodyType = BodyType.Dynamic;
-         body.Position = new Vector2(0,0);
+         body.Position = initialPosition;
          body.LocalCenter = centerOfMass;
          body.LinearDamping = constants.LinearDamping;
       }

@@ -26,6 +26,7 @@ namespace Dargon.Robotics.Simulations2D {
          this.entities = entities;
          this.debugRenderContext = debugRenderContext;
 
+         IsMouseVisible = true;
          Content.RootDirectory = "Assets";
          ConvertUnits.SetDisplayUnitToSimUnitRatio(50f);
 
@@ -139,6 +140,15 @@ namespace Dargon.Robotics.Simulations2D {
          var aScreen = ConvertUnits.ToDisplayUnits(origin);
          var bScreen = ConvertUnits.ToDisplayUnits(origin + vector * kScaling);
          spriteBatch.DrawLine(aScreen, bScreen, color);
+      }
+
+      public void AddEntity(ISimulationEntity entity) {
+         entity.Initialize(world);
+         entities.AddOrThrow(entity);
+      }
+
+      public Vector2 ConvertDisplayPointToSimulatorVector(Point point) {
+         return new Vector2(ConvertUnits.ToSimUnits(point.X), ConvertUnits.ToSimUnits(GraphicsDevice.Viewport.Height-point.Y));
       }
    }
 }

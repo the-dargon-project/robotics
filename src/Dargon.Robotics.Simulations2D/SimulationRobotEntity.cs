@@ -9,20 +9,22 @@ namespace Dargon.Robotics.Simulations2D {
       private readonly SimulationConstants constants;
       private readonly SimulationRobotState robotState;
       private readonly Vector2 centerOfMass;
+      private readonly Vector2 initialPosition;
       private readonly float nonforwardMotionSuppressionFactor;
       private Body robotBody;
 
-      public SimulationRobotEntity(SimulationConstants constants, SimulationRobotState robotState, Vector2 centerOfMass = default(Vector2), float nonforwardMotionSuppressionFactor = 0.0f) {
+      public SimulationRobotEntity(SimulationConstants constants, SimulationRobotState robotState, Vector2 centerOfMass = default(Vector2), Vector2 initialPosition = default(Vector2), float nonforwardMotionSuppressionFactor = 0.0f) {
          this.constants = constants;
          this.robotState = robotState;
          this.centerOfMass = centerOfMass;
+         this.initialPosition = initialPosition;
          this.nonforwardMotionSuppressionFactor = nonforwardMotionSuppressionFactor;
       }
 
       public void Initialize(World world) {
          robotBody = BodyFactory.CreateRectangle(world, robotState.Width, robotState.Height, robotState.Density);
          robotBody.BodyType = BodyType.Dynamic;
-         robotBody.Position = new Vector2(0, 0);
+         robotBody.Position = initialPosition;
          robotBody.LocalCenter = centerOfMass;
          //         robotBody.Rotation = (float)Math.PI;
          robotBody.AngularDamping = constants.AngularDamping;
