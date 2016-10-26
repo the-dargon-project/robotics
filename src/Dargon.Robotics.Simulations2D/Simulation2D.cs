@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Dargon.Commons.Collections;
 using Dargon.Robotics.Debugging;
 
@@ -21,6 +22,7 @@ namespace Dargon.Robotics.Simulations2D {
       private SpriteBatch spriteBatch;
       private Texture2D whiteRectangle;
       private RenderTarget2D invertedRenderTarget;
+      private readonly ConcurrentSet<ISimulationEntity> entitiesToRemove = new ConcurrentSet<ISimulationEntity>();
 
       public Simulation2D(ConcurrentSet<ISimulationEntity> entities, IDebugRenderContext debugRenderContext) {
          this.entities = entities;
@@ -103,8 +105,11 @@ namespace Dargon.Robotics.Simulations2D {
             ticksExecuted++;
             world.Step(kTickIntervalSeconds);
             foreach (var entity in entities) {
-               entity.Tick(kTickIntervalSeconds);
+               if(!entity.Tick(kTickIntervalSeconds))
+                  entitiesToRemove.AddOrThrow(entity);
             }
+            foreach (var entity in entitiesToRemove)
+               entities.RemoveOrThrow(entity);
          }
       }
 

@@ -29,6 +29,7 @@ namespace Dargon.Robotics.Simulations2D {
          //         robotBody.Rotation = (float)Math.PI;
          robotBody.AngularDamping = constants.AngularDamping;
          robotBody.LinearDamping = constants.LinearDamping;
+         robotBody.UserData = "robot";
       }
 
       public void SetLocalCenter(Vector2 vector) {
@@ -107,7 +108,10 @@ namespace Dargon.Robotics.Simulations2D {
 //            Matrix.CreateRotationZ(robotBody.Rotation));
 //      }
 
-      public void Tick(float dtSeconds) {
+      public bool Tick(float dtSeconds) {
+         if (robotBody.IsDisposed)
+            return false;
+         
          robotState.WheelShaftEncoderStates.ForEach(x => UpdateWheelShaftEncoder(dtSeconds, x));
 
          var yawGyroscope = robotState.YawGyroscopeState;
@@ -118,6 +122,8 @@ namespace Dargon.Robotics.Simulations2D {
          var velocity = robotBody.LinearVelocity;
 
          ApplyForces();
+
+         return true;
       }
 
       private void UpdateWheelShaftEncoder(float dtSeconds, SimulationWheelShaftEncoderState wheelShaftEncoderState) {

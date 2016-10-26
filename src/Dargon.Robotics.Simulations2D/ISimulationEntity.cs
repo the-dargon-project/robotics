@@ -6,6 +6,6 @@ namespace Dargon.Robotics.Simulations2D {
       void Initialize(World world);
       void SetLocalCenter(Vector2 vector);
       void Render(IRenderer renderer);
-      void Tick(float dtSeconds);
+      bool Tick(float dtSeconds);
    }
 }

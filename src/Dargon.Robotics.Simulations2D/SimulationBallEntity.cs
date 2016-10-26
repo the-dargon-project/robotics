@@ -29,6 +29,18 @@ namespace Dargon.Robotics.Simulations2D
          body.Position = initialPosition;
          body.LocalCenter = centerOfMass;
          body.LinearDamping = constants.LinearDamping;
+
+         body.OnCollision += (fixture1, fixture2, contact) => {
+            Console.WriteLine(fixture2.Body.UserData);
+            Console.WriteLine(fixture1.Body.UserData);
+            Console.WriteLine();
+            if ("robot".Equals(fixture2.Body.UserData) || "robot".Equals(fixture1.Body.UserData)) {
+               body.Dispose();
+               //world.RemoveBody(body);
+               return false;
+            }
+            return true;
+         };
       }
 
       public void SetLocalCenter(Vector2 vector) {
@@ -43,7 +55,9 @@ namespace Dargon.Robotics.Simulations2D
             Color.Green);
       }
 
-      public void Tick(float dtSeconds) { }
+      public bool Tick(float dtSeconds) {
+         return true;
+      }
    }
 
    public class SimulationBallConstants
