@@ -3,6 +3,7 @@ using Dargon.Commons;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using Microsoft.Xna.Framework;
+using Dargon.Robotics.Simulations2D;
 
 namespace Dargon.Robotics.Simulations2D {
    public class SimulationRobotEntity : ISimulationEntity {
@@ -12,6 +13,7 @@ namespace Dargon.Robotics.Simulations2D {
       private readonly Vector2 initialPosition;
       private readonly float nonforwardMotionSuppressionFactor;
       private Body robotBody;
+      private Simulation2D simulation;
 
       public SimulationRobotEntity(SimulationConstants constants, SimulationRobotState robotState, Vector2 centerOfMass = default(Vector2), Vector2 initialPosition = default(Vector2), float nonforwardMotionSuppressionFactor = 0.0f) {
          this.constants = constants;
@@ -21,7 +23,7 @@ namespace Dargon.Robotics.Simulations2D {
          this.nonforwardMotionSuppressionFactor = nonforwardMotionSuppressionFactor;
       }
 
-      public void Initialize(World world) {
+      public void Initialize(Simulation2D simulation, World world) {
          robotBody = BodyFactory.CreateRectangle(world, robotState.Width, robotState.Height, robotState.Density);
          robotBody.BodyType = BodyType.Dynamic;
          robotBody.Position = initialPosition;
@@ -30,6 +32,22 @@ namespace Dargon.Robotics.Simulations2D {
          robotBody.AngularDamping = constants.AngularDamping;
          robotBody.LinearDamping = constants.LinearDamping;
          robotBody.UserData = "robot";
+
+         robotBody.OnCollision += (fixture1, fixture2, contact) => {
+             Console.WriteLine(fixture1.Body.UserData);
+             Console.WriteLine(fixture2.Body.UserData);
+             Console.WriteLine();
+             if ("ball".Equals(fixture1.Body.UserData)) {
+                simulation.DeleteEntity(fixture1.Body);
+               
+                return false;
+             } else if ("ball".Equals(fixture2.Body.UserData)) {
+                simulation.DeleteEntity(fixture2.Body);
+
+                return false;
+             }
+             return true;
+         };
       }
 
       public void SetLocalCenter(Vector2 vector) {

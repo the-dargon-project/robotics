@@ -40,7 +40,7 @@ namespace Dargon.Robotics.Simulations2D {
          var gravity = Vector2.Zero;
          world = new World(gravity);
          foreach (var entity in entities) {
-            entity.Initialize(world);
+            entity.Initialize(this, world);
          }
       }
 
@@ -148,7 +148,7 @@ namespace Dargon.Robotics.Simulations2D {
       }
 
       public void AddEntity(ISimulationEntity entity) {
-         entity.Initialize(world);
+         entity.Initialize(this, world);
          entities.AddOrThrow(entity);
       }
 

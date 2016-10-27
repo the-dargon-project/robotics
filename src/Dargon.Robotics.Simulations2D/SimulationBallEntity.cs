@@ -22,25 +22,14 @@ namespace Dargon.Robotics.Simulations2D
          this.initialPosition = initialPosition;
       }
 
-      public void Initialize(World world)
+      public void Initialize(Simulation2D simulation, World world)
       {
          body = BodyFactory.CreateCircle(world, constants.Radius, constants.Density);
          body.BodyType = BodyType.Dynamic;
          body.Position = initialPosition;
          body.LocalCenter = centerOfMass;
          body.LinearDamping = constants.LinearDamping;
-
-         body.OnCollision += (fixture1, fixture2, contact) => {
-            Console.WriteLine(fixture2.Body.UserData);
-            Console.WriteLine(fixture1.Body.UserData);
-            Console.WriteLine();
-            if ("robot".Equals(fixture2.Body.UserData) || "robot".Equals(fixture1.Body.UserData)) {
-               body.Dispose();
-               //world.RemoveBody(body);
-               return false;
-            }
-            return true;
-         };
+         body.UserData = "ball";
       }
 
       public void SetLocalCenter(Vector2 vector) {
