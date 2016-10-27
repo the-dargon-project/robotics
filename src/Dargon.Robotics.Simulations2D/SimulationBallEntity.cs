@@ -29,7 +29,7 @@ namespace Dargon.Robotics.Simulations2D
          body.Position = initialPosition;
          body.LocalCenter = centerOfMass;
          body.LinearDamping = constants.LinearDamping;
-         body.UserData = "ball";
+         body.UserData = this;
       }
 
       public void SetLocalCenter(Vector2 vector) {
@@ -47,7 +47,12 @@ namespace Dargon.Robotics.Simulations2D
       public bool Tick(float dtSeconds) {
          return true;
       }
-   }
+
+        public void Delete()
+        {
+            body.Dispose();
+        }
+    }
 
    public class SimulationBallConstants
    {

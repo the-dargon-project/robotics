@@ -22,7 +22,6 @@ namespace Dargon.Robotics.Simulations2D {
       private SpriteBatch spriteBatch;
       private Texture2D whiteRectangle;
       private RenderTarget2D invertedRenderTarget;
-      private readonly ConcurrentSet<ISimulationEntity> entitiesToRemove = new ConcurrentSet<ISimulationEntity>();
 
       public Simulation2D(ConcurrentSet<ISimulationEntity> entities, IDebugRenderContext debugRenderContext) {
          this.entities = entities;
@@ -105,11 +104,8 @@ namespace Dargon.Robotics.Simulations2D {
             ticksExecuted++;
             world.Step(kTickIntervalSeconds);
             foreach (var entity in entities) {
-               if(!entity.Tick(kTickIntervalSeconds))
-                  entitiesToRemove.AddOrThrow(entity);
+               entity.Tick(kTickIntervalSeconds);
             }
-            foreach (var entity in entitiesToRemove)
-               entities.RemoveOrThrow(entity);
          }
       }
 
@@ -154,6 +150,11 @@ namespace Dargon.Robotics.Simulations2D {
 
       public Vector2 ConvertDisplayPointToSimulatorVector(Point point) {
          return new Vector2(ConvertUnits.ToSimUnits(point.X), ConvertUnits.ToSimUnits(GraphicsDevice.Viewport.Height-point.Y));
+      }
+
+      public void DeleteEntity(ISimulationEntity entityToDelete) {
+         entities.TryRemove(entityToDelete);
+         entityToDelete.Delete();
       }
    }
 }

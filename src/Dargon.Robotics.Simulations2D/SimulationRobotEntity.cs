@@ -37,18 +37,23 @@ namespace Dargon.Robotics.Simulations2D {
              Console.WriteLine(fixture1.Body.UserData);
              Console.WriteLine(fixture2.Body.UserData);
              Console.WriteLine();
-             if ("ball".Equals(fixture1.Body.UserData)) {
-                simulation.DeleteEntity(fixture1.Body);
+             if (fixture1.Body.UserData is SimulationBallEntity) {
+                simulation.DeleteEntity((ISimulationEntity)fixture1.Body.UserData);
                
                 return false;
-             } else if ("ball".Equals(fixture2.Body.UserData)) {
-                simulation.DeleteEntity(fixture2.Body);
+             } else if (fixture2.Body.UserData is SimulationBallEntity) {
+                 simulation.DeleteEntity((ISimulationEntity)fixture2.Body.UserData);
 
-                return false;
+                 return false;
              }
              return true;
          };
       }
+
+       public void Delete()
+       {
+           robotBody.Dispose();
+       }
 
       public void SetLocalCenter(Vector2 vector) {
          robotBody.LocalCenter = vector;
