@@ -156,5 +156,9 @@ namespace Dargon.Robotics.Simulations2D {
          entities.TryRemove(entityToDelete);
          entityToDelete.Delete();
       }
+
+      public ConcurrentSet<ISimulationEntity> GetEntities() {
+         return entities;
+      }
    }
 }

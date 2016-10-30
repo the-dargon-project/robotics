@@ -14,6 +14,7 @@ namespace Dargon.Robotics.Simulations2D {
       private readonly float nonforwardMotionSuppressionFactor;
       private Body robotBody;
       private Simulation2D simulation;
+      public float TurretRotation { get; set; }
 
       public SimulationRobotEntity(SimulationConstants constants, SimulationRobotState robotState, Vector2 centerOfMass = default(Vector2), Vector2 initialPosition = default(Vector2), float nonforwardMotionSuppressionFactor = 0.0f) {
          this.constants = constants;
@@ -34,9 +35,9 @@ namespace Dargon.Robotics.Simulations2D {
          robotBody.UserData = "robot";
 
          robotBody.OnCollision += (fixture1, fixture2, contact) => {
-             Console.WriteLine(fixture1.Body.UserData);
-             Console.WriteLine(fixture2.Body.UserData);
-             Console.WriteLine();
+             //Console.WriteLine(fixture1.Body.UserData);
+             //Console.WriteLine(fixture2.Body.UserData);
+             //Console.WriteLine();
              if (fixture1.Body.UserData is SimulationBallEntity) {
                 simulation.DeleteEntity((ISimulationEntity)fixture1.Body.UserData);
                
@@ -76,7 +77,7 @@ namespace Dargon.Robotics.Simulations2D {
          // Draw up vector
          renderer.DrawLineSegmentWorld(
             robotBody.GetWorldPoint(robotBody.LocalCenter),
-            robotBody.GetWorldPoint(Vector2.UnitY),
+            robotBody.GetWorldPoint(new Vector2((float) Math.Cos(TurretRotation + Math.PI / 2), (float) Math.Sin(TurretRotation + Math.PI / 2))),
             Color.Lime);
 
          // Draw friction vector
