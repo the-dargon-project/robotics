@@ -7,30 +7,29 @@ using Dargon.Robotics.Simulations2D;
 
 namespace Dargon.Robotics.Simulations2D {
    public class SimulationRobotEntity : ISimulationEntity {
-      private readonly SimulationConstants constants;
       private readonly SimulationRobotState robotState;
       private readonly Vector2 centerOfMass;
       private readonly Vector2 initialPosition;
       private readonly float nonforwardMotionSuppressionFactor;
-      private Body robotBody;
-      private Simulation2D simulation;
+      protected Body robotBody;
+      protected Simulation2D simulation;
 
-      public SimulationRobotEntity(SimulationConstants constants, SimulationRobotState robotState, Vector2 centerOfMass = default(Vector2), Vector2 initialPosition = default(Vector2), float nonforwardMotionSuppressionFactor = 0.0f) {
-         this.constants = constants;
+      public SimulationRobotEntity(SimulationRobotState robotState, Vector2 centerOfMass = default(Vector2), Vector2 initialPosition = default(Vector2), float nonforwardMotionSuppressionFactor = 0.0f) {
          this.robotState = robotState;
          this.centerOfMass = centerOfMass;
          this.initialPosition = initialPosition;
          this.nonforwardMotionSuppressionFactor = nonforwardMotionSuppressionFactor;
       }
 
-      public void Initialize(Simulation2D simulation, World world) {
+      public virtual void Initialize(Simulation2D simulation, World world) {
+         this.simulation = simulation;
          robotBody = BodyFactory.CreateRectangle(world, robotState.Width, robotState.Height, robotState.Density);
          robotBody.BodyType = BodyType.Dynamic;
          robotBody.Position = initialPosition;
          robotBody.LocalCenter = centerOfMass;
          //         robotBody.Rotation = (float)Math.PI;
-         robotBody.AngularDamping = constants.AngularDamping;
-         robotBody.LinearDamping = constants.LinearDamping;
+         robotBody.AngularDamping = robotState.AngularDamping;
+         robotBody.LinearDamping = robotState.LinearDamping;
          robotBody.UserData = "robot";
 
          robotBody.OnCollision += (fixture1, fixture2, contact) => {
@@ -50,8 +49,7 @@ namespace Dargon.Robotics.Simulations2D {
          };
       }
 
-       public void Delete()
-       {
+       public virtual void Delete() {
            robotBody.Dispose();
        }
 
@@ -59,7 +57,7 @@ namespace Dargon.Robotics.Simulations2D {
          robotBody.LocalCenter = vector;
       }
 
-      public void Render(IRenderer renderer) {
+      public virtual void Render(IRenderer renderer) {
          DrawRobotBody(renderer);
          robotState.MotorStates.ForEach(x => DrawMotorBody(renderer, x));
       }
@@ -131,7 +129,7 @@ namespace Dargon.Robotics.Simulations2D {
 //            Matrix.CreateRotationZ(robotBody.Rotation));
 //      }
 
-      public bool Tick(float dtSeconds) {
+      public virtual bool Tick(float dtSeconds) {
          if (robotBody.IsDisposed)
             return false;
          
